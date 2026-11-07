@@ -1,0 +1,22 @@
+@import "./styles/ui-theme.css";
+@import "./styles/ui-controls.css";
+@import "./styles/ui-patterns.css";
+body {
+  margin: 0;
+}
+main {
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: var(--ui-background);
+  color: var(--ui-foreground);
+  font-family: var(--ui-font-interface);
+  padding: clamp(24px, 6vw, 80px);
+}
+h1 {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 5vw, 56px);
+}
+p {
+  color: var(--ui-muted-foreground);
+  margin-bottom: 40px;
+}

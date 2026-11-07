@@ -1,0 +1,37 @@
+{
+  "name": "@stephane-brochu/product-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 3210",
+    "build": "node scripts/registry.mjs check && vite build && node scripts/copy-registry.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test && npm run starter:check && npm run build",
+    "registry:build": "node scripts/registry.mjs build",
+    "registry:check": "node scripts/registry.mjs check",
+    "starter:check": "node scripts/check-starter.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.8",
+    "@testing-library/jest-dom": "6.9.1",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/node": "24.10.0",
+    "jsdom": "28.1.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.5",
+    "vitest": "4.1.12",
+    "shadcn": "4.23.0"
+  }
+}

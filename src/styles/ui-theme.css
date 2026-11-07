@@ -1,0 +1,44 @@
+:root,
+[data-ui-theme="ledger"] {
+  --ui-background: #f4f1ec;
+  --ui-foreground: #1e1e1e;
+  --ui-primary: #1e1e1e;
+  --ui-primary-foreground: #f4f1ec;
+  --ui-primary-hover: #000;
+  --ui-muted: #ebe7e0;
+  --ui-muted-foreground: #62605b;
+  --ui-popover: #faf8f4;
+  --ui-border: #d6d1c9;
+  --ui-border-strong: #aaa6a0;
+  --ui-input: #85817b;
+  --ui-destructive: #8b302e;
+  --ui-ring: #1e1e1e;
+  --ui-radius: 6px;
+  --ui-control-height: 34px;
+  --ui-font-interface: "Inter", "Segoe UI", sans-serif;
+  --ui-font-editorial: "Cormorant Garamond", Georgia, serif;
+}
+[data-ui-theme="studio"] {
+  --ui-background: #f7f9fc;
+  --ui-foreground: #172235;
+  --ui-primary: #2448a5;
+  --ui-primary-foreground: #fff;
+  --ui-primary-hover: #19367f;
+  --ui-muted: #e9eef7;
+  --ui-muted-foreground: #4b596d;
+  --ui-popover: #fff;
+  --ui-border: #cbd3df;
+  --ui-border-strong: #8b97a8;
+  --ui-input: #748197;
+  --ui-destructive: #a12b35;
+  --ui-ring: #2448a5;
+  --ui-radius: 10px;
+  --ui-font-interface: "Inter", "Segoe UI", sans-serif;
+  --ui-font-editorial: "Inter", "Segoe UI", sans-serif;
+}
+@media (pointer: coarse), (max-width: 540px) {
+  :root,
+  [data-ui-theme] {
+    --ui-control-height: 44px;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-section",
+  "type": "registry:component",
+  "title": "Form section",
+  "description": "Product UI v0.1.0: Form section. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.1.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.1.0/patterns.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/form-section.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/form-section.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\nexport function FormSection({\n  id,\n  title,\n  description,\n  children,\n}: {\n  id: string;\n  title: string;\n  description?: string;\n  children: ReactNode;\n}) {\n  return (\n    <fieldset\n      className=\"ds-form-section\"\n      data-slot=\"form-section\"\n      aria-describedby={description ? `${id}-description` : undefined}\n    >\n      <legend>{title}</legend>\n      {description && (\n        <p id={`${id}-description`} className=\"ds-form-section-description\">\n          {description}\n        </p>\n      )}\n      <div className=\"ds-form-section-fields\">{children}</div>\n    </fieldset>\n  );\n}\nexport function FormActions({ children }: { children: ReactNode }) {\n  return (\n    <div className=\"ds-form-actions\" data-slot=\"form-actions\">\n      {children}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

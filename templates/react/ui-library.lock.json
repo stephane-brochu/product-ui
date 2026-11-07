@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "name": "product-ui",
+  "version": "0.1.0",
+  "repository": "https://github.com/stephane-brochu/product-ui",
+  "registry": "https://brochu-product-ui.vercel.app/r/v0.1.0",
+  "files": [
+    {
+      "target": "src/styles/ui-theme.css",
+      "sha256": "85d4fdfc4a2c68e2265d62531e6820b32d16dbe84f9fd6dc2219529adbce7905"
+    },
+    {
+      "target": "src/styles/ui-controls.css",
+      "sha256": "796f548bd99c12f791da0f8a2a08b15d08691738a9cf36ba9bd47d6d93b76e2f"
+    },
+    {
+      "target": "src/styles/ui-patterns.css",
+      "sha256": "885a19bf35c17fb636a5ff8fef82cd5a9454e2f0e2abfd5f4ff96dd7ee6fc89b"
+    },
+    {
+      "target": "src/components/ui/button.tsx",
+      "sha256": "b57f1184b6958e14fbe34f87678cc8d9a05017e197767b774d8a4c369a19ab1d"
+    },
+    {
+      "target": "src/components/ui/fields.tsx",
+      "sha256": "9e53a4be9fe6ac963feb1fd91b882a57d2b69eeb34fa287d25589ee0edd1297c"
+    },
+    {
+      "target": "src/components/patterns/filter-bar.tsx",
+      "sha256": "e7be32d586cd230bdd0a534e83deb64148f0e0b6a78b9ab0bc18c24a00585a1f"
+    },
+    {
+      "target": "src/components/patterns/form-section.tsx",
+      "sha256": "2c38047361320b1b6872161078b83df1e12798ba3ed46af2aef341b1330d6fab"
+    }
+  ]
+}

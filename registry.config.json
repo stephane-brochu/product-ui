@@ -1,0 +1,129 @@
+{
+  "name": "product-ui",
+  "version": "0.1.0",
+  "homepage": "https://brochu-product-ui.vercel.app",
+  "repository": "https://github.com/stephane-brochu/product-ui",
+  "items": [
+    {
+      "name": "theme",
+      "title": "Product themes",
+      "type": "registry:style",
+      "files": [
+        {
+          "source": "src/styles/ui-theme.css",
+          "target": "src/styles/ui-theme.css",
+          "registryTarget": "~/src/styles/ui-theme.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "controls",
+      "title": "Control styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-controls.css",
+          "target": "src/styles/ui-controls.css",
+          "registryTarget": "~/src/styles/ui-controls.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "patterns",
+      "title": "Pattern styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-patterns.css",
+          "target": "src/styles/ui-patterns.css",
+          "registryTarget": "~/src/styles/ui-patterns.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "title": "Button and actions",
+      "type": "registry:ui",
+      "dependencies": [
+        "controls"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/button.tsx",
+          "target": "src/components/ui/button.tsx",
+          "registryTarget": "@ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "fields",
+      "title": "Native form fields",
+      "type": "registry:ui",
+      "dependencies": [
+        "controls"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/fields.tsx",
+          "target": "src/components/ui/fields.tsx",
+          "registryTarget": "@ui/fields.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "filter-bar",
+      "title": "Filter bar",
+      "type": "registry:component",
+      "dependencies": [
+        "patterns"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/filter-bar.tsx",
+          "target": "src/components/patterns/filter-bar.tsx",
+          "registryTarget": "@components/patterns/filter-bar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "form-section",
+      "title": "Form section",
+      "type": "registry:component",
+      "dependencies": [
+        "patterns"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/form-section.tsx",
+          "target": "src/components/patterns/form-section.tsx",
+          "registryTarget": "@components/patterns/form-section.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "core",
+      "title": "Product UI core",
+      "type": "registry:block",
+      "dependencies": [
+        "button",
+        "fields",
+        "filter-bar",
+        "form-section"
+      ],
+      "files": []
+    }
+  ]
+}

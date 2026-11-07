@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "core",
+  "type": "registry:block",
+  "title": "Product UI core",
+  "description": "Product UI v0.1.0: Product UI core. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.1.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.1.0/button.json",
+    "https://brochu-product-ui.vercel.app/r/v0.1.0/fields.json",
+    "https://brochu-product-ui.vercel.app/r/v0.1.0/filter-bar.json",
+    "https://brochu-product-ui.vercel.app/r/v0.1.0/form-section.json"
+  ],
+  "files": []
+}

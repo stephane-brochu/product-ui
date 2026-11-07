@@ -1,0 +1,341 @@
+.ds-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+  min-height: var(--ui-control-height);
+  padding: 6px 13px;
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius);
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-decoration: none;
+  background: var(--ui-primary);
+  color: var(--ui-primary-foreground);
+  white-space: nowrap;
+}
+.ds-button:hover:not(:disabled) {
+  background: var(--ui-primary-hover);
+}
+.ds-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.ds-button--secondary {
+  background: transparent;
+  border-color: var(--ui-input);
+  color: var(--ui-foreground);
+}
+.ds-button--secondary:hover:not(:disabled) {
+  background: var(--ui-muted);
+}
+.ds-button--tertiary {
+  background: transparent;
+  color: var(--ui-foreground);
+  padding-inline: 8px;
+}
+.ds-button--tertiary:hover:not(:disabled) {
+  background: var(--ui-muted);
+}
+.ds-button--destructive {
+  background: transparent;
+  color: var(--ui-destructive);
+  border-color: var(--ui-destructive);
+}
+.ds-button--destructive:hover:not(:disabled) {
+  background: var(--ui-destructive);
+  color: var(--ui-popover);
+}
+.ds-button:disabled {
+  color: var(--ui-muted-foreground);
+  border-color: var(--ui-border);
+  background: var(--ui-muted);
+  transform: none;
+}
+.ds-button--compact {
+  min-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.ds-button--large {
+  min-height: 38px;
+  padding: 8px 16px;
+}
+.ds-icon-button {
+  width: 34px;
+  padding-inline: 0;
+  font-size: 20px;
+}
+.ds-button-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ds-field {
+  align-content: start;
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+.ds-field > label,
+.ds-radio-group legend,
+.ds-date-range legend {
+  font-size: 12px;
+  font-weight: 500;
+}
+.ds-field-description,
+.ds-validation {
+  margin: 0;
+  font-size: 12px;
+}
+.ds-validation {
+  color: var(--ui-destructive);
+}
+.ds-input-shell {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--ui-input);
+  border-radius: var(--ui-radius);
+  overflow: clip;
+  background: transparent;
+  min-height: var(--ui-control-height);
+}
+.ds-input-shell:focus-within {
+  outline: 2px solid var(--ui-ring);
+  outline-offset: 3px;
+}
+.ds-input {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--ui-control-height);
+  padding: 7px 10px;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.ds-input:focus-visible {
+  outline: 0;
+}
+.ds-input-affix {
+  padding-inline: 10px;
+  color: var(--ui-muted-foreground);
+  font-size: 12px;
+}
+.ds-input-affix + .ds-input {
+  padding-left: 0;
+}
+.ds-input:disabled,
+.ds-select:disabled {
+  color: var(--ui-muted-foreground);
+  background: var(--ui-muted);
+}
+.ds-input[readonly] {
+  color: var(--ui-muted-foreground);
+}
+.ds-input-shell--invalid {
+  border-color: var(--ui-destructive);
+}
+.ds-input::placeholder {
+  color: var(--ui-muted-foreground);
+}
+.ds-select {
+  min-height: var(--ui-control-height);
+  width: 100%;
+  padding: 7px 30px 7px 10px;
+  border: 1px solid var(--ui-input);
+  border-radius: var(--ui-radius);
+  background-color: transparent;
+  font-size: 13px;
+}
+.ds-select option,
+.ds-select optgroup {
+  background: var(--ui-popover);
+  color: var(--ui-foreground);
+}
+.ds-check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.ds-check input {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ui-foreground);
+  flex-shrink: 0;
+}
+.ds-check:has(input:disabled) {
+  color: var(--ui-muted-foreground);
+  cursor: not-allowed;
+}
+.ds-check-field {
+  min-width: 0;
+}
+.ds-check-field .ds-field-description {
+  margin-left: 25px;
+}
+.ds-toggle input {
+  appearance: none;
+  width: 30px;
+  height: 18px;
+  background: var(--ui-border-strong);
+  border-radius: 5px;
+  position: relative;
+  border: 1px solid var(--ui-border-strong);
+}
+.ds-toggle input::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 2px;
+  left: 2px;
+  background: var(--ui-popover);
+  border-radius: 2px;
+}
+.ds-toggle input:checked {
+  background: var(--ui-foreground);
+  border-color: var(--ui-foreground);
+}
+.ds-toggle input:checked::after {
+  left: 14px;
+}
+.ds-radio-group,
+.ds-date-range {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.ds-radio-group legend,
+.ds-date-range legend {
+  margin-bottom: 8px;
+}
+.ds-date-range > .ds-field {
+  flex: 1 1 150px;
+}
+.ds-segmented {
+  display: inline-flex;
+  border: 1px solid var(--ui-border-strong);
+  border-radius: var(--ui-radius);
+  padding: 2px;
+  min-width: 0;
+}
+.ds-segmented button {
+  min-height: 28px;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+.ds-segmented button[aria-pressed="true"] {
+  background: var(--ui-primary);
+  color: var(--ui-primary-foreground);
+}
+.ds-segmented button:hover:not([aria-pressed="true"]) {
+  background: var(--ui-muted);
+}
+.ds-form-grid {
+  align-items: start;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.ds-form-grid > button,
+.ds-form-grid > fieldset {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+/* Standalone component defaults; no app-wide reset or typography required. */
+.ds-button,
+.ds-field,
+.ds-check,
+.ds-radio-group,
+.ds-date-range,
+.ds-segmented,
+.ds-form-grid {
+  box-sizing: border-box;
+  font-family: var(--ui-font-interface);
+}
+.ds-button {
+  cursor: pointer;
+}
+.ds-button:disabled {
+  cursor: not-allowed;
+}
+.ds-field {
+  color: var(--ui-foreground);
+}
+.ds-field-description {
+  color: var(--ui-muted-foreground);
+}
+.ds-input,
+.ds-select {
+  box-sizing: border-box;
+  font-family: inherit;
+  color: inherit;
+}
+.ds-input-shell,
+.ds-select {
+  border-radius: var(--ui-radius);
+}
+.ds-select[aria-invalid="true"] {
+  border-color: var(--ui-destructive);
+}
+.ds-button:focus-visible,
+.ds-select:focus-visible,
+.ds-check input:focus-visible,
+.ds-filter-disclosure > summary:focus-visible {
+  outline: 2px solid var(--ui-ring);
+  outline-offset: 4px;
+}
+.ds-input-shell:has(:disabled) {
+  background: var(--ui-muted);
+}
+.ds-form-grid {
+  min-width: 0;
+}
+@media (max-width: 540px) {
+  .ds-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (pointer: coarse), (max-width: 540px) {
+  .ds-button,
+  .ds-button--compact,
+  .ds-button--large,
+  .ds-check,
+  .ds-segmented button {
+    min-height: 44px;
+  }
+  .ds-icon-button {
+    min-width: 44px;
+  }
+}
+
+.ds-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 1px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ds-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes ds-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) { .ds-spinner { animation: none; } }

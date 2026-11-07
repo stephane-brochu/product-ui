@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
@@ -89,6 +90,12 @@ const manifest = {
   files: [...manifestFiles.values()],
 };
 payloads.set("manifest.json", JSON.stringify(manifest, null, 2) + "\n");
+// Existing release tags are an additional immutability boundary in Git checkouts.
+const tags = spawnSync("git", ["tag", "--list", "v*"], {cwd:root, encoding:"utf8"});
+if(tags.status===0) for(const tag of tags.stdout.trim().split("\n").filter(tag=>/^v\d+\.\d+\.\d+$/.test(tag))) {
+  const diff=spawnSync("git",["diff","--exit-code",tag,"--",`releases/${tag}`],{cwd:root,encoding:"utf8"});
+  if(diff.status!==0)throw new Error(`Published snapshot differs from tag ${tag}; create a new release.`);
+}
 const mode = process.argv[2];
 if (mode === "build") {
   try {

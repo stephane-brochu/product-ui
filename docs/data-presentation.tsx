@@ -18,6 +18,7 @@ import {
 import { SourceReference } from "../src/components/patterns/source-reference";
 import { Button } from "../src/components/ui/button";
 import { Select } from "../src/components/ui/fields";
+import { formatExactNumber } from "./format-exact-number";
 const initial = [
   {
     id: "harbour",
@@ -48,6 +49,7 @@ const columns: Column<Row>[] = [
     id: "value",
     header: "Exact value",
     value: (r) => r.value,
+    render: (r) => formatExactNumber(r.value) ?? "—",
     sortable: true,
     align: "right",
   },
@@ -208,7 +210,7 @@ export function DataPresentation() {
           <MetricGroup>
             <Metric
               label="Supplied exact value"
-              value={values[metric]}
+              value={formatExactNumber(values[metric])}
               unit="units"
               description="Null is missing; zero remains zero."
             />
@@ -234,6 +236,9 @@ export function DataPresentation() {
         <p>
           Metric and DeltaValue accept display-ready values and content slots.
           They do not calculate balances, percentages, dates or currency. Supply
+          thousands separators in numeric displays, as these examples do without
+          converting exact decimal strings to floating-point numbers. Sorting
+          and export callbacks retain the original unformatted values. Supply
           direction explicitly; a decrease does not automatically mean a bad
           result. Shared styles wrap large values, stack on phones and support
           print layouts.

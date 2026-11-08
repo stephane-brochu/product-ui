@@ -1,3 +1,5 @@
+@import "./styles/ui-navigation.css";
+@import "./styles/ui-workflows.css";
 @import "./styles/ui-data.css";
 @import "./styles/ui-metrics.css";
 @import "./styles/ui-composition.css";
@@ -9,13 +11,13 @@
 body {
   margin: 0;
 }
-main {
+.starter {
   box-sizing: border-box;
   min-height: 100vh;
   background: var(--ui-background);
   color: var(--ui-foreground);
   font-family: var(--ui-font-interface);
-  padding: clamp(24px, 6vw, 80px);
+
 }
 h1 {
   margin: 0 0 16px;
@@ -25,3 +27,5 @@ p {
   color: var(--ui-muted-foreground);
   margin-bottom: 40px;
 }
+
+.starter .ds-shell-body { padding:clamp(20px,4vw,48px); }

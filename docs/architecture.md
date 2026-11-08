@@ -20,3 +20,5 @@ The shadcn CLI follows configurable component aliases; stylesheet targets use sr
 The finance product retains formatting conventions, exact financial calculations, holdings/reconciliation views, document ingestion, auth and ownership rules. It consumes the 30 released portable files with a provenance lock. Its legacy token aliases and picker compositions and asynchronous workflow policy remain product-owned. Component changes are made here, released, and then adopted there through an explicit version update.
 
 Native tables/metrics/data navigation stay server-compatible. DataTable is a separate client item; callbacks and column functions are constructed inside a client boundary. Only generic display ordering is shared; calculations, formatting and serializers stay in finance adapters.
+
+Navigation and workflow state boundaries are detailed in [v0.5 contracts](migrations/v0.5.0.md). Routing adapters remain in clients; structural server components accept rendered slots. No shared component imports a router, authentication SDK, upload transport or audit store.

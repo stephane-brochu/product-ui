@@ -1,3 +1,6 @@
+import {NavigationWorkflows} from "./navigation-workflows";
+import "../src/styles/ui-navigation.css";
+import "../src/styles/ui-workflows.css";
 import { DataPresentation } from "./data-presentation";
 import "../src/styles/ui-data.css";
 import "../src/styles/ui-metrics.css";
@@ -32,7 +35,7 @@ import "../src/styles/ui-theme.css";
 import "../src/styles/ui-controls.css";
 import "../src/styles/ui-patterns.css";
 import "./site.css";
-const base = "https://brochu-product-ui.vercel.app/r/v0.4.0";
+const base = "https://brochu-product-ui.vercel.app/r/v0.5.0";
 const install = `npx shadcn@4.23.0 add ${base}/core.json`;
 function Code({ children }: { children: string }) {
   return (
@@ -84,7 +87,7 @@ function App() {
         </a>
         <header className="masthead">
           <a className="wordmark" href="#">
-            Product UI<span> / 0.4.0</span>
+            Product UI<span> / 0.5.0</span>
           </a>
           <div className="header-actions">
             <a href="https://github.com/stephane-brochu/product-ui">Source</a>
@@ -117,6 +120,8 @@ function App() {
               <a href="#disclosures-settings">Disclosures & settings</a>
               <a href="#floating-controls">Popover & menus</a>
               <a href="#data-presentation">Data tables</a>
+<a href="#application-navigation">Navigation</a>
+<a href="#form-review-workflows">Forms & review</a>
               <a href="#metric-values">Metrics & values</a>
               <a href="#extend">Extend the library</a>
               <a href="#releases">Releases & upgrades</a>
@@ -131,7 +136,7 @@ function App() {
           </aside>
           <main id="main">
             <section className="hero" id="start">
-              <p className="eyebrow">Shared foundations / data presentation</p>
+              <p className="eyebrow">Shared foundations / navigation and workflows</p>
               <h1>
                 A shared language
                 <br />
@@ -150,10 +155,10 @@ function App() {
               </div>
               <p className="note">
                 Use an existing shadcn-configured React 19 app, or the{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.4.0/templates/react">
+                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.5.0/templates/react">
                   included Vite starter
                 </a>
-                . Registry files and their dependencies are pinned to v0.4.0.
+                . Registry files and their dependencies are pinned to v0.5.0.
               </p>
             </section>
             <section id="foundations">
@@ -394,6 +399,7 @@ import "./styles/ui-patterns.css";
             <SliceOne />
             <MilestoneOne />
             <DataPresentation />
+            <NavigationWorkflows />
             <section id="extend">
               <p className="eyebrow">04 / Working together</p>
               <h2>Extend with evidence.</h2>
@@ -430,7 +436,8 @@ import "./styles/ui-patterns.css";
               </p>
             </section>
             <section id="releases">
-              <h2>v0.4.0</h2>
+              <h2>v0.5.0</h2>
+<p><a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.4.0">v0.4.0 remains available unchanged.</a></p>
               <p>
                 <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.3.0">
                   v0.3.0 remains available unchanged.
@@ -447,7 +454,7 @@ import "./styles/ui-patterns.css";
                 </a>
               </p>
               <p>
-                Milestone 2 adds tables, metrics, deltas and data actions. The
+                Milestones 3 and 4 add product-supplied navigation and complete form/review presentation. The
                 library also includes everyday selection controls, disclosure,
                 settings and metadata. The expanded core also includes layout,
                 feedback, Checkbox and Textarea. Dialog/Drawer are optional,
@@ -455,7 +462,7 @@ import "./styles/ui-patterns.css";
               </p>
               <div className="registry-links">
                 {[
-                  "table",
+                  "navigation", "mobile-navigation", "form-feedback", "confirmation-dialog", "repeatable-fields", "file-selection", "upload-queue", "review-layout", "table",
                   "metrics",
                   "data-navigation",
                   "source-reference",
@@ -490,19 +497,19 @@ import "./styles/ui-patterns.css";
                   Release manifest & file hashes
                 </a>{" "}
                 ·{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.4.0">
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.5.0">
                   Release notes
                 </a>
               </p>
               <p className="note">
                 Registry installs create source copies. Upgrades are deliberate:
                 compare the pinned hashes, review any local changes, then
-                install a reviewed release. v0.4 supports React 19; the starter
+                install a reviewed release. v0.5 supports React 19; the starter
                 and CSS paths use a src directory.
               </p>
             </section>
             <footer>
-              Product UI / v0.4.0 <span>React · owned source · MIT</span>
+              Product UI / v0.5.0 <span>React · owned source · MIT</span>
             </footer>
           </main>
         </div>

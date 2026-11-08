@@ -49,3 +49,7 @@ See [v0.3 migration and full contracts](migrations/v0.3.0.md) for native semanti
 | data-table (optional client item) | DataTable, ManagementTable, compareTableValues | Exact decimal ordering, filter/search, controlled/internal state, page selection, detail rows, replacement/empty/error/loading, callback-only export |
 
 See [v0.4.0 migration and complete contracts](migrations/v0.4.0.md), including client boundaries, null ordering, row identity, state reconciliation, print/export scope, comparator and dataset limits. Earlier everyday-control contracts remain in the v0.3 migration.
+
+## Navigation and workflows
+
+See [v0.5.0 complete contracts](migrations/v0.5.0.md) for AppShell/Header/Sidebar/PrimaryNavigation/MobileNavigation/Breadcrumbs/SectionNavigation, FormFeedback/ConfirmationDialog/RepeatableFields/FileSelection/UploadQueue/ReviewLayout/HistoryTimeline. Includes server/client boundaries, focus/dismissal, pending/error/retry, stable IDs, validation limits, upload ownership, responsive/print and finance adapters.

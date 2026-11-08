@@ -24,13 +24,19 @@
     "metrics",
     "metrics-styles",
     "data-navigation",
-    "source-reference"
+    "source-reference",
+    "navigation",
+    "navigation-styles",
+    "form-feedback",
+    "workflow-styles",
+    "upload-queue",
+    "review-layout"
   ],
   "dependencies": {},
   "name": "product-ui",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "repository": "https://github.com/stephane-brochu/product-ui",
-  "registry": "https://brochu-product-ui.vercel.app/r/v0.4.0",
+  "registry": "https://brochu-product-ui.vercel.app/r/v0.5.0",
   "files": [
     {
       "target": "src/styles/ui-theme.css",
@@ -123,6 +129,30 @@
     {
       "target": "src/components/patterns/source-reference.tsx",
       "sha256": "3fe1298d879a2e1fc4ff9cd07eef0b52cc026b2647e0c91d3c3dc30ebfd9aee2"
+    },
+    {
+      "target": "src/styles/ui-navigation.css",
+      "sha256": "420124422ac1caf15913d729cd14ddd8980daf45644d75c0e7c26a5e29c2699b"
+    },
+    {
+      "target": "src/styles/ui-workflows.css",
+      "sha256": "1c12fc7bb90ec25f4d0556c27e2a89675dba96b947b71d19aa372b39f7319b93"
+    },
+    {
+      "target": "src/components/patterns/navigation.tsx",
+      "sha256": "c07412f9a7e736e36cbf84dc96a24a661fee0bffe0ec7905c5a648c0132b405e"
+    },
+    {
+      "target": "src/components/patterns/form-feedback.tsx",
+      "sha256": "82af3e32e2c5182f1710eead5ffe454a70be50a4a4505907b0e1a69d16222ffb"
+    },
+    {
+      "target": "src/components/patterns/upload-queue.tsx",
+      "sha256": "3d2fd8f2fee0475855ecc58ac52edeead4d9e87db5395aca2eacc9af152181d6"
+    },
+    {
+      "target": "src/components/patterns/review-layout.tsx",
+      "sha256": "d25604648370f691dc3f0c0974097ab079ce4333a17f49fc8e7478866d02ee8e"
     }
   ]
 }

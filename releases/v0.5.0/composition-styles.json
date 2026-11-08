@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "composition-styles",
+  "type": "registry:style",
+  "title": "Disclosure and settings styles",
+  "description": "Product UI v0.5.0: Disclosure and settings styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.5.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.5.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-composition.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-composition.css",
+      "content": ".ds-disclosure {\n  font: 400 14px/1.6 var(--ui-font-interface);\n  color: var(--ui-foreground);\n  border-block-start: 1px solid var(--ui-border);\n  min-width: 0;\n}\n.ds-disclosure > summary {\n  cursor: pointer;\n  padding-block: 14px;\n  min-height: var(--ui-control-height);\n  box-sizing: border-box;\n  overflow-wrap: anywhere;\n}\n.ds-disclosure > summary:focus-visible {\n  outline: 2px solid var(--ui-ring);\n  outline-offset: 3px;\n}\n.ds-disclosure-count {\n  display: inline-block;\n  margin-inline-start: 12px;\n  color: var(--ui-muted-foreground);\n  font-size: 12px;\n}\n.ds-disclosure-content {\n  padding-block: 4px 20px;\n  min-width: 0;\n}\n.ds-settings-group {\n  border-top: 1px solid var(--ui-foreground);\n  padding-block: 24px;\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n  min-width: 0;\n}\n.ds-settings-group > :is(h2, h3, h4) {\n  font: 500 18px/1.4 var(--ui-font-interface);\n  margin: 0 0 8px;\n  overflow-wrap: anywhere;\n}\n.ds-settings-description {\n  font: 400 12px/1.7 var(--ui-font-interface);\n  color: var(--ui-muted-foreground);\n  margin: 4px 0 0;\n  overflow-wrap: anywhere;\n}\n.ds-settings-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  gap: 24px;\n  padding-block: 20px;\n  border-bottom: 1px solid var(--ui-border);\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n}\n.ds-settings-row > div {\n  min-width: 0;\n}\n.ds-settings-row strong {\n  font-size: 13px;\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ds-settings-control {\n  flex: 0 1 auto;\n  max-width: 100%;\n}\n.ds-metadata {\n  margin: 0;\n  font: 400 13px/1.7 var(--ui-font-interface);\n  color: var(--ui-foreground);\n  min-width: 0;\n}\n.ds-metadata-row {\n  display: grid;\n  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr);\n  gap: 24px;\n  padding-block: 16px;\n  border-bottom: 1px solid var(--ui-border);\n}\n.ds-metadata dt {\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ds-metadata dd {\n  margin: 0;\n  min-width: 0;\n  overflow-wrap: anywhere;\n}\n.ds-metadata-action {\n  margin-top: 8px;\n}\n@media (max-width: 540px) {\n  .ds-settings-row {\n    flex-direction: column;\n    align-items: stretch;\n    gap: 12px;\n  }\n  .ds-metadata-row {\n    grid-template-columns: minmax(0, 1fr);\n    gap: 4px;\n  }\n}\n"
+    }
+  ]
+}

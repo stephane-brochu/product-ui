@@ -11,7 +11,7 @@ beforeEach(async () => {
 afterEach(async () => {
   await fs.rm(directory, { recursive: true, force: true });
 });
-const release = path.resolve(".registry-preview/v0.4.0");
+const release = path.resolve("releases/v0.4.0");
 it("upgrades a v0.3 consumer while retaining optional overlays and adding the interactive table", async () => {
   await fs.writeFile(
     path.join(directory, "package.json"),

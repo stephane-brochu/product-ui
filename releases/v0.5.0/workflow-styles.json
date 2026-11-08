@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "workflow-styles",
+  "type": "registry:style",
+  "title": "Workflow Styles",
+  "description": "Product UI v0.5.0: Workflow Styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.5.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.5.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-workflows.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-workflows.css",
+      "content": ".ds-form-feedback,\n.ds-repeatable-fields,\n.ds-file-selection,\n.ds-upload-queue,\n.ds-review-layout,\n.ds-history-timeline {\n  min-width: 0;\n  color: var(--ui-foreground);\n  font-family: var(--ui-font-interface);\n}\n.ds-form-feedback:empty {\n  display: none;\n}\n.ds-form-feedback p {\n  margin-block: 12px;\n}\n.ds-workflow-error {\n  color: var(--ui-destructive);\n  margin-block: 12px;\n  overflow-wrap: anywhere;\n}\n.ds-workflow-retry {\n  display: block;\n  padding: 12px;\n  margin-block-start: 8px;\n  border: 1px solid var(--ui-border-strong);\n  background: var(--ui-popover);\n  color: var(--ui-foreground);\n  border-radius: var(--ui-radius);\n  cursor: pointer;\n}\n.ds-repeatable-fields,\n.ds-repeatable-row {\n  border: 0;\n  padding: 0;\n  margin: 0;\n  min-width: 0;\n}\n.ds-repeatable-fields > legend {\n  font-weight: 600;\n  margin-block-end: 12px;\n}\n.ds-repeatable-row {\n  border: 1px solid var(--ui-border);\n  border-radius: var(--ui-radius);\n  padding: 16px;\n  margin-block-end: 16px;\n}\n.ds-repeatable-row > legend {\n  font-size: 12px;\n  padding-inline: 4px;\n}\n.ds-repeatable-content {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));\n  gap: 16px;\n  margin-block-end: 12px;\n}\n.ds-workflow-caption {\n  font-size: 12px;\n  color: var(--ui-muted-foreground);\n}\n.ds-file-dropzone {\n  display: grid;\n  gap: 12px;\n  justify-items: start;\n  padding: 24px;\n  border: 1px dashed var(--ui-border-strong);\n  border-radius: var(--ui-radius);\n  background: var(--ui-popover);\n}\n.ds-file-dropzone[data-dragging] {\n  outline: 2px solid var(--ui-ring);\n  outline-offset: 3px;\n}\n.ds-file-dropzone[data-disabled] {\n  opacity: 0.65;\n}\n.ds-file-label {\n  font-weight: 600;\n}\n.ds-file-dropzone p {\n  margin: 0;\n  font-size: 13px;\n  color: var(--ui-muted-foreground);\n}\n.ds-file-dropzone input {\n  max-width: 100%;\n  min-width: 0;\n  font: inherit;\n  font-size: 12px;\n}\n.ds-upload-queue ul,\n.ds-history-timeline ol {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.ds-upload-queue li {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 16px;\n  padding-block: 16px;\n  border-bottom: 1px solid var(--ui-border);\n}\n.ds-upload-queue li > div {\n  flex: 1;\n  min-width: 0;\n}\n.ds-upload-queue strong {\n  overflow-wrap: anywhere;\n}\n.ds-upload-queue p {\n  margin-block: 8px;\n  font-size: 13px;\n}\n.ds-upload-queue progress {\n  width: 100%;\n  max-width: 400px;\n  accent-color: var(--ui-primary);\n}\n.ds-review-layout {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  align-items: start;\n  gap: 32px;\n  margin-block: 24px;\n}\n.ds-review-evidence,\n.ds-review-content {\n  min-width: 0;\n  overflow-wrap: anywhere;\n}\n.ds-history-timeline li {\n  display: grid;\n  grid-template-columns: minmax(100px, 0.3fr) minmax(0, 1fr);\n  gap: 24px;\n  border-inline-start: 1px solid var(--ui-border-strong);\n  padding: 0 0 24px 20px;\n}\n.ds-history-timeline time,\n.ds-history-timeline li > div > div {\n  color: var(--ui-muted-foreground);\n  font-size: 12px;\n  overflow-wrap: anywhere;\n}\n.ds-history-timeline strong {\n  font-size: 13px;\n}\n.ds-workflow-retry:focus-visible,\n.ds-file-dropzone input:focus-visible {\n  outline: 2px solid var(--ui-ring);\n  outline-offset: 3px;\n}\n@media (max-width: 800px) {\n  .ds-review-layout {\n    grid-template-columns: minmax(0, 1fr);\n  }\n}\n@media (max-width: 540px) {\n  .ds-history-timeline li {\n    grid-template-columns: minmax(0, 1fr);\n    gap: 8px;\n  }\n  .ds-file-dropzone {\n    padding: 16px;\n  }\n}\n@media print {\n  .ds-file-selection,\n  .ds-workflow-retry,\n  .ds-repeatable-fields button,\n  .ds-upload-queue button {\n    display: none;\n  }\n  .ds-review-layout {\n    display: block;\n  }\n  .ds-history-timeline li {\n    break-inside: avoid;\n  }\n}\n"
+    }
+  ]
+}

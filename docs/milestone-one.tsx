@@ -293,7 +293,7 @@ export function MilestoneOne() {
         </p>
         <pre>
           <code>{`npm install --save-exact @radix-ui/react-popover@1.3.1 @radix-ui/react-dropdown-menu@2.2.1
-npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.4.0/popover.json https://brochu-product-ui.vercel.app/r/v0.4.0/action-menu.json
+npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.5.0/popover.json https://brochu-product-ui.vercel.app/r/v0.5.0/action-menu.json
 
 <Popover title="Filters" trigger={<Button>Filters</Button>}>
   ...

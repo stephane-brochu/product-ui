@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.0
+
+- Extract application navigation with product-supplied branding/routes/auth, native links and a mobile disclosure.
+- Add form feedback, safe-focus async confirmation, stable repeatable fields, validated file selection, callback-only upload queue, review layout and history timeline.
+- Add interactive neutral examples, migration contracts and interaction/consumer coverage. Preserve product mutation, authorization, retry, serialization and provenance behavior.
+- Core 29 files; finance optional selection 40; no new dependencies; old release snapshots unchanged.
+
 ## 0.4.0 — 2026-11-08
 
 Standardizes data presentation: native/server tables, Metric/DeltaValue, toolbar/count/pagination/export UI, SourceReference and optional DataTable with exact decimal ordering, controlled state and row replacement handling. Core23 files; finance30. Finance adopts16 native tables and32 metric cards while retaining formatting, calculations, CSV schemas and source access in adapters. See docs/migrations/v0.4.0.md.

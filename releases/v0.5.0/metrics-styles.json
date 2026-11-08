@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metrics-styles",
+  "type": "registry:style",
+  "title": "Metric and delta styles",
+  "description": "Product UI v0.5.0: Metric and delta styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.5.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.5.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-metrics.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-metrics.css",
+      "content": ".ds-metric-group {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));\n  gap: 0;\n  border-block: 1px solid var(--ui-border);\n  min-width: 0;\n}\n.ds-metric {\n  padding: 24px 20px;\n  min-width: 0;\n  color: var(--ui-foreground);\n  font-family: var(--ui-font-interface);\n  border-inline-end: 1px solid var(--ui-border);\n  box-sizing: border-box;\n}\n.ds-metric-group[data-density=\"compact\"] > .ds-metric {\n  padding-block: 16px;\n}\n.ds-metric > :is(h2, h3, h4) {\n  font: 400 12px/1.6 var(--ui-font-interface);\n  color: var(--ui-muted-foreground);\n  margin: 0 0 12px;\n}\n.ds-metric-value {\n  font: 400 clamp(28px, 3.2vw, 42px) / 1.15 var(--ui-font-editorial);\n  letter-spacing: -0.025em;\n  font-variant-numeric: tabular-nums;\n  overflow-wrap: anywhere;\n  margin-bottom: 12px;\n}\n.ds-metric--prominent .ds-metric-value {\n  font-size: clamp(36px, 4vw, 56px);\n}\n.ds-metric-unit {\n  font: 400 11px/1.5 var(--ui-font-interface);\n  margin-inline-start: 8px;\n  letter-spacing: 0;\n}\n.ds-metric-comparison,\n.ds-metric-status,\n.ds-metric-description {\n  font: 400 12px/1.7 var(--ui-font-interface);\n  margin-top: 8px;\n  color: var(--ui-muted-foreground);\n  overflow-wrap: anywhere;\n}\n.ds-delta {\n  font: 400 13px/1.6 var(--ui-font-interface);\n  color: var(--ui-foreground);\n  font-variant-numeric: tabular-nums;\n  overflow-wrap: anywhere;\n}\n.ds-delta[data-tone=\"success\"] {\n  color: var(--ui-success-foreground);\n}\n.ds-delta[data-tone=\"danger\"] {\n  color: var(--ui-destructive);\n}\n.ds-delta-percentage {\n  color: var(--ui-muted-foreground);\n}\n.ds-delta-description {\n  display: block;\n  color: var(--ui-muted-foreground);\n  font-size: 12px;\n}\n@media (max-width: 540px) {\n  .ds-metric-group {\n    grid-template-columns: minmax(0, 1fr);\n  }\n  .ds-metric {\n    border-inline-end: 0;\n    border-bottom: 1px solid var(--ui-border);\n  }\n}\n@media print {\n  .ds-metric-group {\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n  }\n  .ds-metric {\n    break-inside: avoid;\n  }\n  .ds-metric-value {\n    font-size: 24px;\n  }\n}\n\n.ds-metric-value .ds-delta {\n  font: inherit;\n}\n.ds-delta-percentage {\n  font-size: 12px;\n}\n"
+    }
+  ]
+}

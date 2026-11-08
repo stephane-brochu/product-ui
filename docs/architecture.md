@@ -22,3 +22,5 @@ The finance product retains formatting conventions, exact financial calculations
 Native tables/metrics/data navigation stay server-compatible. DataTable is a separate client item; callbacks and column functions are constructed inside a client boundary. Only generic display ordering is shared; calculations, formatting and serializers stay in finance adapters.
 
 Navigation and workflow state boundaries are detailed in [v0.5 contracts](migrations/v0.5.0.md). Routing adapters remain in clients; structural server components accept rendered slots. No shared component imports a router, authentication SDK, upload transport or audit store.
+
+Advanced renderers are optional and independent; core does not import charts/PDF.js. The PDF viewer accepts a loader contract; the separate adapter declares its exact package dependency. Workers and ancillary assets remain explicit product build configuration. Product-owned finance adapters retain calculations, date ranges, exports, source authorization and provenance. See v0.6 migration contracts.

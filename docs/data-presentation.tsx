@@ -180,7 +180,7 @@ export function DataPresentation() {
           selected/expanded IDs without emitting callbacks during rendering.
         </p>
         <pre>
-          <code>{`<DataTable caption="Workspaces" columns={columns} rows={rows}\n  rowId={row => row.id} searchable selectable pageSize={8}\n  onExport={filteredRows => productExport(filteredRows)} />\n\nnpx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.5.0/data-table.json`}</code>
+          <code>{`<DataTable caption="Workspaces" columns={columns} rows={rows}\n  rowId={row => row.id} searchable selectable pageSize={8}\n  onExport={filteredRows => productExport(filteredRows)} />\n\nnpx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.6.0/data-table.json`}</code>
         </pre>
       </section>
       <section id="metric-values">

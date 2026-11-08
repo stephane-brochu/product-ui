@@ -257,7 +257,7 @@ export function SliceOne() {
         </p>
         <pre>
           <code>{`npm install --save-exact @radix-ui/react-dialog@1.3.1
-npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.5.0/dialog.json
+npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.6.0/dialog.json
 
 <ThemeBoundary theme="ledger">
   <Dialog title="Edit project" description="Update details"

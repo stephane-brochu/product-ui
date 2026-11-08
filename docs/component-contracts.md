@@ -53,3 +53,7 @@ See [v0.4.0 migration and complete contracts](migrations/v0.4.0.md), including c
 ## Navigation and workflows
 
 See [v0.5.0 complete contracts](migrations/v0.5.0.md) for AppShell/Header/Sidebar/PrimaryNavigation/MobileNavigation/Breadcrumbs/SectionNavigation, FormFeedback/ConfirmationDialog/RepeatableFields/FileSelection/UploadQueue/ReviewLayout/HistoryTimeline. Includes server/client boundaries, focus/dismissal, pending/error/retry, stable IDs, validation limits, upload ownership, responsive/print and finance adapters.
+
+## Optional advanced renderers
+
+See [v0.6 complete contracts](migrations/v0.6.0.md): chart primitives/time-series/comparison plots; generic PDF viewer/frame and optional PDF.js adapter. Includes independent installs, native text alternatives, keyboard/touch, exact versus approximate values, cancellation, source replacement, resource limits, worker/assets setup and product ownership.

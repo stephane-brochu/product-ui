@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "controlled-disclosure",
+  "type": "registry:component",
+  "title": "Controlled disclosure",
+  "description": "Product UI v0.6.0: Controlled disclosure. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.6.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.6.0/disclosure.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/controlled-disclosure.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/controlled-disclosure.tsx",
+      "content": "\"use client\";\nimport { useRef, useEffect, useImperativeHandle } from \"react\";\nimport { Disclosure, type DisclosureProps } from \"./disclosure\";\nexport type ControlledDisclosureProps = Omit<\n  DisclosureProps,\n  \"defaultOpen\" | \"onToggle\" | \"name\"\n> & { open: boolean; onOpenChange: (open: boolean) => void };\n/** Controlled expansion for validation reveal. Native exclusive name groups are deliberately excluded. */\nexport function ControlledDisclosure({\n  open,\n  onOpenChange,\n  onClick,\n  ref,\n  ...props\n}: ControlledDisclosureProps) {\n  const details = useRef<HTMLDetailsElement>(null);\n  useImperativeHandle(ref, () => details.current!, []);\n  useEffect(() => {\n    const el = details.current;\n    if (!open && el && el.contains(document.activeElement)) {\n      el.querySelector(\"summary\")?.focus();\n    }\n  }, [open]);\n  return (\n    <Disclosure\n      {...props}\n      ref={details}\n      defaultOpen={open}\n      onClick={(event) => {\n        onClick?.(event);\n        if (event.defaultPrevented) return;\n        const summary = (event.target as Element).closest(\"summary\");\n        if (summary?.parentElement === event.currentTarget) {\n          event.preventDefault();\n          onOpenChange(!open);\n        }\n      }}\n    />\n  );\n}\n"
+    }
+  ]
+}

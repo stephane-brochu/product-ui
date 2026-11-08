@@ -34,9 +34,9 @@
   ],
   "dependencies": {},
   "name": "product-ui",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "repository": "https://github.com/stephane-brochu/product-ui",
-  "registry": "https://brochu-product-ui.vercel.app/r/v0.5.0",
+  "registry": "https://brochu-product-ui.vercel.app/r/v0.6.0",
   "files": [
     {
       "target": "src/styles/ui-theme.css",

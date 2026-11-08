@@ -97,7 +97,7 @@ main {
   min-width: 0;
   padding: 0 64px;
 }
-main section {
+main > section {
   padding: 46px 0;
   border-bottom: 1px solid var(--ui-border);
   scroll-margin-top: 20px;

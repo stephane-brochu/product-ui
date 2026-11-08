@@ -1,6 +1,6 @@
 {
   "name": "product-ui",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "homepage": "https://brochu-product-ui.vercel.app",
   "repository": "https://github.com/stephane-brochu/product-ui",
   "items": [
@@ -693,6 +693,126 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "chart-styles",
+      "title": "Chart Styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-charts.css",
+          "target": "src/styles/ui-charts.css",
+          "registryTarget": "~/src/styles/ui-charts.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "chart-primitives",
+      "title": "Chart Primitives",
+      "type": "registry:component",
+      "dependencies": [
+        "chart-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/chart-primitives.tsx",
+          "target": "src/components/patterns/chart-primitives.tsx",
+          "registryTarget": "@components/patterns/chart-primitives.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "time-series-plot",
+      "title": "Time Series Plot",
+      "type": "registry:component",
+      "dependencies": [
+        "chart-primitives",
+        "table",
+        "disclosure",
+        "feedback"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/time-series-plot.tsx",
+          "target": "src/components/patterns/time-series-plot.tsx",
+          "registryTarget": "@components/patterns/time-series-plot.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "comparison-plots",
+      "title": "Comparison Plots",
+      "type": "registry:component",
+      "dependencies": [
+        "chart-primitives"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/comparison-plots.tsx",
+          "target": "src/components/patterns/comparison-plots.tsx",
+          "registryTarget": "@components/patterns/comparison-plots.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pdf-styles",
+      "title": "Pdf Styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-pdf.css",
+          "target": "src/styles/ui-pdf.css",
+          "registryTarget": "~/src/styles/ui-pdf.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "pdf-viewer",
+      "title": "Pdf Viewer",
+      "type": "registry:component",
+      "dependencies": [
+        "pdf-styles",
+        "button",
+        "disclosure"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/pdf-viewer.tsx",
+          "target": "src/components/patterns/pdf-viewer.tsx",
+          "registryTarget": "@components/patterns/pdf-viewer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pdfjs-loader",
+      "title": "Pdfjs Loader",
+      "type": "registry:component",
+      "dependencies": [
+        "pdf-viewer"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/pdfjs-loader.tsx",
+          "target": "src/components/patterns/pdfjs-loader.tsx",
+          "registryTarget": "@components/patterns/pdfjs-loader.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "npmDependencies": {
+        "pdfjs-dist": "6.4.299"
+      }
     }
   ]
 }

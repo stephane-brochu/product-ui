@@ -1,0 +1,68 @@
+.ds-pdf-viewer {
+  min-width: 0;
+  min-height: 200px;
+  padding: 12px;
+  border: 1px solid var(--ui-border);
+  color: var(--ui-foreground);
+  font-family: var(--ui-font-interface);
+}
+.ds-pdf-viewer canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-block: 12px;
+  background: white;
+}
+.ds-pdf-viewer canvas[hidden] {
+  display: none;
+}
+.ds-pdf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+}
+.ds-pdf-error {
+  color: var(--ui-destructive);
+  margin-block: 12px;
+  overflow-wrap: anywhere;
+}
+.ds-pdf-viewer details {
+  margin-block: 12px;
+  font-size: 13px;
+}
+.ds-preview-frame {
+  min-width: 0;
+  border: 1px solid var(--ui-border);
+  padding: 16px;
+  border-radius: var(--ui-radius);
+  color: var(--ui-foreground);
+}
+.ds-preview-frame > header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-block-end: 16px;
+}
+.ds-preview-frame h3 {
+  font: 400 24px var(--ui-font-editorial);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.ds-preview-frame iframe {
+  border: 0;
+  width: 100%;
+  min-height: 400px;
+}
+@media print {
+  .ds-pdf-toolbar {
+    display: none;
+  }
+  .ds-pdf-viewer canvas {
+    break-inside: avoid;
+  }
+}

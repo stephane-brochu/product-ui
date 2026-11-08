@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "defaultItems": [
+    "core"
+  ],
+  "name": "product-ui",
+  "version": "0.6.0",
+  "repository": "https://github.com/stephane-brochu/product-ui",
+  "registry": "https://brochu-product-ui.vercel.app/r/v0.6.0",
+  "items": [
+    {
+      "name": "theme",
+      "dependencies": [],
+      "npmDependencies": {}
+    },
+    {
+      "name": "controls",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "patterns",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "button",
+      "dependencies": [
+        "controls"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "fields",
+      "dependencies": [
+        "controls"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "filter-bar",
+      "dependencies": [
+        "patterns"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "form-section",
+      "dependencies": [
+        "patterns"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "core",
+      "dependencies": [
+        "button",
+        "fields",
+        "filter-bar",
+        "form-section",
+        "page-layout",
+        "feedback",
+        "checkbox",
+        "selection",
+        "controlled-disclosure",
+        "settings",
+        "table",
+        "metrics",
+        "data-navigation",
+        "source-reference",
+        "navigation",
+        "form-feedback",
+        "upload-queue",
+        "review-layout"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "layout-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "page-layout",
+      "dependencies": [
+        "layout-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "feedback-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "feedback",
+      "dependencies": [
+        "feedback-styles",
+        "button"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "checkbox",
+      "dependencies": [
+        "controls"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "theme-boundary",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "dialog-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "dialog",
+      "dependencies": [
+        "button",
+        "theme-boundary",
+        "dialog-styles"
+      ],
+      "npmDependencies": {
+        "@radix-ui/react-dialog": "1.3.1"
+      }
+    },
+    {
+      "name": "selection",
+      "dependencies": [
+        "checkbox"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "composition-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "disclosure",
+      "dependencies": [
+        "composition-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "controlled-disclosure",
+      "dependencies": [
+        "disclosure"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "settings",
+      "dependencies": [
+        "composition-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "floating-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "popover",
+      "dependencies": [
+        "button",
+        "theme-boundary",
+        "floating-styles"
+      ],
+      "npmDependencies": {
+        "@radix-ui/react-popover": "1.3.1"
+      }
+    },
+    {
+      "name": "action-menu",
+      "dependencies": [
+        "button",
+        "theme-boundary",
+        "floating-styles"
+      ],
+      "npmDependencies": {
+        "@radix-ui/react-dropdown-menu": "2.2.1"
+      }
+    },
+    {
+      "name": "data-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "table",
+      "dependencies": [
+        "data-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "metrics-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "metrics",
+      "dependencies": [
+        "metrics-styles",
+        "data-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "data-navigation",
+      "dependencies": [
+        "button",
+        "data-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "source-reference",
+      "dependencies": [
+        "data-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "data-table",
+      "dependencies": [
+        "table",
+        "data-navigation",
+        "button",
+        "checkbox",
+        "fields",
+        "feedback"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "navigation-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "workflow-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "navigation",
+      "dependencies": [
+        "navigation-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "mobile-navigation",
+      "dependencies": [
+        "navigation",
+        "button"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "form-feedback",
+      "dependencies": [
+        "workflow-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "repeatable-fields",
+      "dependencies": [
+        "workflow-styles",
+        "button"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "file-selection",
+      "dependencies": [
+        "workflow-styles",
+        "button"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "upload-queue",
+      "dependencies": [
+        "workflow-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "review-layout",
+      "dependencies": [
+        "workflow-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "confirmation-dialog",
+      "dependencies": [
+        "dialog",
+        "form-feedback"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "chart-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "chart-primitives",
+      "dependencies": [
+        "chart-styles"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "time-series-plot",
+      "dependencies": [
+        "chart-primitives",
+        "table",
+        "disclosure",
+        "feedback"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "comparison-plots",
+      "dependencies": [
+        "chart-primitives"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "pdf-styles",
+      "dependencies": [
+        "theme"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "pdf-viewer",
+      "dependencies": [
+        "pdf-styles",
+        "button",
+        "disclosure"
+      ],
+      "npmDependencies": {}
+    },
+    {
+      "name": "pdfjs-loader",
+      "dependencies": [
+        "pdf-viewer"
+      ],
+      "npmDependencies": {
+        "pdfjs-dist": "6.4.299"
+      }
+    }
+  ],
+  "files": [
+    {
+      "source": "src/styles/ui-theme.css",
+      "target": "src/styles/ui-theme.css",
+      "sha256": "7d1451d3758fdceab33b2c261e86cc026eae2638761653bcf8d785aa5f2f4fea",
+      "item": "theme"
+    },
+    {
+      "source": "src/styles/ui-controls.css",
+      "target": "src/styles/ui-controls.css",
+      "sha256": "a2277f604ae6ff37485b81f6d9d444a572a38e4f412c74ab9c0dc1a4ff43a749",
+      "item": "controls"
+    },
+    {
+      "source": "src/styles/ui-patterns.css",
+      "target": "src/styles/ui-patterns.css",
+      "sha256": "885a19bf35c17fb636a5ff8fef82cd5a9454e2f0e2abfd5f4ff96dd7ee6fc89b",
+      "item": "patterns"
+    },
+    {
+      "source": "src/components/ui/button.tsx",
+      "target": "src/components/ui/button.tsx",
+      "sha256": "7203f456a6f3f8e930f420f567a26bfabefe157d8b2ce7dc169676f9e123b627",
+      "item": "button"
+    },
+    {
+      "source": "src/components/ui/fields.tsx",
+      "target": "src/components/ui/fields.tsx",
+      "sha256": "dba9ed9a66930130bc4ffbc6d697bc335e9a67477dac3aa78f782422d0c78056",
+      "item": "fields"
+    },
+    {
+      "source": "src/components/patterns/filter-bar.tsx",
+      "target": "src/components/patterns/filter-bar.tsx",
+      "sha256": "e7be32d586cd230bdd0a534e83deb64148f0e0b6a78b9ab0bc18c24a00585a1f",
+      "item": "filter-bar"
+    },
+    {
+      "source": "src/components/patterns/form-section.tsx",
+      "target": "src/components/patterns/form-section.tsx",
+      "sha256": "2c38047361320b1b6872161078b83df1e12798ba3ed46af2aef341b1330d6fab",
+      "item": "form-section"
+    },
+    {
+      "source": "src/styles/ui-layout.css",
+      "target": "src/styles/ui-layout.css",
+      "sha256": "1e1d544fea145d6264deb3eb0b6f3a23ca91453c3970d1a3b32f6378f90fd033",
+      "item": "layout-styles"
+    },
+    {
+      "source": "src/components/patterns/page-layout.tsx",
+      "target": "src/components/patterns/page-layout.tsx",
+      "sha256": "f51cefccbb108d45a2e14389f7bbae1b94e88a38bab63f91d287e9dacd846ede",
+      "item": "page-layout"
+    },
+    {
+      "source": "src/styles/ui-feedback.css",
+      "target": "src/styles/ui-feedback.css",
+      "sha256": "a348e803304232839388c5475b9966de27e15068dbcaff820d4505b6f59ae861",
+      "item": "feedback-styles"
+    },
+    {
+      "source": "src/components/ui/feedback.tsx",
+      "target": "src/components/ui/feedback.tsx",
+      "sha256": "187b567bd173e84be893dcbca22e625707a3938e778cb916371956aed083f878",
+      "item": "feedback"
+    },
+    {
+      "source": "src/components/ui/checkbox.tsx",
+      "target": "src/components/ui/checkbox.tsx",
+      "sha256": "4d588d19a9cf88e34c6c37ff6207b9860e4dadc5592db3e5487b70dfe832095c",
+      "item": "checkbox"
+    },
+    {
+      "source": "src/components/ui/theme-boundary.tsx",
+      "target": "src/components/ui/theme-boundary.tsx",
+      "sha256": "7cb4e190bfa370da4ddff5a3db1dacbb8143cdb7d72ffbef9db92c31bf58ac52",
+      "item": "theme-boundary"
+    },
+    {
+      "source": "src/styles/ui-dialog.css",
+      "target": "src/styles/ui-dialog.css",
+      "sha256": "caab5fe53eefbdaaf48e870c67c44bb7e13c449d8c477cf17aca86b9ffd03c99",
+      "item": "dialog-styles"
+    },
+    {
+      "source": "src/components/ui/dialog.tsx",
+      "target": "src/components/ui/dialog.tsx",
+      "sha256": "4cf6f13ab82098814effc8061bf4e0f342395737be8b464e669790bd6b1b9e50",
+      "item": "dialog"
+    },
+    {
+      "source": "src/components/ui/selection.tsx",
+      "target": "src/components/ui/selection.tsx",
+      "sha256": "704dcd8281a1fdab91d5455d3388f842b8e712bef41c79e362b4851fad708c4e",
+      "item": "selection"
+    },
+    {
+      "source": "src/styles/ui-composition.css",
+      "target": "src/styles/ui-composition.css",
+      "sha256": "52ded35091c4336ecf85866dfcef08ec23232a26642967b191fb765f1032e604",
+      "item": "composition-styles"
+    },
+    {
+      "source": "src/components/patterns/disclosure.tsx",
+      "target": "src/components/patterns/disclosure.tsx",
+      "sha256": "3bdaaa7db2f3903cecc9fa01290f25d2c18c47d0a7b39bd7eb4fdd22e7a1db4d",
+      "item": "disclosure"
+    },
+    {
+      "source": "src/components/patterns/controlled-disclosure.tsx",
+      "target": "src/components/patterns/controlled-disclosure.tsx",
+      "sha256": "63e41a0964f97934a345fc580690f3a43aa969ff72794340c5b941365637c380",
+      "item": "controlled-disclosure"
+    },
+    {
+      "source": "src/components/patterns/settings.tsx",
+      "target": "src/components/patterns/settings.tsx",
+      "sha256": "9e7268597266ff756fd50d9a790d72e323bb2807ba76a8e82f0c8038b3051685",
+      "item": "settings"
+    },
+    {
+      "source": "src/styles/ui-floating.css",
+      "target": "src/styles/ui-floating.css",
+      "sha256": "6e68702d949d81887d5c7f2c4cca99d0f910e64dbdc8418b9259a2aa13a6f402",
+      "item": "floating-styles"
+    },
+    {
+      "source": "src/components/ui/popover.tsx",
+      "target": "src/components/ui/popover.tsx",
+      "sha256": "f5f51cb4e1563a9064c1777f02125e42fd8ccd91b93cf146cac829d1aad7787f",
+      "item": "popover"
+    },
+    {
+      "source": "src/components/ui/action-menu.tsx",
+      "target": "src/components/ui/action-menu.tsx",
+      "sha256": "7cf30ca0e86c311424006465ec4e0eeaf9f316a456ca6a7476d0163d42df6fce",
+      "item": "action-menu"
+    },
+    {
+      "source": "src/styles/ui-data.css",
+      "target": "src/styles/ui-data.css",
+      "sha256": "4dbf42d564c9b10c8db50d8f3539b2c88549382f0ca4c49fde2b1eb955ee42be",
+      "item": "data-styles"
+    },
+    {
+      "source": "src/components/ui/table.tsx",
+      "target": "src/components/ui/table.tsx",
+      "sha256": "5d3a25e3a75d04ac5dff360c108a87b3eccd6965f1d20e407d323cc769a4de26",
+      "item": "table"
+    },
+    {
+      "source": "src/styles/ui-metrics.css",
+      "target": "src/styles/ui-metrics.css",
+      "sha256": "28982af226a6322f5e9dd646aabc0a481f29670530286bf24d0971c6dd7e4484",
+      "item": "metrics-styles"
+    },
+    {
+      "source": "src/components/patterns/metrics.tsx",
+      "target": "src/components/patterns/metrics.tsx",
+      "sha256": "c2ffe0afd9c41ca8d851dfdb58843f28de4b6d49dc927c5aedca88f4f9e7abf0",
+      "item": "metrics"
+    },
+    {
+      "source": "src/components/patterns/data-navigation.tsx",
+      "target": "src/components/patterns/data-navigation.tsx",
+      "sha256": "5c65732f0da8e3af1b08e46353e22f78365dae2d5d6e45640136046c420aac8b",
+      "item": "data-navigation"
+    },
+    {
+      "source": "src/components/patterns/source-reference.tsx",
+      "target": "src/components/patterns/source-reference.tsx",
+      "sha256": "3fe1298d879a2e1fc4ff9cd07eef0b52cc026b2647e0c91d3c3dc30ebfd9aee2",
+      "item": "source-reference"
+    },
+    {
+      "source": "src/components/ui/data-table.tsx",
+      "target": "src/components/ui/data-table.tsx",
+      "sha256": "1c775dd70ac79437118bf94b6f6e04ea0444067e46812d244e8639a8455e812c",
+      "item": "data-table"
+    },
+    {
+      "source": "src/styles/ui-navigation.css",
+      "target": "src/styles/ui-navigation.css",
+      "sha256": "420124422ac1caf15913d729cd14ddd8980daf45644d75c0e7c26a5e29c2699b",
+      "item": "navigation-styles"
+    },
+    {
+      "source": "src/styles/ui-workflows.css",
+      "target": "src/styles/ui-workflows.css",
+      "sha256": "1c12fc7bb90ec25f4d0556c27e2a89675dba96b947b71d19aa372b39f7319b93",
+      "item": "workflow-styles"
+    },
+    {
+      "source": "src/components/patterns/navigation.tsx",
+      "target": "src/components/patterns/navigation.tsx",
+      "sha256": "c07412f9a7e736e36cbf84dc96a24a661fee0bffe0ec7905c5a648c0132b405e",
+      "item": "navigation"
+    },
+    {
+      "source": "src/components/patterns/mobile-navigation.tsx",
+      "target": "src/components/patterns/mobile-navigation.tsx",
+      "sha256": "8c5b3e782b23682bf3a6050031d4a5ff6d9bd8f48a54d8a4ce21be9848137ad9",
+      "item": "mobile-navigation"
+    },
+    {
+      "source": "src/components/patterns/form-feedback.tsx",
+      "target": "src/components/patterns/form-feedback.tsx",
+      "sha256": "82af3e32e2c5182f1710eead5ffe454a70be50a4a4505907b0e1a69d16222ffb",
+      "item": "form-feedback"
+    },
+    {
+      "source": "src/components/patterns/repeatable-fields.tsx",
+      "target": "src/components/patterns/repeatable-fields.tsx",
+      "sha256": "0df669a36174b0a0cf718ed3efdd2e2b86809fc671871c82c7aba0fcb43c0bd9",
+      "item": "repeatable-fields"
+    },
+    {
+      "source": "src/components/patterns/file-selection.tsx",
+      "target": "src/components/patterns/file-selection.tsx",
+      "sha256": "9597b4011b0dd20876b4477e933dafd59d79c0ef983b98dfb8d75808ab8d5003",
+      "item": "file-selection"
+    },
+    {
+      "source": "src/components/patterns/upload-queue.tsx",
+      "target": "src/components/patterns/upload-queue.tsx",
+      "sha256": "3d2fd8f2fee0475855ecc58ac52edeead4d9e87db5395aca2eacc9af152181d6",
+      "item": "upload-queue"
+    },
+    {
+      "source": "src/components/patterns/review-layout.tsx",
+      "target": "src/components/patterns/review-layout.tsx",
+      "sha256": "d25604648370f691dc3f0c0974097ab079ce4333a17f49fc8e7478866d02ee8e",
+      "item": "review-layout"
+    },
+    {
+      "source": "src/components/patterns/confirmation-dialog.tsx",
+      "target": "src/components/patterns/confirmation-dialog.tsx",
+      "sha256": "e3ed82801084cbdcb1c8662b2cb63142ec5e59f7d08cb0a2bf91133a9c55d26e",
+      "item": "confirmation-dialog"
+    },
+    {
+      "source": "src/styles/ui-charts.css",
+      "target": "src/styles/ui-charts.css",
+      "sha256": "c8e8449193abb0776bdcd563c454e4448e1a799ccadc90261d92a23dcda1f8ae",
+      "item": "chart-styles"
+    },
+    {
+      "source": "src/components/patterns/chart-primitives.tsx",
+      "target": "src/components/patterns/chart-primitives.tsx",
+      "sha256": "dbeb65ae5c319972d9f5a90ec5fde1b4ebd469ad58f4ba3a6eab4c8fa50f35cc",
+      "item": "chart-primitives"
+    },
+    {
+      "source": "src/components/patterns/time-series-plot.tsx",
+      "target": "src/components/patterns/time-series-plot.tsx",
+      "sha256": "f1bdad7bdbaacfb172a661f39bd42f1ac9930e852e2da39b85b1d0d2d33d27a0",
+      "item": "time-series-plot"
+    },
+    {
+      "source": "src/components/patterns/comparison-plots.tsx",
+      "target": "src/components/patterns/comparison-plots.tsx",
+      "sha256": "1017b52cd92d01eab9d89e03847da016ef6c0ace0067c1aa568ba9874f6353cf",
+      "item": "comparison-plots"
+    },
+    {
+      "source": "src/styles/ui-pdf.css",
+      "target": "src/styles/ui-pdf.css",
+      "sha256": "41bb86275232eea16327046459e9fa9a247c08ee47b4d011d8101e20c8fc96d5",
+      "item": "pdf-styles"
+    },
+    {
+      "source": "src/components/patterns/pdf-viewer.tsx",
+      "target": "src/components/patterns/pdf-viewer.tsx",
+      "sha256": "cc1e7003e93f9eb0d807d6bf82c6a274246610e38d0a968f474f7bdcbd832359",
+      "item": "pdf-viewer"
+    },
+    {
+      "source": "src/components/patterns/pdfjs-loader.tsx",
+      "target": "src/components/patterns/pdfjs-loader.tsx",
+      "sha256": "104ffd58c11a6d3fcfc1a3b5b06318c2c72cd6679d73c03211d794b296b07e50",
+      "item": "pdfjs-loader"
+    }
+  ]
+}

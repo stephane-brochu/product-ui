@@ -11,7 +11,7 @@ beforeEach(async () => {
 afterEach(async () => {
   await fs.rm(directory, { recursive: true, force: true });
 });
-const release = path.resolve(".registry-preview/v0.5.0");
+const release = path.resolve("releases/v0.5.0");
 it("upgrades an existing data-table consumer and retains optional items with new workflow selection", async () => {
   await fs.writeFile(
     path.join(directory, "package.json"),

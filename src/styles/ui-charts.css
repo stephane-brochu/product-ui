@@ -1,0 +1,369 @@
+.ds-chart {
+  min-width: 0;
+  padding-block: 24px;
+  border-top: 1px solid var(--ui-border);
+}
+.ds-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.ds-chart-header h3 {
+  font-family: var(--ui-font-editorial);
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.ds-chart-header p {
+  font-size: 12px;
+  color: var(--ui-muted-foreground);
+  max-width: 530px;
+  margin: 0;
+}
+.ds-chart-toolbar {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.ds-chart-toolbar .ds-field {
+  min-width: 150px;
+}
+.ds-chart-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ds-chart-axis {
+  font-family: var(--ui-font-interface);
+  font-size: 11px;
+  fill: var(--ui-muted-foreground);
+}
+.ds-chart-grid {
+  stroke: var(--ui-border);
+  stroke-width: 1;
+}
+.ds-chart-crosshair {
+  stroke: var(--ui-foreground);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.ds-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 20px;
+}
+.ds-chart-legend button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-size: 11px;
+}
+.ds-chart-legend button[aria-pressed="false"] {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+.ds-chart-legend button:disabled {
+  cursor: default;
+}
+.ds-legend-line {
+  display: inline-block;
+  width: 23px;
+  border-bottom: 2px solid var(--series-stroke);
+}
+.ds-legend-line--dashed {
+  border-bottom-style: dashed;
+}
+.ds-legend-line--dotted {
+  border-bottom-style: dotted;
+}
+.ds-chart-interaction {
+  position: relative;
+  touch-action: pan-y;
+  outline-offset: 6px;
+  min-height: 160px;
+}
+.ds-chart-tooltip {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  width: min(300px, calc(100% - 32px));
+  border: 1px solid var(--ui-border-strong);
+  border-radius: 6px;
+  padding: 12px 14px;
+  background: var(--ui-popover);
+  font-size: 11px;
+  pointer-events: none;
+}
+.ds-chart-tooltip strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.ds-chart-tooltip > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 2px;
+}
+.ds-chart-tooltip p {
+  margin: 8px 0 0;
+}
+.ds-chart-help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+.ds-chart-help .ds-check {
+  font-size: 11px;
+}
+.ds-chart-annotations {
+  display: flex;
+  gap: 12px 24px;
+  list-style: none;
+  flex-wrap: wrap;
+  margin: 16px 0 0;
+  padding: 0;
+  font-size: 11px;
+  color: var(--ui-muted-foreground);
+}
+.ds-chart-footer {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--ui-border);
+  margin-top: 20px;
+}
+.ds-chart-data {
+  margin-top: 16px;
+  font-size: 12px;
+}
+.ds-chart-data summary {
+  min-height: 34px;
+}
+.ds-chart-data .ds-table-region {
+  padding-top: 16px;
+}
+.ds-allocation {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+.ds-allocation li > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+.ds-allocation-track {
+  background: var(--ui-muted);
+  height: 7px;
+}
+.ds-allocation-track > span {
+  display: block;
+  height: 100%;
+  background: var(--ui-foreground);
+}
+.ds-waterfall-data {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 12px;
+  font-size: 11px;
+  border-top: 1px solid var(--ui-border);
+  padding-top: 16px;
+  margin-bottom: 0;
+}
+.ds-waterfall-data dd {
+  margin: 4px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+.ds-transfer-flow {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+}
+.ds-transfer-flow li {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+}
+.ds-transfer-flow li > span:last-child {
+  text-align: right;
+}
+.ds-flow-link {
+  display: grid;
+  text-align: center;
+}
+.ds-flow-link > span[aria-hidden] {
+  font-size: 36px;
+  line-height: 1;
+}
+.ds-flow-link strong {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.ds-sparkline {
+  display: inline-block;
+  width: 120px;
+  height: 35px;
+}
+@media (max-width: 540px) {
+  .ds-chart-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ds-chart-toolbar {
+    gap: 16px;
+  }
+  .ds-chart-toolbar .ds-segmented {
+    max-width: 100%;
+  }
+  .ds-chart-canvas {
+    min-height: 160px;
+  }
+  .ds-chart-tooltip {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .ds-chart-axis {
+    font-size: 14px;
+  }
+  .ds-chart-footer {
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ds-transfer-flow li {
+    gap: 10px;
+    font-size: 11px;
+  }
+}
+@media (pointer: coarse) {
+  .ds-chart-legend button {
+    min-height: 44px;
+  }
+}
+@media (max-width: 540px) {
+  .ds-chart-legend button {
+    min-height: 44px;
+  }
+  .ds-chart-axis {
+    font-size: 11px;
+  }
+}
+.ds-chart-legend button {
+  font-size: 12px;
+}
+.ds-chart-axis {
+  font-size: 12px;
+}
+.ds-wide-chart {
+  overflow-x: auto;
+}
+.ds-wide-chart .ds-chart-canvas {
+  min-width: 720px;
+}
+.ds-chart-legend button[aria-pressed="false"] {
+  opacity: 1;
+  color: var(--ui-muted-foreground);
+  text-decoration: line-through;
+}
+
+.ds-timeseries-plot,
+.ds-chart,
+.ds-allocation,
+.ds-transfer-flow {
+  min-width: 0;
+  color: var(--ui-foreground);
+  font-family: var(--ui-font-interface);
+}
+.ds-chart-canvas {
+  overflow: hidden;
+}
+.ds-chart-legend button {
+  color: var(--ui-foreground);
+  font: inherit;
+  font-size: 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.ds-chart-legend button:focus-visible,
+.ds-chart-interaction:focus-visible,
+.ds-wide-chart:focus-visible {
+  outline: 2px solid var(--ui-ring);
+  outline-offset: 3px;
+}
+.ds-chart-tooltip {
+  overflow-wrap: anywhere;
+}
+.ds-chart-legend {
+  max-width: 100%;
+}
+.ds-chart-axis {
+  font-size: 11px;
+}
+.ds-chart-data {
+  max-width: 100%;
+}
+.ds-transfer-flow li,
+.ds-allocation li > div:first-child {
+  overflow-wrap: anywhere;
+}
+@media print {
+  .ds-chart-legend,
+  .ds-chart-toolbar,
+  .ds-chart-help,
+  .ds-chart-tooltip {
+    display: none;
+  }
+  .ds-chart {
+    break-inside: avoid;
+  }
+}
+
+.ds-chart-series-toggle {
+  display: none;
+}
+@media (max-width: 540px) {
+  .ds-chart-series--compact .ds-chart-series-toggle {
+    display: inline-flex;
+    min-height: 44px;
+    gap: 8px;
+  }
+  .ds-chart-series--compact .ds-chart-legend[data-expanded="false"] {
+    display: none;
+  }
+  .ds-chart-series--compact .ds-chart-legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 12px;
+  }
+  .ds-chart-series--compact .ds-legend-state {
+    display: none;
+  }
+}
+
+.ds-chart-keyboard-summary { font-size:12px;overflow-wrap:anywhere;margin-block:12px; }
+.ds-chart-tooltip { box-sizing:border-box; }

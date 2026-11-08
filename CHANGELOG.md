@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.6.0
+
+- Extract optional chart primitives, time-series/grouped/signed stacked plots, comparison bars, supplied waterfall/relationship plots and sparklines with exact text alternatives.
+- Add generic cancellable PDF viewer/frame and separate pinned PDF.js loader with explicit source/worker/assets/resource policy.
+- Keep finance arithmetic, filters, formatters, exports, private source authorization and page anchors in product adapters.
+- Core remains 29 files without chart/PDF code; all finance items 47 files. Historical releases are unchanged.
+
 ## v0.5.0
 
 - Extract application navigation with product-supplied branding/routes/auth, native links and a mobile disclosure.

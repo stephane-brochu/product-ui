@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-layout",
+  "type": "registry:ui",
+  "title": "Page layout",
+  "description": "Product UI v0.6.0: Page layout. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.6.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.6.0/layout-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/page-layout.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/page-layout.tsx",
+      "content": "import type { ComponentPropsWithoutRef, ReactNode } from \"react\";\nexport function PageContainer({\n  wide = false,\n  className = \"\",\n  ...props\n}: ComponentPropsWithoutRef<\"div\"> & { wide?: boolean }) {\n  return (\n    <div\n      {...props}\n      className={`ds-page ${wide ? \"ds-page--wide\" : \"\"} ${className}`}\n    />\n  );\n}\ntype HeadingLevel = 1 | 2 | 3 | 4;\nexport type PageHeaderProps = Omit<\n  ComponentPropsWithoutRef<\"header\">,\n  \"title\"\n> & {\n  eyebrow?: ReactNode;\n  title: ReactNode;\n  description?: ReactNode;\n  action?: ReactNode;\n  headingLevel?: HeadingLevel;\n};\nexport function PageHeader({\n  eyebrow,\n  title,\n  description,\n  action,\n  headingLevel = 1,\n  className = \"\",\n  ...props\n}: PageHeaderProps) {\n  const Heading = `h${headingLevel}` as \"h1\" | \"h2\" | \"h3\" | \"h4\";\n  return (\n    <header {...props} className={`ds-page-header ${className}`}>\n      <div>\n        {eyebrow && <p className=\"ds-eyebrow\">{eyebrow}</p>}\n        <Heading>{title}</Heading>\n        {description && <p className=\"ds-intro\">{description}</p>}\n      </div>\n      {action && <div className=\"ds-page-action\">{action}</div>}\n    </header>\n  );\n}\nexport type SectionHeaderProps = Omit<\n  ComponentPropsWithoutRef<\"header\">,\n  \"title\" | \"id\"\n> & {\n  number?: ReactNode;\n  title: ReactNode;\n  description?: ReactNode;\n  action?: ReactNode;\n  id?: string;\n  headingLevel?: HeadingLevel;\n};\n/** id belongs to the heading so existing section anchors remain stable. */\nexport function SectionHeader({\n  number,\n  title,\n  description,\n  action,\n  id,\n  headingLevel = 2,\n  className = \"\",\n  ...props\n}: SectionHeaderProps) {\n  const Heading = `h${headingLevel}` as \"h1\" | \"h2\" | \"h3\" | \"h4\";\n  return (\n    <header {...props} className={`ds-section-header ${className}`}>\n      <div className=\"ds-section-title\">\n        {number && <span className=\"ds-section-number\">{number}</span>}\n        <div>\n          <Heading id={id}>{title}</Heading>\n          {description && <p>{description}</p>}\n        </div>\n      </div>\n      {action}\n    </header>\n  );\n}\n"
+    }
+  ]
+}

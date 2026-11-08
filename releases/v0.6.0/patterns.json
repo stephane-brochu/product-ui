@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "patterns",
+  "type": "registry:style",
+  "title": "Pattern styles",
+  "description": "Product UI v0.6.0: Pattern styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.6.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.6.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-patterns.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-patterns.css",
+      "content": ".ds-filter-bar {\n  display: flex;\n  align-items: end;\n  flex-wrap: wrap;\n  gap: 12px;\n  min-width: 0;\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n}\n.ds-filter-bar > .ds-field {\n  flex: 1 1 150px;\n}\n.ds-filter-bar > .ds-filter-search {\n  flex: 2 1 240px;\n}\n.ds-filter-actions,\n.ds-form-actions {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 12px;\n}\n.ds-filter-actions {\n  min-height: var(--ui-control-height);\n}\n.ds-filter-disclosure {\n  margin-top: 12px;\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n}\n.ds-filter-disclosure > summary {\n  cursor: pointer;\n  padding-block: 8px;\n  font-size: 13px;\n}\n.ds-filter-disclosure[open] > .ds-filter-bar {\n  padding-block: 12px;\n}\n.ds-form-section {\n  grid-column: 1 / -1;\n  min-width: 0;\n  width: 100%;\n  border: 0;\n  border-top: 1px solid var(--ui-border);\n  padding: 16px 0 0;\n  margin: 0;\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n  box-sizing: border-box;\n}\n.ds-form-section > legend {\n  padding-right: 12px;\n  font-size: 14px;\n  font-weight: 600;\n}\n.ds-form-section-description {\n  margin: 0 0 16px;\n  color: var(--ui-muted-foreground);\n  font-size: 12px;\n  line-height: 1.6;\n}\n.ds-form-section-fields {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 20px;\n  min-width: 0;\n}\n.ds-form-section-fields > fieldset,\n.ds-form-section-fields > section,\n.ds-form-section-fields > .ds-form-actions {\n  grid-column: 1 / -1;\n}\n.ds-form-actions {\n  grid-column: 1 / -1;\n  padding-top: 8px;\n}\n@media (max-width: 540px) {\n  .ds-filter-bar > .ds-filter-search {\n    flex-basis: 100%;\n  }\n  .ds-form-section-fields {\n    grid-template-columns: minmax(0, 1fr);\n  }\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+.ds-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 400 12px/1.5 var(--ui-font-interface);
+  color: var(--ui-foreground);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.ds-status--strong {
+  font-weight: 600;
+}
+.ds-status-badge[data-tone="info"] {
+  color: var(--ui-info-foreground, #2448a5);
+}
+.ds-status-badge[data-tone="success"] {
+  color: var(--ui-success-foreground, #205b39);
+}
+.ds-status-badge[data-tone="warning"] {
+  color: var(--ui-warning-foreground, #76500d);
+}
+.ds-status-badge[data-tone="danger"] {
+  color: var(--ui-destructive);
+}
+.ds-alert {
+  font-family: var(--ui-font-interface);
+  color: var(--ui-foreground);
+  border: 1px solid var(--ui-border);
+  padding: 16px 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.ds-alert > strong {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.ds-alert p:last-child {
+  margin-bottom: 0;
+}
+.ds-alert[data-tone="danger"] {
+  border-color: var(--ui-destructive);
+}
+.ds-alert[data-tone="danger"] > strong {
+  color: var(--ui-destructive);
+}
+.ds-alert[data-tone="success"] > strong {
+  color: var(--ui-success-foreground, #205b39);
+}
+.ds-alert[data-tone="warning"] > strong {
+  color: var(--ui-warning-foreground, #76500d);
+}
+.ds-alert[data-tone="info"] > strong {
+  color: var(--ui-info-foreground, #2448a5);
+}
+.ds-empty {
+  font-family: var(--ui-font-interface);
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid var(--ui-border);
+  color: var(--ui-foreground);
+  min-width: 0;
+}
+.ds-empty :is(h2, h3, h4) {
+  font-size: 18px;
+  font-family: var(--ui-font-interface);
+  font-weight: 500;
+  margin: 0 0 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.ds-empty-mark {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 12px;
+}
+.ds-empty-description {
+  font-size: 13px;
+  color: var(--ui-muted-foreground);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.ds-feedback-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.ds-empty .ds-feedback-actions {
+  justify-content: center;
+}
+.ds-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 400 13px/1.6 var(--ui-font-interface);
+  color: var(--ui-muted-foreground);
+}
+.ds-progress {
+  display: grid;
+  gap: 8px;
+  font: 400 12px/1.5 var(--ui-font-interface);
+  color: var(--ui-foreground);
+}
+.ds-progress progress {
+  width: 100%;
+  accent-color: var(--ui-primary);
+}
+.ds-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--ui-border);
+  padding: 14px 18px;
+  font: 400 13px/1.6 var(--ui-font-interface);
+  color: var(--ui-foreground);
+  background: var(--ui-popover);
+}

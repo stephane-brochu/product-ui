@@ -1,6 +1,6 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = ComponentPropsWithRef<"button"> & {
   variant?: "primary" | "secondary" | "tertiary" | "destructive";
   size?: "compact" | "default" | "large";
   loading?: boolean;

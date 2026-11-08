@@ -1,0 +1,79 @@
+.ds-overlay {
+  background: var(--ui-overlay, rgb(30 30 30 / 28%));
+  position: fixed;
+  inset: 0;
+  z-index: var(--ui-layer-overlay, 100);
+}
+.ds-dialog {
+  box-sizing: border-box;
+  background: var(--ui-popover);
+  color: var(--ui-foreground);
+  border: 1px solid var(--ui-border-strong);
+  border-radius: var(--ui-radius-dialog, 8px);
+  padding: 28px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  z-index: var(--ui-layer-dialog, 101);
+  font: 400 14px/1.6 var(--ui-font-interface);
+}
+.ds-dialog[data-size="wide"] {
+  width: min(760px, calc(100vw - 32px));
+}
+.ds-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.ds-dialog-header h2 {
+  font-family: var(--ui-font-interface);
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.ds-dialog-description {
+  color: var(--ui-muted-foreground);
+  font-size: 13px;
+  margin: 0 0 24px;
+}
+.ds-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.ds-drawer {
+  left: auto;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: none;
+  width: min(480px, 100vw);
+  max-height: 100dvh;
+  border-radius: 0;
+}
+.ds-drawer[data-size="wide"] {
+  width: min(760px, 100vw);
+}
+@media (max-width: 540px) {
+  .ds-dialog {
+    padding: 24px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-overlay,
+  .ds-dialog {
+    animation: none;
+    transition: none;
+  }
+}

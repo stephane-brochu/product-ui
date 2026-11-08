@@ -315,3 +315,40 @@ a:focus-visible {
     flex-wrap: wrap;
   }
 }
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-block: 24px;
+  align-items: center;
+}
+.demo {
+  border: 1px solid var(--ui-border);
+  padding: 24px;
+  margin-block: 24px;
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+  background: var(--ui-popover);
+}
+.demo .ds-page {
+  padding-inline: 0;
+  padding-bottom: 0;
+}
+.demo .ds-page-header {
+  padding-block: 24px 32px;
+}
+.demo .ds-page-header :is(h1, h2, h3, h4) {
+  font-size: clamp(32px, 4vw, 48px);
+}
+@media (max-width: 540px) {
+  .demo {
+    padding: 16px;
+  }
+}
+
+.overlay-example-form {
+  display: grid;
+  gap: 20px;
+}

@@ -1,6 +1,16 @@
 :root,
 [data-ui-theme="ledger"] {
   --ui-background: #f4f1ec;
+  --ui-content-width: 1200px;
+  --ui-content-wide: 1440px;
+  --ui-gutter: clamp(20px, 4vw, 50px);
+  --ui-radius-dialog: 8px;
+  --ui-overlay: rgb(30 30 30 / 28%);
+  --ui-layer-overlay: 100;
+  --ui-layer-dialog: 101;
+  --ui-success-foreground: #205b39;
+  --ui-warning-foreground: #76500d;
+  --ui-info-foreground: #2448a5;
   --ui-foreground: #1e1e1e;
   --ui-primary: #1e1e1e;
   --ui-primary-foreground: #f4f1ec;
@@ -19,6 +29,7 @@
   --ui-font-editorial: "Cormorant Garamond", Georgia, serif;
 }
 [data-ui-theme="studio"] {
+  --ui-radius-dialog: 12px;
   --ui-background: #f7f9fc;
   --ui-foreground: #172235;
   --ui-primary: #2448a5;

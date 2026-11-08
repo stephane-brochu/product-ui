@@ -1,17 +1,33 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "items": [
+    "core",
+    "button",
+    "controls",
+    "theme",
+    "fields",
+    "filter-bar",
+    "patterns",
+    "form-section",
+    "page-layout",
+    "layout-styles",
+    "feedback",
+    "feedback-styles",
+    "checkbox"
+  ],
+  "dependencies": {},
   "name": "product-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": "https://github.com/stephane-brochu/product-ui",
-  "registry": "https://brochu-product-ui.vercel.app/r/v0.1.0",
+  "registry": "https://brochu-product-ui.vercel.app/r/v0.2.0",
   "files": [
     {
       "target": "src/styles/ui-theme.css",
-      "sha256": "85d4fdfc4a2c68e2265d62531e6820b32d16dbe84f9fd6dc2219529adbce7905"
+      "sha256": "8ee294487ea31917a57b84932c48c934563d466b017f6e84a74bb1d68b84f8f4"
     },
     {
       "target": "src/styles/ui-controls.css",
-      "sha256": "796f548bd99c12f791da0f8a2a08b15d08691738a9cf36ba9bd47d6d93b76e2f"
+      "sha256": "d53e8925ee3578b9cbd3702befee1efc1e65dd14e454d5e35b4e517b5b90d114"
     },
     {
       "target": "src/styles/ui-patterns.css",
@@ -19,11 +35,11 @@
     },
     {
       "target": "src/components/ui/button.tsx",
-      "sha256": "b57f1184b6958e14fbe34f87678cc8d9a05017e197767b774d8a4c369a19ab1d"
+      "sha256": "7203f456a6f3f8e930f420f567a26bfabefe157d8b2ce7dc169676f9e123b627"
     },
     {
       "target": "src/components/ui/fields.tsx",
-      "sha256": "9e53a4be9fe6ac963feb1fd91b882a57d2b69eeb34fa287d25589ee0edd1297c"
+      "sha256": "dba9ed9a66930130bc4ffbc6d697bc335e9a67477dac3aa78f782422d0c78056"
     },
     {
       "target": "src/components/patterns/filter-bar.tsx",
@@ -32,6 +48,26 @@
     {
       "target": "src/components/patterns/form-section.tsx",
       "sha256": "2c38047361320b1b6872161078b83df1e12798ba3ed46af2aef341b1330d6fab"
+    },
+    {
+      "target": "src/styles/ui-layout.css",
+      "sha256": "1e1d544fea145d6264deb3eb0b6f3a23ca91453c3970d1a3b32f6378f90fd033"
+    },
+    {
+      "target": "src/components/patterns/page-layout.tsx",
+      "sha256": "f51cefccbb108d45a2e14389f7bbae1b94e88a38bab63f91d287e9dacd846ede"
+    },
+    {
+      "target": "src/styles/ui-feedback.css",
+      "sha256": "a348e803304232839388c5475b9966de27e15068dbcaff820d4505b6f59ae861"
+    },
+    {
+      "target": "src/components/ui/feedback.tsx",
+      "sha256": "187b567bd173e84be893dcbca22e625707a3938e778cb916371956aed083f878"
+    },
+    {
+      "target": "src/components/ui/checkbox.tsx",
+      "sha256": "4d588d19a9cf88e34c6c37ff6207b9860e4dadc5592db3e5487b70dfe832095c"
     }
   ]
 }

@@ -1,3 +1,8 @@
+import { SliceOne } from "./slice-one";
+import { ThemeBoundary } from "../src/components/ui/theme-boundary";
+import "../src/styles/ui-layout.css";
+import "../src/styles/ui-feedback.css";
+import "../src/styles/ui-dialog.css";
 import { createRoot } from "react-dom/client";
 import { useState, type FormEvent } from "react";
 import { Button, IconButton } from "../src/components/ui/button";
@@ -21,7 +26,7 @@ import "../src/styles/ui-theme.css";
 import "../src/styles/ui-controls.css";
 import "../src/styles/ui-patterns.css";
 import "./site.css";
-const base = "https://brochu-product-ui.vercel.app/r/v0.1.0";
+const base = "https://brochu-product-ui.vercel.app/r/v0.2.0";
 const install = `npx shadcn@4.23.0 add ${base}/core.json`;
 function Code({ children }: { children: string }) {
   return (
@@ -66,386 +71,409 @@ function App() {
     setSaved(true);
   }
   return (
-    <div className="docs" data-ui-theme={theme}>
-      <a className="skip-link" href="#main">
-        Skip to documentation
-      </a>
-      <header className="masthead">
-        <a className="wordmark" href="#">
-          Product UI<span> / 0.1.0</span>
+    <ThemeBoundary theme={theme}>
+      <div className="docs" data-ui-theme={theme}>
+        <a className="skip-link" href="#main">
+          Skip to documentation
         </a>
-        <div className="header-actions">
-          <a href="https://github.com/stephane-brochu/product-ui">Source</a>
-          <Select
-            label="Theme"
-            value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            options={[
-              { value: "ledger", label: "Ledger" },
-              { value: "studio", label: "Studio" },
-            ]}
-          />
-        </div>
-      </header>
-      <div className="docs-layout">
-        <aside>
-          <p className="eyebrow">Library guide</p>
-          <nav aria-label="Documentation">
-            <a href="#start">Get started</a>
-            <a href="#foundations">Foundations</a>
-            <a href="#buttons">Buttons</a>
-            <a href="#fields">Fields</a>
-            <a href="#filters">Filter bar</a>
-            <a href="#forms">Form sections</a>
-            <a href="#extend">Extend the library</a>
-            <a href="#releases">Releases & upgrades</a>
-          </nav>
-          <p className="aside-note">
-            React 19
-            <br />
-            Owned source
-            <br />
-            MIT licensed
-          </p>
-        </aside>
-        <main id="main">
-          <section className="hero" id="start">
-            <p className="eyebrow">Shared foundations / first release</p>
-            <h1>
-              A shared language
+        <header className="masthead">
+          <a className="wordmark" href="#">
+            Product UI<span> / 0.2.0</span>
+          </a>
+          <div className="header-actions">
+            <a href="https://github.com/stephane-brochu/product-ui">Source</a>
+            <Select
+              label="Theme"
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+              options={[
+                { value: "ledger", label: "Ledger" },
+                { value: "studio", label: "Studio" },
+              ]}
+            />
+          </div>
+        </header>
+        <div className="docs-layout">
+          <aside>
+            <p className="eyebrow">Library guide</p>
+            <nav aria-label="Documentation">
+              <a href="#start">Get started</a>
+              <a href="#foundations">Foundations</a>
+              <a href="#buttons">Buttons</a>
+              <a href="#fields">Fields</a>
+              <a href="#filters">Filter bar</a>
+              <a href="#forms">Form sections</a>
+              <a href="#page-layout">Page layout</a>
+              <a href="#feedback">Feedback</a>
+              <a href="#extended-fields">Checkbox & Textarea</a>
+              <a href="#overlays">Dialog & Drawer</a>
+              <a href="#extend">Extend the library</a>
+              <a href="#releases">Releases & upgrades</a>
+            </nav>
+            <p className="aside-note">
+              React 19
               <br />
-              for useful products.
-            </h1>
-            <p className="lead">
-              Accessible controls, composable patterns, and product themes.
-              Install the source you need, then build on a version you can
-              trace.
+              Owned source
+              <br />
+              MIT licensed
             </p>
-            <div className="install-row">
-              <Code>{install}</Code>
-              <Button variant="secondary" onClick={copy}>
-                {copied ? "Copied" : "Copy command"}
-              </Button>
-            </div>
-            <p className="note">
-              Use an existing shadcn-configured React 19 app, or the{" "}
-              <a href="https://github.com/stephane-brochu/product-ui/tree/v0.1.0/templates/react">
-                included Vite starter
-              </a>
-              . Registry files and their dependencies are pinned to v0.1.0.
-            </p>
-          </section>
-          <section id="foundations">
-            <p className="eyebrow">01 / Foundations</p>
-            <h2>One contract. Different products.</h2>
-            <p>
-              Switch the theme above: the controls keep their APIs and
-              behaviour. Colours, typography, focus, radii and target sizes come
-              from semantic <code>--ui-*</code> roles.
-            </p>
-            <div className="swatches">
-              {[
-                "background",
-                "foreground",
-                "primary",
-                "muted",
-                "input",
-                "destructive",
-              ].map((token) => (
-                <div key={token}>
-                  <span style={{ background: `var(--ui-${token})` }} />
-                  <code>{token}</code>
-                </div>
-              ))}
-            </div>
-            <Code>{`import "./styles/ui-theme.css";
+          </aside>
+          <main id="main">
+            <section className="hero" id="start">
+              <p className="eyebrow">
+                Shared foundations / first extraction release
+              </p>
+              <h1>
+                A shared language
+                <br />
+                for useful products.
+              </h1>
+              <p className="lead">
+                Accessible controls, composable patterns, and product themes.
+                Install the source you need, then build on a version you can
+                trace.
+              </p>
+              <div className="install-row">
+                <Code>{install}</Code>
+                <Button variant="secondary" onClick={copy}>
+                  {copied ? "Copied" : "Copy command"}
+                </Button>
+              </div>
+              <p className="note">
+                Use an existing shadcn-configured React 19 app, or the{" "}
+                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.2.0/templates/react">
+                  included Vite starter
+                </a>
+                . Registry files and their dependencies are pinned to v0.2.0.
+              </p>
+            </section>
+            <section id="foundations">
+              <p className="eyebrow">01 / Foundations</p>
+              <h2>One contract. Different products.</h2>
+              <p>
+                Switch the theme above: the controls keep their APIs and
+                behaviour. Colours, typography, focus, radii and target sizes
+                come from semantic <code>--ui-*</code> roles.
+              </p>
+              <div className="swatches">
+                {[
+                  "background",
+                  "foreground",
+                  "primary",
+                  "muted",
+                  "input",
+                  "destructive",
+                ].map((token) => (
+                  <div key={token}>
+                    <span style={{ background: `var(--ui-${token})` }} />
+                    <code>{token}</code>
+                  </div>
+                ))}
+              </div>
+              <Code>{`import "./styles/ui-theme.css";
 import "./styles/ui-controls.css";
 import "./styles/ui-patterns.css";
 
 // Choose a theme on the product root:
 <div data-ui-theme="studio">...</div>`}</Code>
-            <p className="note">
-              The source uses ds-* classes and prefixed semantic tokens; no
-              Tailwind plugin or runtime styling service is required. Fonts fall
-              back to local system fonts. Do not replace a product's global CSS
-              with stock shadcn theme output.
-            </p>
-          </section>
-          <section id="buttons">
-            <p className="eyebrow">02 / Components</p>
-            <h2>Buttons</h2>
-            <p>
-              Actions use native buttons; navigation uses your router's link
-              with <code>buttonClassName()</code>. The default button type is
-              button.
-            </p>
-            <div className="example">
-              <FilterActions>
-                <Button>Primary</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="tertiary">Tertiary</Button>
-                <Button variant="destructive">Destructive</Button>
-                <Button loading>Saving</Button>
-                <Button disabled>Unavailable</Button>
-                <IconButton label="Add example">+</IconButton>
-              </FilterActions>
-            </div>
-            <Code>{`<Button type="submit" loading={pending}>Save</Button>
-<IconButton label="Add project">+</IconButton>`}</Code>
-            <dl className="api">
-              <dt>variant</dt>
-              <dd>primary · secondary · tertiary · destructive</dd>
-              <dt>size</dt>
-              <dd>
-                compact · default · large; mobile targets stay at least 44px
-              </dd>
-              <dt>loading</dt>
-              <dd>Disables dispatch and exposes aria-busy</dd>
-            </dl>
-          </section>
-          <section id="fields">
-            <h2>Native fields</h2>
-            <p>
-              Labels, descriptions, errors, custom IDs and native form
-              attributes stay connected. Currency edits preserve exact strings,
-              including trailing zeroes.
-            </p>
-            <div className="example fields-grid">
-              <TextInput
-                label="Project name"
-                description="A name people recognize"
-                defaultValue="Harbour"
-              />
-              <Select
-                label="Owner"
-                options={[
-                  { value: "alex", label: "Alex" },
-                  { value: "sam", label: "Sam" },
-                ]}
-              />
-              <CurrencyInput
-                label="Example amount"
-                currency="CAD"
-                value={amount}
-                onValueChange={setAmount}
-              />
-              <MonthPicker label="Planning month" defaultValue="2026-11" />
-            </div>
-            <p className="note">
-              Current exact input: <code>{amount || "(empty)"}</code>
-            </p>
-            <Code>{`<TextInput label="Name" name="name" required error={error} />
-<CurrencyInput label="Amount" value={amount} onValueChange={setAmount} />`}</Code>
-            <dl className="api">
-              <dt>Exports</dt>
-              <dd>
-                FormField, TextInput, NumberInput, CurrencyInput, SearchInput,
-                Select, DatePicker, MonthPicker
-              </dd>
-              <dt>Common props</dt>
-              <dd>
-                label, description, error, id, name, required, disabled,
-                readOnly, className, fieldClassName
-              </dd>
-              <dt>Select</dt>
-              <dd>Native value/onChange, grouped options, disabled options</dd>
-            </dl>
-          </section>
-          <section id="filters">
-            <p className="eyebrow">03 / Product patterns</p>
-            <h2>Filter bar</h2>
-            <p>
-              A labelled group of controls with normal Tab navigation. The
-              product owns the query, filtering and URL.
-            </p>
-            <div className="example">
-              <FilterBar label="Project filters">
-                <SearchInput
-                  label="Search projects"
-                  fieldClassName="ds-filter-search"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Name or owner"
-                />
-                <Select
-                  label="Status"
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  options={[
-                    { value: "", label: "All projects" },
-                    { value: "active", label: "Active" },
-                    { value: "archived", label: "Archived" },
-                  ]}
-                />
-                <FilterActions>
-                  <Button
-                    variant="secondary"
-                    disabled={!search && !status}
-                    onClick={() => {
-                      setSearch("");
-                      setStatus("");
-                    }}
-                  >
-                    Clear filters
-                  </Button>
-                </FilterActions>
-              </FilterBar>
-              <FilterDisclosure>
-                <p>
-                  Place product-specific controls here. This disclosure uses
-                  native details and summary.
-                </p>
-              </FilterDisclosure>
-              <p role="status" className="note">
-                {rows.length} {rows.length === 1 ? "project" : "projects"}
+              <p className="note">
+                The source uses ds-* classes and prefixed semantic tokens; no
+                Tailwind plugin or runtime styling service is required. Fonts
+                fall back to local system fonts. Do not replace a product's
+                global CSS with stock shadcn theme output.
               </p>
-              <ul className="results">
-                {rows.map((row) => (
-                  <li key={row.name}>
-                    <strong>{row.name}</strong>
-                    <span>
-                      {row.owner} · {row.status}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              {!rows.length && (
-                <p>No projects match. Clear the filters to start again.</p>
-              )}
-            </div>
-            <Code>{`<FilterBar label="Project filters">
-  <SearchInput label="Search" value={query} onChange={onSearch} />
-  <FilterActions><Button type="submit">Apply</Button></FilterActions>
-</FilterBar>`}</Code>
-          </section>
-          <section id="forms">
-            <h2>Form sections</h2>
-            <p>
-              Use fieldset and legend to group related fields. Unique section
-              IDs connect descriptions. The pattern never inserts a form or owns
-              persistence.
-            </p>
-            <form
-              className="example"
-              aria-label="Example project settings"
-              onSubmit={save}
-              noValidate
-            >
-              <FormSection
-                id="example-project"
-                title="Project details"
-                description="Try saving with an empty name to inspect validation."
-              >
+            </section>
+            <section id="buttons">
+              <p className="eyebrow">02 / Components</p>
+              <h2>Buttons</h2>
+              <p>
+                Actions use native buttons; navigation uses your router's link
+                with <code>buttonClassName()</code>. The default button type is
+                button.
+              </p>
+              <div className="example">
+                <FilterActions>
+                  <Button>Primary</Button>
+                  <Button variant="secondary">Secondary</Button>
+                  <Button variant="tertiary">Tertiary</Button>
+                  <Button variant="destructive">Destructive</Button>
+                  <Button loading>Saving</Button>
+                  <Button disabled>Unavailable</Button>
+                  <IconButton label="Add example">+</IconButton>
+                </FilterActions>
+              </div>
+              <Code>{`<Button type="submit" loading={pending}>Save</Button>
+<IconButton label="Add project">+</IconButton>`}</Code>
+              <dl className="api">
+                <dt>variant</dt>
+                <dd>primary · secondary · tertiary · destructive</dd>
+                <dt>size</dt>
+                <dd>
+                  compact · default · large; mobile targets stay at least 44px
+                </dd>
+                <dt>loading</dt>
+                <dd>Disables dispatch and exposes aria-busy</dd>
+              </dl>
+            </section>
+            <section id="fields">
+              <h2>Native fields</h2>
+              <p>
+                Labels, descriptions, errors, custom IDs and native form
+                attributes stay connected. Currency edits preserve exact
+                strings, including trailing zeroes.
+              </p>
+              <div className="example fields-grid">
                 <TextInput
-                  label="Example project name"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                    setSaved(false);
-                  }}
-                  error={error || undefined}
-                  required
+                  label="Project name"
+                  description="A name people recognize"
+                  defaultValue="Harbour"
                 />
                 <Select
-                  label="Project owner"
+                  label="Owner"
                   options={[
                     { value: "alex", label: "Alex" },
                     { value: "sam", label: "Sam" },
                   ]}
                 />
-                <FormActions>
-                  <Button type="submit">Save example</Button>
-                </FormActions>
-              </FormSection>
-              {saved && (
-                <p role="status">
-                  Saved in this preview only. No request was sent.
+                <CurrencyInput
+                  label="Example amount"
+                  currency="CAD"
+                  value={amount}
+                  onValueChange={setAmount}
+                />
+                <MonthPicker label="Planning month" defaultValue="2026-11" />
+              </div>
+              <p className="note">
+                Current exact input: <code>{amount || "(empty)"}</code>
+              </p>
+              <Code>{`<TextInput label="Name" name="name" required error={error} />
+<CurrencyInput label="Amount" value={amount} onValueChange={setAmount} />`}</Code>
+              <dl className="api">
+                <dt>Exports</dt>
+                <dd>
+                  FormField, TextInput, NumberInput, CurrencyInput, SearchInput,
+                  Select, DatePicker, MonthPicker
+                </dd>
+                <dt>Common props</dt>
+                <dd>
+                  label, description, error, id, name, required, disabled,
+                  readOnly, className, fieldClassName
+                </dd>
+                <dt>Select</dt>
+                <dd>
+                  Native value/onChange, grouped options, disabled options
+                </dd>
+              </dl>
+            </section>
+            <section id="filters">
+              <p className="eyebrow">03 / Product patterns</p>
+              <h2>Filter bar</h2>
+              <p>
+                A labelled group of controls with normal Tab navigation. The
+                product owns the query, filtering and URL.
+              </p>
+              <div className="example">
+                <FilterBar label="Project filters">
+                  <SearchInput
+                    label="Search projects"
+                    fieldClassName="ds-filter-search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Name or owner"
+                  />
+                  <Select
+                    label="Status"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    options={[
+                      { value: "", label: "All projects" },
+                      { value: "active", label: "Active" },
+                      { value: "archived", label: "Archived" },
+                    ]}
+                  />
+                  <FilterActions>
+                    <Button
+                      variant="secondary"
+                      disabled={!search && !status}
+                      onClick={() => {
+                        setSearch("");
+                        setStatus("");
+                      }}
+                    >
+                      Clear filters
+                    </Button>
+                  </FilterActions>
+                </FilterBar>
+                <FilterDisclosure>
+                  <p>
+                    Place product-specific controls here. This disclosure uses
+                    native details and summary.
+                  </p>
+                </FilterDisclosure>
+                <p role="status" className="note">
+                  {rows.length} {rows.length === 1 ? "project" : "projects"}
                 </p>
-              )}
-            </form>
-            <Code>{`<FormSection id="details" title="Details" description="...">
+                <ul className="results">
+                  {rows.map((row) => (
+                    <li key={row.name}>
+                      <strong>{row.name}</strong>
+                      <span>
+                        {row.owner} · {row.status}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                {!rows.length && (
+                  <p>No projects match. Clear the filters to start again.</p>
+                )}
+              </div>
+              <Code>{`<FilterBar label="Project filters">
+  <SearchInput label="Search" value={query} onChange={onSearch} />
+  <FilterActions><Button type="submit">Apply</Button></FilterActions>
+</FilterBar>`}</Code>
+            </section>
+            <section id="forms">
+              <h2>Form sections</h2>
+              <p>
+                Use fieldset and legend to group related fields. Unique section
+                IDs connect descriptions. The pattern never inserts a form or
+                owns persistence.
+              </p>
+              <form
+                className="example"
+                aria-label="Example project settings"
+                onSubmit={save}
+                noValidate
+              >
+                <FormSection
+                  id="example-project"
+                  title="Project details"
+                  description="Try saving with an empty name to inspect validation."
+                >
+                  <TextInput
+                    label="Example project name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      setSaved(false);
+                    }}
+                    error={error || undefined}
+                    required
+                  />
+                  <Select
+                    label="Project owner"
+                    options={[
+                      { value: "alex", label: "Alex" },
+                      { value: "sam", label: "Sam" },
+                    ]}
+                  />
+                  <FormActions>
+                    <Button type="submit">Save example</Button>
+                  </FormActions>
+                </FormSection>
+                {saved && (
+                  <p role="status">
+                    Saved in this preview only. No request was sent.
+                  </p>
+                )}
+              </form>
+              <Code>{`<FormSection id="details" title="Details" description="...">
   <TextInput label="Name" name="name" />
   <FormActions><Button type="submit">Save</Button></FormActions>
 </FormSection>`}</Code>
-          </section>
-          <section id="extend">
-            <p className="eyebrow">04 / Working together</p>
-            <h2>Extend with evidence.</h2>
-            <ol>
-              <li>
-                Start from a real product need. Keep domain models and
-                persistence in that product.
-              </li>
-              <li>
-                Build the generic API here. Add keyboard, validation and
-                responsive examples.
-              </li>
-              <li>
-                Run type checks, interaction tests, registry validation and the
-                docs build.
-              </li>
-              <li>
-                Bump the version; generate a new immutable release snapshot and
-                migration notes.
-              </li>
-              <li>
-                Review the source diff, then update each product's pinned copy.
-              </li>
-            </ol>
-            <p>
-              <a href="https://github.com/stephane-brochu/product-ui/blob/main/CONTRIBUTING.md">
-                Contribution guide
-              </a>{" "}
-              ·{" "}
-              <a href="https://github.com/stephane-brochu/product-ui/blob/main/docs/architecture.md">
-                Architecture
-              </a>
-            </p>
-          </section>
-          <section id="releases">
-            <h2>v0.1.0</h2>
-            <p>
-              The initial core: 11 control exports, 5 pattern exports, two theme
-              presets, and eight individually addressable registry items.
-            </p>
-            <div className="registry-links">
-              {[
-                "theme",
-                "controls",
-                "patterns",
-                "button",
-                "fields",
-                "filter-bar",
-                "form-section",
-                "core",
-              ].map((item) => (
-                <a key={item} href={`${base}/${item}.json`}>
-                  {item}.json ↗
+            </section>
+            <SliceOne />
+            <section id="extend">
+              <p className="eyebrow">04 / Working together</p>
+              <h2>Extend with evidence.</h2>
+              <ol>
+                <li>
+                  Start from a real product need. Keep domain models and
+                  persistence in that product.
+                </li>
+                <li>
+                  Build the generic API here. Add keyboard, validation and
+                  responsive examples.
+                </li>
+                <li>
+                  Run type checks, interaction tests, registry validation and
+                  the docs build.
+                </li>
+                <li>
+                  Bump the version; generate a new immutable release snapshot
+                  and migration notes.
+                </li>
+                <li>
+                  Review the source diff, then update each product's pinned
+                  copy.
+                </li>
+              </ol>
+              <p>
+                <a href="https://github.com/stephane-brochu/product-ui/blob/main/CONTRIBUTING.md">
+                  Contribution guide
+                </a>{" "}
+                ·{" "}
+                <a href="https://github.com/stephane-brochu/product-ui/blob/main/docs/architecture.md">
+                  Architecture
                 </a>
-              ))}
-            </div>
-            <p>
-              <a href={`${base}/manifest.json`}>
-                Release manifest & file hashes
-              </a>{" "}
-              ·{" "}
-              <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.1.0">
-                Release notes
-              </a>
-            </p>
-            <p className="note">
-              Registry installs create source copies. Upgrades are deliberate:
-              compare the pinned hashes, review any local changes, then install
-              a reviewed release. v0.1 supports React 19; the starter and CSS
-              paths use a src directory.
-            </p>
-          </section>
-          <footer>
-            Product UI / v0.1.0 <span>React · owned source · MIT</span>
-          </footer>
-        </main>
+              </p>
+            </section>
+            <section id="releases">
+              <h2>v0.2.0</h2>
+              <p>
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.1.0">
+                  v0.1.0 remains available unchanged.
+                </a>
+              </p>
+              <p>
+                The expanded core adds layout, feedback, Checkbox and Textarea.
+                Dialog/Drawer are optional, with a declared Radix dependency and
+                theme-aware portals.
+              </p>
+              <div className="registry-links">
+                {[
+                  "page-layout",
+                  "feedback",
+                  "checkbox",
+                  "theme-boundary",
+                  "dialog",
+                  "theme",
+                  "controls",
+                  "patterns",
+                  "button",
+                  "fields",
+                  "filter-bar",
+                  "form-section",
+                  "core",
+                ].map((item) => (
+                  <a key={item} href={`${base}/${item}.json`}>
+                    {item}.json ↗
+                  </a>
+                ))}
+              </div>
+              <p>
+                <a href={`${base}/manifest.json`}>
+                  Release manifest & file hashes
+                </a>{" "}
+                ·{" "}
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.2.0">
+                  Release notes
+                </a>
+              </p>
+              <p className="note">
+                Registry installs create source copies. Upgrades are deliberate:
+                compare the pinned hashes, review any local changes, then
+                install a reviewed release. v0.2 supports React 19; the starter
+                and CSS paths use a src directory.
+              </p>
+            </section>
+            <footer>
+              Product UI / v0.2.0 <span>React · owned source · MIT</span>
+            </footer>
+          </main>
+        </div>
       </div>
-    </div>
+    </ThemeBoundary>
   );
 }
 createRoot(document.getElementById("root")!).render(<App />);

@@ -3,6 +3,7 @@ import {
   useId,
   type InputHTMLAttributes,
   type SelectHTMLAttributes,
+  type ComponentPropsWithRef,
   type ReactNode,
 } from "react";
 
@@ -211,4 +212,50 @@ export function DatePicker(props: Omit<TextInputProps, "type">) {
 }
 export function MonthPicker(props: Omit<TextInputProps, "type">) {
   return <TextInput {...props} type="month" pattern="[0-9]{4}-[0-9]{2}" />;
+}
+
+export type TextareaProps = ComponentPropsWithRef<"textarea"> & {
+  label: string;
+  description?: string;
+  error?: string;
+  fieldClassName?: string;
+};
+export function Textarea({
+  label,
+  description,
+  error,
+  id: providedId,
+  fieldClassName,
+  className = "",
+  rows = 4,
+  ...props
+}: TextareaProps) {
+  const generated = useId();
+  const id = providedId ?? generated;
+  const described =
+    [
+      description && `${id}-description`,
+      error && `${id}-error`,
+      props["aria-describedby"],
+    ]
+      .filter(Boolean)
+      .join(" ") || undefined;
+  return (
+    <FormField
+      label={label}
+      description={description}
+      error={error}
+      id={id}
+      className={fieldClassName}
+    >
+      <textarea
+        {...props}
+        rows={rows}
+        id={id}
+        className={`ds-textarea ${className}`}
+        aria-invalid={error ? true : props["aria-invalid"]}
+        aria-describedby={described}
+      />
+    </FormField>
+  );
 }

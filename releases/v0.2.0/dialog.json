@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "type": "registry:ui",
+  "title": "Dialog and drawer",
+  "description": "Product UI v0.2.0: Dialog and drawer. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.2.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [
+    "@radix-ui/react-dialog@1.3.1"
+  ],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.2.0/button.json",
+    "https://brochu-product-ui.vercel.app/r/v0.2.0/theme-boundary.json",
+    "https://brochu-product-ui.vercel.app/r/v0.2.0/dialog-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/dialog.tsx",
+      "type": "registry:ui",
+      "target": "@ui/dialog.tsx",
+      "content": "\"use client\";\nimport * as Primitive from \"@radix-ui/react-dialog\";\nimport { useState, type ReactNode, type ComponentPropsWithoutRef } from \"react\";\nimport { Button, IconButton } from \"./button\";\nimport { usePortalContainer } from \"./theme-boundary\";\nexport type DialogProps = {\n  title: ReactNode;\n  description: ReactNode;\n  trigger?: ReactNode;\n  children: ReactNode;\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  drawer?: boolean;\n  size?: \"default\" | \"wide\";\n  closeLabel?: string;\n  dismissible?: boolean;\n  className?: string;\n  onCloseAutoFocus?: Primitive.DialogContentProps[\"onCloseAutoFocus\"];\n  contentProps?: Omit<\n    ComponentPropsWithoutRef<typeof Primitive.Content>,\n    \"children\" | \"asChild\" | \"title\"\n  >;\n};\nexport function Dialog({\n  title,\n  description,\n  trigger,\n  children,\n  open,\n  defaultOpen,\n  onOpenChange,\n  drawer = false,\n  size = \"default\",\n  closeLabel = \"Close dialog\",\n  dismissible = true,\n  className = \"\",\n  onCloseAutoFocus,\n  contentProps = {},\n}: DialogProps) {\n  const container = usePortalContainer();\n  const [internalOpen, setInternalOpen] = useState(defaultOpen ?? false);\n  return (\n    <Primitive.Root\n      open={open ?? internalOpen}\n      onOpenChange={(next) => {\n        if (next || dismissible) {\n          setInternalOpen(next);\n          onOpenChange?.(next);\n        }\n      }}\n    >\n      {trigger && <Primitive.Trigger asChild>{trigger}</Primitive.Trigger>}\n      {container !== null && (\n        <Primitive.Portal container={container}>\n          <Primitive.Overlay className=\"ds-overlay\" />\n          <Primitive.Content\n            {...contentProps}\n            className={`ds-dialog ${drawer ? \"ds-drawer\" : \"\"} ${className} ${contentProps.className ?? \"\"}`}\n            data-size={size}\n            onCloseAutoFocus={onCloseAutoFocus ?? contentProps.onCloseAutoFocus}\n            onEscapeKeyDown={(event) => {\n              contentProps.onEscapeKeyDown?.(event);\n              if (!dismissible) event.preventDefault();\n            }}\n            onPointerDownOutside={(event) => {\n              contentProps.onPointerDownOutside?.(event);\n              if (!dismissible) event.preventDefault();\n            }}\n          >\n            <div className=\"ds-dialog-header\">\n              <Primitive.Title>{title}</Primitive.Title>\n              <Primitive.Close asChild>\n                <IconButton\n                  variant=\"tertiary\"\n                  label={closeLabel}\n                  disabled={!dismissible}\n                >\n                  ×\n                </IconButton>\n              </Primitive.Close>\n            </div>\n            <Primitive.Description className=\"ds-dialog-description\">\n              {description}\n            </Primitive.Description>\n            {children}\n          </Primitive.Content>\n        </Primitive.Portal>\n      )}\n    </Primitive.Root>\n  );\n}\nexport function Drawer(props: Omit<DialogProps, \"drawer\">) {\n  return <Dialog {...props} drawer />;\n}\nexport function DialogClose({\n  children,\n  ...props\n}: ComponentPropsWithoutRef<typeof Button>) {\n  return (\n    <Primitive.Close asChild>\n      <Button {...props}>{children}</Button>\n    </Primitive.Close>\n  );\n}\n"
+    }
+  ]
+}

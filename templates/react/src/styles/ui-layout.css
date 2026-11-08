@@ -1,0 +1,113 @@
+.ds-page {
+  box-sizing: border-box;
+  width: min(
+    100%,
+    calc(var(--ui-content-width, 1200px) + var(--ui-gutter, 50px) * 2)
+  );
+  margin-inline: auto;
+  padding: 0 var(--ui-gutter, clamp(20px, 4vw, 50px)) 80px;
+}
+.ds-page--wide {
+  width: min(
+    100%,
+    calc(var(--ui-content-wide, 1440px) + var(--ui-gutter, 50px) * 2)
+  );
+}
+.ds-page-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 64px 48px;
+  font-family: var(--ui-font-interface);
+  color: var(--ui-foreground);
+}
+.ds-page-header > div,
+.ds-page-action {
+  min-width: 0;
+}
+.ds-page-header :is(h1, h2, h3, h4) {
+  font-family: var(--ui-font-editorial);
+  font-size: clamp(48px, 5.5vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 300;
+  margin: 0 0 16px;
+  overflow-wrap: anywhere;
+}
+.ds-page-header .ds-eyebrow {
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ui-muted-foreground);
+}
+.ds-intro {
+  max-width: 640px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ui-muted-foreground);
+}
+.ds-section-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 32px;
+  border-top: 1px solid var(--ui-foreground);
+  padding-block: 24px 32px;
+  font-family: var(--ui-font-interface);
+  color: var(--ui-foreground);
+}
+.ds-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  min-width: 0;
+}
+.ds-section-title > div {
+  min-width: 0;
+}
+.ds-section-header :is(h1, h2, h3, h4) {
+  font-family: var(--ui-font-editorial);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.ds-section-header p {
+  color: var(--ui-muted-foreground);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 560px;
+}
+.ds-section-number {
+  font-family: var(--ui-font-interface);
+  font-size: 11px;
+  color: var(--ui-muted-foreground);
+}
+@media (max-width: 800px) {
+  .ds-page-header {
+    padding-block: 40px 32px;
+  }
+}
+@media (max-width: 540px) {
+  .ds-page-header {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ds-section-header {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .ds-section-title {
+    gap: 12px;
+  }
+  .ds-section-header :is(h1, h2, h3, h4) {
+    font-size: 30px;
+  }
+}

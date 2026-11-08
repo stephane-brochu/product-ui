@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-styles",
+  "type": "registry:style",
+  "title": "Dialog styles",
+  "description": "Product UI v0.2.0: Dialog styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.2.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.2.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-dialog.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-dialog.css",
+      "content": ".ds-overlay {\n  background: var(--ui-overlay, rgb(30 30 30 / 28%));\n  position: fixed;\n  inset: 0;\n  z-index: var(--ui-layer-overlay, 100);\n}\n.ds-dialog {\n  box-sizing: border-box;\n  background: var(--ui-popover);\n  color: var(--ui-foreground);\n  border: 1px solid var(--ui-border-strong);\n  border-radius: var(--ui-radius-dialog, 8px);\n  padding: 28px;\n  position: fixed;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  width: min(520px, calc(100vw - 32px));\n  max-height: calc(100dvh - 40px);\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  z-index: var(--ui-layer-dialog, 101);\n  font: 400 14px/1.6 var(--ui-font-interface);\n}\n.ds-dialog[data-size=\"wide\"] {\n  width: min(760px, calc(100vw - 32px));\n}\n.ds-dialog-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: start;\n  gap: 16px;\n  margin-bottom: 12px;\n}\n.ds-dialog-header h2 {\n  font-family: var(--ui-font-interface);\n  font-size: 20px;\n  line-height: 1.4;\n  font-weight: 500;\n  margin: 0;\n  overflow-wrap: anywhere;\n}\n.ds-dialog-description {\n  color: var(--ui-muted-foreground);\n  font-size: 13px;\n  margin: 0 0 24px;\n}\n.ds-dialog-actions {\n  display: flex;\n  justify-content: flex-end;\n  flex-wrap: wrap;\n  gap: 12px;\n  margin-top: 24px;\n}\n.ds-drawer {\n  left: auto;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  transform: none;\n  width: min(480px, 100vw);\n  max-height: 100dvh;\n  border-radius: 0;\n}\n.ds-drawer[data-size=\"wide\"] {\n  width: min(760px, 100vw);\n}\n@media (max-width: 540px) {\n  .ds-dialog {\n    padding: 24px 20px;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .ds-overlay,\n  .ds-dialog {\n    animation: none;\n    transition: none;\n  }\n}\n"
+    }
+  ]
+}

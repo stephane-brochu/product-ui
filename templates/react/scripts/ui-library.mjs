@@ -43,6 +43,14 @@ export async function check(project) {
   const lock = JSON.parse(
     await fs.readFile(path.join(root, "ui-library.lock.json"), "utf8"),
   );
+  if (Object.keys(lock.dependencies ?? {}).length) {
+    const pkg = JSON.parse(
+      await fs.readFile(path.join(root, "package.json"), "utf8"),
+    );
+    for (const [name, version] of Object.entries(lock.dependencies))
+      if ((pkg.dependencies?.[name] ?? pkg.devDependencies?.[name]) !== version)
+        throw new Error(`Local dependency drift: ${name}; expected ${version}`);
+  }
   for (const file of lock.files) {
     const target = safeTarget(root, file.target);
     await guardAncestors(root, target);
@@ -54,7 +62,7 @@ export async function check(project) {
   }
   return lock;
 }
-export async function install({ project, release, registry, version }) {
+export async function install({ project, release, registry, version, items }) {
   if (!version || !/^\d+\.\d+\.\d+$/.test(version))
     throw new Error("An exact release version is required");
   if (Boolean(release) === Boolean(registry))
@@ -85,15 +93,52 @@ export async function install({ project, release, registry, version }) {
     !Array.isArray(manifest.items)
   )
     throw new Error("Invalid manifest");
+  const lockPath = path.join(root, "ui-library.lock.json");
+  const priorText = await readOptional(lockPath);
+  if (priorText) await check(root);
+  const priorLock = priorText ? JSON.parse(priorText) : null;
+  const selected = new Set();
+  function visit(name) {
+    if (selected.has(name)) return;
+    const item = manifest.items.find((i) => i.name === name);
+    if (!item) throw new Error(`Unknown registry item: ${name}`);
+    selected.add(name);
+    for (const dep of item.dependencies ?? []) visit(dep);
+  }
+  for (const name of [
+    ...(typeof items === "string"
+      ? items.split(",")
+      : (items ?? manifest.defaultItems ?? manifest.items.map((i) => i.name))),
+    ...(priorLock?.items ?? []),
+  ])
+    visit(name);
+  const dependencies = Object.assign(
+    {},
+    ...manifest.items
+      .filter((i) => selected.has(i.name))
+      .map((i) => i.npmDependencies ?? {}),
+  );
+  if (Object.keys(dependencies).length) {
+    const pkg = JSON.parse(
+      await fs.readFile(path.join(root, "package.json"), "utf8"),
+    );
+    for (const [name, version] of Object.entries(dependencies))
+      if ((pkg.dependencies?.[name] ?? pkg.devDependencies?.[name]) !== version)
+        throw new Error(
+          `Declare exact dependency ${name}@${version} before installing overlays`,
+        );
+  }
   const expected = new Map();
+  const seenTargets = new Set();
   for (const file of manifest.files) {
     safeTarget(root, file.target);
-    if (!/^[a-f0-9]{64}$/.test(file.sha256) || expected.has(file.target))
+    if (!/^[a-f0-9]{64}$/.test(file.sha256) || seenTargets.has(file.target))
       throw new Error("Invalid or duplicate file manifest");
-    expected.set(file.target, file);
+    seenTargets.add(file.target);
+    if (selected.has(file.item)) expected.set(file.target, file);
   }
   const contents = new Map();
-  for (const item of manifest.items) {
+  for (const item of manifest.items.filter((item) => selected.has(item.name))) {
     const payload = await load(`${item.name}.json`);
     if (
       payload.name !== item.name ||
@@ -118,9 +163,6 @@ export async function install({ project, release, registry, version }) {
   }
   if (contents.size !== expected.size)
     throw new Error("Incomplete registry release");
-  const lockPath = path.join(root, "ui-library.lock.json");
-  const priorText = await readOptional(lockPath);
-  if (priorText) await check(root);
   const previouslyManaged = new Set(
     priorText ? JSON.parse(priorText).files.map((file) => file.target) : [],
   );
@@ -142,12 +184,17 @@ export async function install({ project, release, registry, version }) {
     await fs.writeFile(dest, content);
   }
   const lock = {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    items: [...selected],
+    dependencies,
     name: "product-ui",
     version,
     repository: manifest.repository,
     registry: manifest.registry,
-    files: manifest.files.map(({ target, sha256 }) => ({ target, sha256 })),
+    files: [...expected.values()].map(({ target, sha256 }) => ({
+      target,
+      sha256,
+    })),
   };
   await fs.writeFile(lockPath, JSON.stringify(lock, null, 2) + "\n");
   return lock;

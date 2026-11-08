@@ -1,3 +1,4 @@
+import { validateImports } from "./registry-policy.mjs";
 import fs from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
@@ -47,8 +48,8 @@ for (const item of config.items) {
     const content = (
       await fs.readFile(path.join(root, file.source), "utf8")
     ).replace(/\r\n/g, "\n");
-    if (file.source.endsWith(".tsx") && /from ["'](?!react["'])/.test(content))
-      throw new Error(`Application dependency in ${file.source}`);
+    if (file.source.endsWith(".tsx"))
+      validateImports(config, pkg, item, file.source, content);
     const sha256 = createHash("sha256").update(content).digest("hex");
     manifestFiles.set(file.target, {
       source: file.source,
@@ -70,6 +71,9 @@ for (const item of config.items) {
     title: item.title,
     description: `Product UI ${version}: ${item.title}. Import the documented CSS files once.`,
     meta: { version: pkg.version, repository: config.repository },
+    dependencies: Object.entries(item.npmDependencies ?? {}).map(
+      ([name, version]) => `${name}@${version}`,
+    ),
     registryDependencies: (item.dependencies ?? []).map(
       (dep) => `${base}/${dep}.json`,
     ),
@@ -79,25 +83,49 @@ for (const item of config.items) {
   payloads.set(`${item.name}.json`, JSON.stringify(payload, null, 2) + "\n");
 }
 const manifest = {
+  schemaVersion: 2,
+  defaultItems: ["core"],
   name: config.name,
   version: pkg.version,
   repository: config.repository,
   registry: base,
-  items: config.items.map(({ name, dependencies = [] }) => ({
-    name,
-    dependencies,
-  })),
+  items: config.items.map(
+    ({ name, dependencies = [], npmDependencies = {} }) => ({
+      name,
+      dependencies,
+      npmDependencies,
+    }),
+  ),
   files: [...manifestFiles.values()],
 };
 payloads.set("manifest.json", JSON.stringify(manifest, null, 2) + "\n");
 // Existing release tags are an additional immutability boundary in Git checkouts.
-const tags = spawnSync("git", ["tag", "--list", "v*"], {cwd:root, encoding:"utf8"});
-if(tags.status===0) for(const tag of tags.stdout.trim().split("\n").filter(tag=>/^v\d+\.\d+\.\d+$/.test(tag))) {
-  const diff=spawnSync("git",["diff","--exit-code",tag,"--",`releases/${tag}`],{cwd:root,encoding:"utf8"});
-  if(diff.status!==0)throw new Error(`Published snapshot differs from tag ${tag}; create a new release.`);
-}
+const tags = spawnSync("git", ["tag", "--list", "v*"], {
+  cwd: root,
+  encoding: "utf8",
+});
+if (tags.status === 0)
+  for (const tag of tags.stdout
+    .trim()
+    .split("\n")
+    .filter((tag) => /^v\d+\.\d+\.\d+$/.test(tag))) {
+    const diff = spawnSync(
+      "git",
+      ["diff", "--exit-code", tag, "--", `releases/${tag}`],
+      { cwd: root, encoding: "utf8" },
+    );
+    if (diff.status !== 0)
+      throw new Error(
+        `Published snapshot differs from tag ${tag}; create a new release.`,
+      );
+  }
 const mode = process.argv[2];
-if (mode === "build") {
+if (mode === "preview") {
+  const preview = path.join(root, ".registry-preview", version);
+  await fs.mkdir(preview, { recursive: true });
+  for (const [name, content] of payloads)
+    await fs.writeFile(path.join(preview, name), content);
+} else if (mode === "build") {
   try {
     await fs.access(output);
     throw new Error(

@@ -1,6 +1,6 @@
 {
   "name": "product-ui",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "homepage": "https://brochu-product-ui.vercel.app",
   "repository": "https://github.com/stephane-brochu/product-ui",
   "items": [
@@ -127,7 +127,11 @@
         "checkbox",
         "selection",
         "controlled-disclosure",
-        "settings"
+        "settings",
+        "table",
+        "metrics",
+        "data-navigation",
+        "source-reference"
       ],
       "files": []
     },
@@ -402,6 +406,125 @@
       "npmDependencies": {
         "@radix-ui/react-dropdown-menu": "2.2.1"
       }
+    },
+    {
+      "name": "data-styles",
+      "title": "Data presentation styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-data.css",
+          "target": "src/styles/ui-data.css",
+          "registryTarget": "~/src/styles/ui-data.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "title": "Server-compatible tables",
+      "type": "registry:component",
+      "dependencies": [
+        "data-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/table.tsx",
+          "target": "src/components/ui/table.tsx",
+          "registryTarget": "@ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "metrics-styles",
+      "title": "Metric and delta styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-metrics.css",
+          "target": "src/styles/ui-metrics.css",
+          "registryTarget": "~/src/styles/ui-metrics.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "metrics",
+      "title": "Metrics and change values",
+      "type": "registry:component",
+      "dependencies": [
+        "metrics-styles",
+        "data-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/metrics.tsx",
+          "target": "src/components/patterns/metrics.tsx",
+          "registryTarget": "@components/patterns/metrics.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "data-navigation",
+      "title": "Toolbar pagination and export actions",
+      "type": "registry:component",
+      "dependencies": [
+        "button",
+        "data-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/data-navigation.tsx",
+          "target": "src/components/patterns/data-navigation.tsx",
+          "registryTarget": "@components/patterns/data-navigation.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "source-reference",
+      "title": "Source references",
+      "type": "registry:component",
+      "dependencies": [
+        "data-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/source-reference.tsx",
+          "target": "src/components/patterns/source-reference.tsx",
+          "registryTarget": "@components/patterns/source-reference.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "title": "Interactive data table",
+      "type": "registry:component",
+      "dependencies": [
+        "table",
+        "data-navigation",
+        "button",
+        "checkbox",
+        "fields",
+        "feedback"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/data-table.tsx",
+          "target": "src/components/ui/data-table.tsx",
+          "registryTarget": "@ui/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

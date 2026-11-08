@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "action-menu",
+  "type": "registry:component",
+  "title": "Action menu",
+  "description": "Product UI v0.4.0: Action menu. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.4.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [
+    "@radix-ui/react-dropdown-menu@2.2.1"
+  ],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.4.0/button.json",
+    "https://brochu-product-ui.vercel.app/r/v0.4.0/theme-boundary.json",
+    "https://brochu-product-ui.vercel.app/r/v0.4.0/floating-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/action-menu.tsx",
+      "type": "registry:ui",
+      "target": "@ui/action-menu.tsx",
+      "content": "\"use client\";\nimport * as Primitive from \"@radix-ui/react-dropdown-menu\";\nimport type { ReactElement, ComponentPropsWithRef } from \"react\";\nimport { Button } from \"./button\";\nimport { usePortalContainer } from \"./theme-boundary\";\nexport type MenuAction = {\n  id: string;\n  label: string;\n  onSelect: (event: Event) => void;\n  disabled?: boolean;\n  destructive?: boolean;\n};\nexport type DropdownActionMenuProps = {\n  label?: string;\n  trigger?: ReactElement;\n  actions: readonly MenuAction[];\n  disabled?: boolean;\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  emptyLabel?: string;\n  contentProps?: Omit<\n    ComponentPropsWithRef<typeof Primitive.Content>,\n    \"children\" | \"asChild\"\n  >;\n};\nexport function DropdownActionMenu({\n  label = \"More actions\",\n  trigger,\n  actions,\n  disabled = false,\n  open,\n  defaultOpen,\n  onOpenChange,\n  emptyLabel = \"No actions available\",\n  contentProps = {},\n}: DropdownActionMenuProps) {\n  const container = usePortalContainer();\n  return (\n    <Primitive.Root\n      open={open}\n      defaultOpen={defaultOpen}\n      onOpenChange={onOpenChange}\n    >\n      <Primitive.Trigger asChild disabled={disabled}>\n        {trigger ?? (\n          <Button variant=\"secondary\">\n            {label} <span aria-hidden=\"true\">⌄</span>\n          </Button>\n        )}\n      </Primitive.Trigger>\n      {container !== null && (\n        <Primitive.Portal container={container}>\n          <Primitive.Content\n            sideOffset={6}\n            collisionPadding={16}\n            {...contentProps}\n            className={`ds-menu ${contentProps.className ?? \"\"}`}\n            aria-label={label}\n          >\n            {actions.map((action) => (\n              <Primitive.Item\n                className=\"ds-menu-item\"\n                key={action.id}\n                disabled={action.disabled}\n                onSelect={action.onSelect}\n                data-destructive={action.destructive || undefined}\n              >\n                {action.label}\n              </Primitive.Item>\n            ))}\n            {actions.length === 0 && (\n              <Primitive.Item className=\"ds-menu-item\" disabled>\n                {emptyLabel}\n              </Primitive.Item>\n            )}\n          </Primitive.Content>\n        </Primitive.Portal>\n      )}\n    </Primitive.Root>\n  );\n}\n"
+    }
+  ]
+}

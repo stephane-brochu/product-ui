@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "source-reference",
+  "type": "registry:component",
+  "title": "Source references",
+  "description": "Product UI v0.4.0: Source references. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.4.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.4.0/data-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/source-reference.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/source-reference.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\nexport type SourceReferenceProps = Omit<\n  ComponentPropsWithRef<\"a\">,\n  \"children\"\n> & { href: string; label: ReactNode; detail?: ReactNode };\nexport function SourceReference({\n  label,\n  detail,\n  target,\n  rel,\n  className = \"\",\n  ...props\n}: SourceReferenceProps) {\n  return (\n    <span className={`ds-source-reference ${className}`}>\n      <a\n        {...props}\n        target={target}\n        rel={\n          target === \"_blank\"\n            ? [rel, \"noopener\", \"noreferrer\"].filter(Boolean).join(\" \")\n            : rel\n        }\n      >\n        {label}\n        {target === \"_blank\" && (\n          <>\n            {\" \"}\n            <span className=\"ds-data-sr-only\">(opens in a new tab)</span>\n          </>\n        )}\n      </a>\n      {detail && <span className=\"ds-source-detail\">{detail}</span>}\n    </span>\n  );\n}\n"
+    }
+  ]
+}

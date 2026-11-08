@@ -11,7 +11,7 @@ beforeEach(async () => {
 afterEach(async () => {
   await fs.rm(directory, { recursive: true, force: true });
 });
-const release = path.resolve(".registry-preview/v0.3.0");
+const release = path.resolve("releases/v0.3.0");
 it("upgrades a pinned v0.2 consumer, keeps its dialog selection and adds optional floating controls", async () => {
   await fs.writeFile(
     path.join(directory, "package.json"),

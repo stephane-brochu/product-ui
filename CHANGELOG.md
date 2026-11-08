@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0 — 2026-11-08
+
+Standardizes data presentation: native/server tables, Metric/DeltaValue, toolbar/count/pagination/export UI, SourceReference and optional DataTable with exact decimal ordering, controlled state and row replacement handling. Core23 files; finance30. Finance adopts16 native tables and32 metric cards while retaining formatting, calculations, CSV schemas and source access in adapters. See docs/migrations/v0.4.0.md.
+
 ## 0.3.0 — 2026-11-07
 
 Completes Milestone 1: RadioGroup/Switch/SegmentedControl, native and controlled Disclosure, SettingsGroup/SettingsRow/MetadataList, optional Popover and DropdownActionMenu. Core has 17 portable files without Radix; selecting all overlay items installs 23. Interactive examples, native form/reset/keyboard coverage, responsive styles and finance adoption accompany the source. SegmentedControl now has native single-choice radio semantics; see docs/migrations/v0.3.0.md. Historical release snapshots remain immutable.

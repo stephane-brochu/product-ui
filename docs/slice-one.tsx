@@ -257,7 +257,7 @@ export function SliceOne() {
         </p>
         <pre>
           <code>{`npm install --save-exact @radix-ui/react-dialog@1.3.1
-npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.3.0/dialog.json
+npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.4.0/dialog.json
 
 <ThemeBoundary theme="ledger">
   <Dialog title="Edit project" description="Update details"
@@ -267,7 +267,7 @@ npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.3.0/dialog.json
         <p>
           Import ui-theme.css, ui-controls.css and ui-dialog.css once. Add
           ui-feedback.css and ui-layout.css when using their components.{" "}
-          <a href="https://github.com/stephane-brochu/product-ui/blob/v0.3.0/docs/component-contracts.md">
+          <a href="https://github.com/stephane-brochu/product-ui/blob/v0.4.0/docs/component-contracts.md">
             Read the component contracts
           </a>{" "}
           for APIs, accessibility, state coverage and limits.

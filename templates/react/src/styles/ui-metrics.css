@@ -1,0 +1,93 @@
+.ds-metric-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 0;
+  border-block: 1px solid var(--ui-border);
+  min-width: 0;
+}
+.ds-metric {
+  padding: 24px 20px;
+  min-width: 0;
+  color: var(--ui-foreground);
+  font-family: var(--ui-font-interface);
+  border-inline-end: 1px solid var(--ui-border);
+  box-sizing: border-box;
+}
+.ds-metric-group[data-density="compact"] > .ds-metric {
+  padding-block: 16px;
+}
+.ds-metric > :is(h2, h3, h4) {
+  font: 400 12px/1.6 var(--ui-font-interface);
+  color: var(--ui-muted-foreground);
+  margin: 0 0 12px;
+}
+.ds-metric-value {
+  font: 400 clamp(28px, 3.2vw, 42px) / 1.15 var(--ui-font-editorial);
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  margin-bottom: 12px;
+}
+.ds-metric--prominent .ds-metric-value {
+  font-size: clamp(36px, 4vw, 56px);
+}
+.ds-metric-unit {
+  font: 400 11px/1.5 var(--ui-font-interface);
+  margin-inline-start: 8px;
+  letter-spacing: 0;
+}
+.ds-metric-comparison,
+.ds-metric-status,
+.ds-metric-description {
+  font: 400 12px/1.7 var(--ui-font-interface);
+  margin-top: 8px;
+  color: var(--ui-muted-foreground);
+  overflow-wrap: anywhere;
+}
+.ds-delta {
+  font: 400 13px/1.6 var(--ui-font-interface);
+  color: var(--ui-foreground);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.ds-delta[data-tone="success"] {
+  color: var(--ui-success-foreground);
+}
+.ds-delta[data-tone="danger"] {
+  color: var(--ui-destructive);
+}
+.ds-delta-percentage {
+  color: var(--ui-muted-foreground);
+}
+.ds-delta-description {
+  display: block;
+  color: var(--ui-muted-foreground);
+  font-size: 12px;
+}
+@media (max-width: 540px) {
+  .ds-metric-group {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ds-metric {
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--ui-border);
+  }
+}
+@media print {
+  .ds-metric-group {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .ds-metric {
+    break-inside: avoid;
+  }
+  .ds-metric-value {
+    font-size: 24px;
+  }
+}
+
+.ds-metric-value .ds-delta {
+  font: inherit;
+}
+.ds-delta-percentage {
+  font-size: 12px;
+}

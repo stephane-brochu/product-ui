@@ -1,6 +1,6 @@
 # Product starter
 
-React 19 + TypeScript + Vite, with Product UI 0.3.0 source installed and pinned.
+React 19 + TypeScript + Vite, with Product UI 0.4.0 source installed and pinned.
 
 Copy this folder into your new product, then run npm ci and npm run dev. Use Node 24. Change the name in package.json, select your theme in src/main.tsx, and compose the shared controls. Add your routing, identity and data services in the product.
 

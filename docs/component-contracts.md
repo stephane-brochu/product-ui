@@ -1,4 +1,4 @@
-# Component contracts — v0.3.0
+# Component contracts — v0.4.0
 
 The live catalogue imports the canonical sources and exposes both Ledger and Studio themes. React 19 is required. The library owns presentation and interaction; consumers own data, requests, routing and business rules.
 
@@ -36,3 +36,16 @@ Automated checks cover native relationships and serialization, refs, heading ord
 | action-menu (optional) | DropdownActionMenu | Keyboard selection, stable IDs, disabled/empty/destructive presentation, prevent-dismiss selection, focus return |
 
 See [v0.3 migration and full contracts](migrations/v0.3.0.md) for native semantics, exact dependencies, CSS imports, refs, consumer changes and limits. Native controls retain browser-specific appearance and interaction. Core does not include optional Radix packages. Tests cover form reset and exact serialization, selection keyboard behavior, disclosure SSR/focus, missing-versus-zero metadata and themed nested floating surfaces.
+
+
+## Data presentation
+
+| Item | Exports | Contracts |
+| --- | --- | --- |
+| table | Table, TableHead/Body/Row, TableHeaderCell/Cell, NumericCell, EmptyRow, TableScrollRegion | Native/server-compatible, refs, caption/scope, named keyboard scroll, density, sticky and print |
+| metrics | Metric, MetricGroup, DeltaValue | Supplied formatted values, zero versus missing, explicit direction/tone, status/comparison slots, responsive/print |
+| data-navigation | TableToolbar, ResultCount, Pagination, ExportActions | Local callbacks or server links, explicit counts and selection scope, pending/disabled/error actions |
+| source-reference | SourceReference | Supplied destination/content, native ref/attributes, long text, new-tab cue |
+| data-table (optional client item) | DataTable, ManagementTable, compareTableValues | Exact decimal ordering, filter/search, controlled/internal state, page selection, detail rows, replacement/empty/error/loading, callback-only export |
+
+See [v0.4.0 migration and complete contracts](migrations/v0.4.0.md), including client boundaries, null ordering, row identity, state reconciliation, print/export scope, comparator and dataset limits. Earlier everyday-control contracts remain in the v0.3 migration.

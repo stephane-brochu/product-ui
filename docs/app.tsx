@@ -1,3 +1,6 @@
+import { MilestoneOne } from "./milestone-one";
+import "../src/styles/ui-composition.css";
+import "../src/styles/ui-floating.css";
 import { SliceOne } from "./slice-one";
 import { ThemeBoundary } from "../src/components/ui/theme-boundary";
 import "../src/styles/ui-layout.css";
@@ -26,7 +29,7 @@ import "../src/styles/ui-theme.css";
 import "../src/styles/ui-controls.css";
 import "../src/styles/ui-patterns.css";
 import "./site.css";
-const base = "https://brochu-product-ui.vercel.app/r/v0.2.0";
+const base = "https://brochu-product-ui.vercel.app/r/v0.3.0";
 const install = `npx shadcn@4.23.0 add ${base}/core.json`;
 function Code({ children }: { children: string }) {
   return (
@@ -78,7 +81,7 @@ function App() {
         </a>
         <header className="masthead">
           <a className="wordmark" href="#">
-            Product UI<span> / 0.2.0</span>
+            Product UI<span> / 0.3.0</span>
           </a>
           <div className="header-actions">
             <a href="https://github.com/stephane-brochu/product-ui">Source</a>
@@ -107,6 +110,9 @@ function App() {
               <a href="#feedback">Feedback</a>
               <a href="#extended-fields">Checkbox & Textarea</a>
               <a href="#overlays">Dialog & Drawer</a>
+              <a href="#selection-native">Selection controls</a>
+              <a href="#disclosures-settings">Disclosures & settings</a>
+              <a href="#floating-controls">Popover & menus</a>
               <a href="#extend">Extend the library</a>
               <a href="#releases">Releases & upgrades</a>
             </nav>
@@ -120,9 +126,7 @@ function App() {
           </aside>
           <main id="main">
             <section className="hero" id="start">
-              <p className="eyebrow">
-                Shared foundations / first extraction release
-              </p>
+              <p className="eyebrow">Shared foundations / everyday controls</p>
               <h1>
                 A shared language
                 <br />
@@ -141,10 +145,10 @@ function App() {
               </div>
               <p className="note">
                 Use an existing shadcn-configured React 19 app, or the{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.2.0/templates/react">
+                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.3.0/templates/react">
                   included Vite starter
                 </a>
-                . Registry files and their dependencies are pinned to v0.2.0.
+                . Registry files and their dependencies are pinned to v0.3.0.
               </p>
             </section>
             <section id="foundations">
@@ -383,6 +387,7 @@ import "./styles/ui-patterns.css";
 </FormSection>`}</Code>
             </section>
             <SliceOne />
+            <MilestoneOne />
             <section id="extend">
               <p className="eyebrow">04 / Working together</p>
               <h2>Extend with evidence.</h2>
@@ -419,19 +424,31 @@ import "./styles/ui-patterns.css";
               </p>
             </section>
             <section id="releases">
-              <h2>v0.2.0</h2>
+              <h2>v0.3.0</h2>
+              <p>
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.2.0">
+                  v0.2.0 is also retained unchanged.
+                </a>
+              </p>
               <p>
                 <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.1.0">
                   v0.1.0 remains available unchanged.
                 </a>
               </p>
               <p>
-                The expanded core adds layout, feedback, Checkbox and Textarea.
-                Dialog/Drawer are optional, with a declared Radix dependency and
-                theme-aware portals.
+                Milestone 1 completes everyday selection controls, disclosure,
+                settings and metadata. The expanded core also includes layout,
+                feedback, Checkbox and Textarea. Dialog/Drawer are optional,
+                with a declared Radix dependency and theme-aware portals.
               </p>
               <div className="registry-links">
                 {[
+                  "selection",
+                  "disclosure",
+                  "controlled-disclosure",
+                  "settings",
+                  "popover",
+                  "action-menu",
                   "page-layout",
                   "feedback",
                   "checkbox",
@@ -456,19 +473,19 @@ import "./styles/ui-patterns.css";
                   Release manifest & file hashes
                 </a>{" "}
                 ·{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.2.0">
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.3.0">
                   Release notes
                 </a>
               </p>
               <p className="note">
                 Registry installs create source copies. Upgrades are deliberate:
                 compare the pinned hashes, review any local changes, then
-                install a reviewed release. v0.2 supports React 19; the starter
+                install a reviewed release. v0.3 supports React 19; the starter
                 and CSS paths use a src directory.
               </p>
             </section>
             <footer>
-              Product UI / v0.2.0 <span>React · owned source · MIT</span>
+              Product UI / v0.3.0 <span>React · owned source · MIT</span>
             </footer>
           </main>
         </div>

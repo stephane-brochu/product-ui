@@ -1,9 +1,9 @@
 # Product UI
 
-A small owned-source React 19 component library, extracted from a working product and designed for reuse across products. MIT licensed. v0.2.0 ships buttons, native fields, filter/form patterns, semantic themes, a versioned shadcn registry, a Vite starter, page layout, feedback states, Checkbox/Textarea and optional Dialog/Drawer.
+A small owned-source React 19 component library, extracted from a working product and designed for reuse across products. MIT licensed. v0.3.0 ships buttons, native fields, filter/form patterns, semantic themes, a versioned shadcn registry, a Vite starter, page layout, feedback states, Checkbox/Textarea optional Dialog/Drawer, selection controls, disclosures, settings/metadata and optional Popover/action menus.
 
 - Documentation: https://brochu-product-ui.vercel.app
-- Registry: https://brochu-product-ui.vercel.app/r/v0.2.0/core.json
+- Registry: https://brochu-product-ui.vercel.app/r/v0.3.0/core.json
 - Source: https://github.com/stephane-brochu/product-ui
 
 ## Use in an existing React product
@@ -11,25 +11,25 @@ A small owned-source React 19 component library, extracted from a working produc
 In a shadcn-configured React 19 project:
 
 ```sh
-npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.2.0/core.json
+npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.3.0/core.json
 ```
 
-Individual items: theme, controls, patterns, button, fields, filter-bar, form-section. Dependencies are pinned to the same version. Components respect shadcn aliases; CSS files install under src/styles. Import ui-theme.css, ui-controls.css, and ui-patterns.css once from your app entry point. The CSS uses ds-* classes; Tailwind is not required to render the components.
+Individual items include theme, controls, patterns, button, fields, filter-bar, form-section, page-layout, feedback, checkbox, selection, disclosure, controlled-disclosure and settings. Dialog, popover and action-menu are optional. Dependencies are pinned to the same version. Components respect shadcn aliases; CSS files install under src/styles. Import ui-theme.css, ui-controls.css, ui-patterns.css, ui-layout.css, ui-feedback.css and ui-composition.css once from your app entry point. The CSS uses ds-* classes; Tailwind is not required to render the components.
 
 A registry copies source. It is not an npm runtime dependency and will not automatically update existing products. Before overwriting an existing component, review the diff and preserve intentional product changes.
 
 For deterministic tracked copies in a src-based application, use the included consumer tool:
 
 ```sh
-node scripts/consume.mjs install --project /path/to/product --version 0.2.0 --registry https://brochu-product-ui.vercel.app/r/v0.2.0
+node scripts/consume.mjs install --project /path/to/product --version 0.3.0 --registry https://brochu-product-ui.vercel.app/r/v0.3.0
 node scripts/consume.mjs check --project /path/to/product
 ```
 
-This writes ui-library.lock.json with the release and file hashes, detects local drift, validates downloaded contents, and refuses unmanaged overwrites. A local `--release releases/v0.2.0` can replace `--registry` for offline installs. The finance consumer uses this pinned-copy workflow.
+This writes ui-library.lock.json with the release and file hashes, detects local drift, validates downloaded contents, and refuses unmanaged overwrites. A local `--release releases/v0.3.0` can replace `--registry` for offline installs. The finance consumer uses this pinned-copy workflow.
 
 ## Start a product
 
-Copy templates/react to a new project directory, run npm install, then npm run dev. The starter already contains the v0.2.0 source snapshot, CSS imports and its provenance lock. Change the project name, navigation and theme. Do not copy finance routes, account models or authentication into the library.
+Copy templates/react to a new project directory, run npm install, then npm run dev. The starter already contains the v0.3.0 source snapshot, CSS imports and its provenance lock. Change the project name, navigation and theme. Do not copy finance routes, account models or authentication into the library.
 
 ## Work on the library
 
@@ -52,15 +52,17 @@ Source lives in src; the documentation catalogue in docs imports those exact fil
 5. Commit, tag vX.Y.Z, publish a GitHub release and deploy the checked docs/static registry.
 6. Consumers review the source diff, resolve local drift, install the exact version, and run their own regressions.
 
-Never edit a published snapshot in place. Registry URLs reference fixed versions; there is intentionally no latest alias. v0.2.0 is a first release supporting React 19 and the documented src-based starter, not a universal framework adapter.
+Never edit a published snapshot in place. Registry URLs reference fixed versions; there is intentionally no latest alias. v0.3.0 is a release supporting React 19 and the documented src-based starter, not a universal framework adapter.
 
-## v0.2 contracts and migration
+## v0.3 contracts and migration
 
-See [component contracts](docs/component-contracts.md) and [migration notes](docs/migrations/v0.2.0.md). Core installs 12 portable files without Radix. Dialog is optional and adds three files:
+See [component contracts](docs/component-contracts.md) and [migration notes](docs/migrations/v0.3.0.md). Core installs 17 portable files without Radix. Dialog is optional and adds three files:
 
 ```sh
 npm install --save-exact @radix-ui/react-dialog@1.3.1
-node scripts/consume.mjs install --project /path/to/product --version 0.2.0 --registry https://brochu-product-ui.vercel.app/r/v0.2.0 --items core,dialog
+node scripts/consume.mjs install --project /path/to/product --version 0.3.0 --registry https://brochu-product-ui.vercel.app/r/v0.3.0 --items core,dialog
 ```
 
-The deterministic installer requires the exact declared dependency before writing files, resolves transitive registry dependencies, retains previously selected items, and tracks the selected file hashes. It never invokes npm or executes downloaded code. Use the current consumer script when upgrading from v0.1.0. Import ui-layout.css and ui-feedback.css alongside the existing core CSS, and ui-dialog.css when opting into overlays. Wrap the product in ThemeBoundary for theme-aware portals.
+The deterministic installer requires the exact declared dependency before writing files, resolves transitive registry dependencies, retains previously selected items, and tracks the selected file hashes. It never invokes npm or executes downloaded code. Use the current consumer script when upgrading from v0.1.0. Import ui-layout.css, ui-feedback.css and ui-composition.css alongside the existing core CSS, and ui-dialog.css when opting into overlays. Wrap the product in ThemeBoundary for theme-aware portals.
+
+Milestone 1 adds [everyday-control contracts and migration](docs/migrations/v0.3.0.md). Optional floating controls also import ui-floating.css and declare their pinned Radix dependencies. Earlier v0.1.0 and v0.2.0 releases remain available.

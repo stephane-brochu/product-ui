@@ -1,4 +1,4 @@
-# Component contracts — v0.2.0
+# Component contracts — v0.3.0
 
 The live catalogue imports the canonical sources and exposes both Ledger and Studio themes. React 19 is required. The library owns presentation and interaction; consumers own data, requests, routing and business rules.
 
@@ -22,3 +22,17 @@ Dialog/Drawer use Radix modal semantics. A trigger should be a single ref-capabl
 Native form/browser validation remains available. Error messages do not automatically move focus or manage a form-wide validation summary. ValidationMessage announces validation, ToastNotification announces status; queue management is not included. Dates and checkboxes retain browser-specific native behavior.
 
 Automated checks cover native relationships and serialization, refs, heading order, retry, bounded/unknown progress, focus trap/return, controlled and uncontrolled overlays, busy close prevention, failed-save value retention, registry dependency policy, optional installation and v0.1 integrity protections. Browser review covers both themes and desktop/phone layouts. This is not a formal assistive-technology certification.
+
+
+## Everyday controls
+
+| Item | Exports | Supported states |
+| --- | --- | --- |
+| selection | RadioGroup, SegmentedControl, Switch | Controlled/uncontrolled, default values, native reset/serialization, required radios, disabled, validation, empty/removed choices |
+| disclosure | Disclosure (server-compatible) | Native expansion before hydration, initial open/closed, count, nested content |
+| controlled-disclosure | ControlledDisclosure (client) | Validation reveal, owner-controlled open, keyboard activation, focus recovery |
+| settings | SettingsGroup, SettingsRow, MetadataList | Heading levels, labelled sections, responsive control slots, missing versus zero, long values |
+| popover (optional) | Popover, PopoverClose | Default/controlled open, slotted content/close, collision, theme scope and focus return |
+| action-menu (optional) | DropdownActionMenu | Keyboard selection, stable IDs, disabled/empty/destructive presentation, prevent-dismiss selection, focus return |
+
+See [v0.3 migration and full contracts](migrations/v0.3.0.md) for native semantics, exact dependencies, CSS imports, refs, consumer changes and limits. Native controls retain browser-specific appearance and interaction. Core does not include optional Radix packages. Tests cover form reset and exact serialization, selection keyboard behavior, disclosure SSR/focus, missing-versus-zero metadata and themed nested floating surfaces.

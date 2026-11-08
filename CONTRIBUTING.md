@@ -13,7 +13,7 @@ Start with a real product requirement. Decide whether it belongs in foundations,
 - No global reset or unscoped application selectors in exported component CSS.
 - Direct imports and explicit client boundaries. Do not create a global interactive barrel.
 
-Run npm run check. Registry validation enforces React-only component imports, the shadcn schema and immutable snapshot contents. CI runs these checks and rebuilds the starter from its pinned source.
+Run npm run check. Registry validation enforces declared portable imports and exact optional dependencies, the shadcn schema and immutable snapshot contents. CI runs these checks and rebuilds the starter from its pinned source.
 
 ## Release discipline
 

@@ -352,3 +352,6 @@ a:focus-visible {
   display: grid;
   gap: 20px;
 }
+
+.demo > .ds-button {justify-self:start}
+.floating-example-note {font-size:12px;color:var(--ui-muted-foreground)}

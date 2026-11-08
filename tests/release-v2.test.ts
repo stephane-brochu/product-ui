@@ -13,7 +13,7 @@ beforeEach(async () => {
 afterEach(async () => {
   await fs.rm(directory, { recursive: true, force: true });
 });
-const release = path.resolve(".registry-preview/v0.2.0");
+const release = path.resolve("releases/v0.2.0");
 it("installs core without Radix, adds optional dialog with exact dependencies, and retains core", async () => {
   await install({ project: directory, release, version: "0.2.0" });
   const core = await check(directory);

@@ -8,6 +8,7 @@
   --ui-overlay: rgb(30 30 30 / 28%);
   --ui-layer-overlay: 100;
   --ui-layer-dialog: 101;
+  --ui-layer-floating: 110;
   --ui-success-foreground: #205b39;
   --ui-warning-foreground: #76500d;
   --ui-info-foreground: #2448a5;

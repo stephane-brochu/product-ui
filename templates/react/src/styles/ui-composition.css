@@ -1,0 +1,104 @@
+.ds-disclosure {
+  font: 400 14px/1.6 var(--ui-font-interface);
+  color: var(--ui-foreground);
+  border-block-start: 1px solid var(--ui-border);
+  min-width: 0;
+}
+.ds-disclosure > summary {
+  cursor: pointer;
+  padding-block: 14px;
+  min-height: var(--ui-control-height);
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+.ds-disclosure > summary:focus-visible {
+  outline: 2px solid var(--ui-ring);
+  outline-offset: 3px;
+}
+.ds-disclosure-count {
+  display: inline-block;
+  margin-inline-start: 12px;
+  color: var(--ui-muted-foreground);
+  font-size: 12px;
+}
+.ds-disclosure-content {
+  padding-block: 4px 20px;
+  min-width: 0;
+}
+.ds-settings-group {
+  border-top: 1px solid var(--ui-foreground);
+  padding-block: 24px;
+  font-family: var(--ui-font-interface);
+  color: var(--ui-foreground);
+  min-width: 0;
+}
+.ds-settings-group > :is(h2, h3, h4) {
+  font: 500 18px/1.4 var(--ui-font-interface);
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.ds-settings-description {
+  font: 400 12px/1.7 var(--ui-font-interface);
+  color: var(--ui-muted-foreground);
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+.ds-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--ui-border);
+  font-family: var(--ui-font-interface);
+  color: var(--ui-foreground);
+}
+.ds-settings-row > div {
+  min-width: 0;
+}
+.ds-settings-row strong {
+  font-size: 13px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.ds-settings-control {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+.ds-metadata {
+  margin: 0;
+  font: 400 13px/1.7 var(--ui-font-interface);
+  color: var(--ui-foreground);
+  min-width: 0;
+}
+.ds-metadata-row {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--ui-border);
+}
+.ds-metadata dt {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.ds-metadata dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.ds-metadata-action {
+  margin-top: 8px;
+}
+@media (max-width: 540px) {
+  .ds-settings-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .ds-metadata-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}

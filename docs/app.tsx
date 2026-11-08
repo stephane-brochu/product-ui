@@ -162,7 +162,7 @@ function App() {
               </div>
               <p className="note">
                 Use an existing shadcn-configured React 19 app, or the{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.6.0/templates/react">
+                <a href="https://github.com/stephane-brochu/product-ui/tree/main/templates/react">
                   included Vite starter
                 </a>
                 . Registry files and their dependencies are pinned to v0.6.0.

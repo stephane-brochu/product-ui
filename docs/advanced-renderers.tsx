@@ -268,7 +268,7 @@ export function AdvancedRenderers() {
           <code>{`npm install --save-exact pdfjs-dist@6.4.299\nnpx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.6.0/pdfjs-loader.json\n// Supply a worker URL built/copied from that exact installed version.\n// No worker, auth policy or source credentials are embedded in shared components.`}</code>
         </pre>
         <p>
-          <a href="https://github.com/stephane-brochu/product-ui/blob/v0.6.0/docs/migrations/v0.6.0.md">
+          <a href="https://github.com/stephane-brochu/product-ui/blob/main/docs/migrations/v0.6.0.md">
             Read renderer APIs, accessibility, source ownership and supported
             limits
           </a>

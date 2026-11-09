@@ -1,3 +1,4 @@
+import { CreatableSelection } from "./creatable-selection";
 import { AdvancedRenderers } from "./advanced-renderers";
 import "../src/styles/ui-charts.css";
 import "../src/styles/ui-pdf.css";
@@ -38,7 +39,7 @@ import "../src/styles/ui-theme.css";
 import "../src/styles/ui-controls.css";
 import "../src/styles/ui-patterns.css";
 import "./site.css";
-const base = "https://brochu-product-ui.vercel.app/r/v0.6.0";
+const base = "https://brochu-product-ui.vercel.app/r/v0.7.0";
 const install = `npx shadcn@4.23.0 add ${base}/core.json`;
 function Code({ children }: { children: string }) {
   return (
@@ -90,7 +91,7 @@ function App() {
         </a>
         <header className="masthead">
           <a className="wordmark" href="#">
-            Product UI<span> / 0.6.0</span>
+            Product UI<span> / 0.7.0</span>
           </a>
           <div className="header-actions">
             <a href="https://github.com/stephane-brochu/product-ui">Source</a>
@@ -120,6 +121,7 @@ function App() {
               <a href="#extended-fields">Checkbox & Textarea</a>
               <a href="#overlays">Dialog & Drawer</a>
               <a href="#selection-native">Selection controls</a>
+              <a href="#creatable-selection">Create within selection</a>
               <a href="#disclosures-settings">Disclosures & settings</a>
               <a href="#floating-controls">Popover & menus</a>
               <a href="#data-presentation">Data tables</a>
@@ -162,10 +164,10 @@ function App() {
               </div>
               <p className="note">
                 Use an existing shadcn-configured React 19 app, or the{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/tree/main/templates/react">
+                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.7.0/templates/react">
                   included Vite starter
                 </a>
-                . Registry files and their dependencies are pinned to v0.6.0.
+                . Registry files and their dependencies are pinned to v0.7.0.
               </p>
             </section>
             <section id="foundations">
@@ -408,6 +410,7 @@ import "./styles/ui-patterns.css";
             <DataPresentation />
             <NavigationWorkflows />
             <AdvancedRenderers />
+            <CreatableSelection />
             <section id="extend">
               <p className="eyebrow">04 / Working together</p>
               <h2>Extend with evidence.</h2>
@@ -444,7 +447,22 @@ import "./styles/ui-patterns.css";
               </p>
             </section>
             <section id="releases">
-              <h2>v0.6.0</h2>
+              <h2>v0.7.0</h2>
+              <p>
+                New: optional CreatableSelect adds creation inside a selection
+                popup, with native form validation and failure/retry. No new npm
+                dependency.
+              </p>
+              <p>
+                <a href={`${base}/creatable-select.json`}>
+                  creatable-select.json ↗
+                </a>
+              </p>
+              <p>
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.6.0">
+                  v0.6.0 remains available unchanged.
+                </a>
+              </p>
               <p>
                 <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.5.0">
                   v0.5.0 remains available unchanged.
@@ -529,7 +547,7 @@ import "./styles/ui-patterns.css";
                   Release manifest & file hashes
                 </a>{" "}
                 ·{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.6.0">
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.7.0">
                   Release notes
                 </a>
               </p>
@@ -541,7 +559,7 @@ import "./styles/ui-patterns.css";
               </p>
             </section>
             <footer>
-              Product UI / v0.6.0 <span>React · owned source · MIT</span>
+              Product UI / v0.7.0 <span>React · owned source · MIT</span>
             </footer>
           </main>
         </div>

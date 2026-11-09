@@ -1,6 +1,6 @@
 {
   "name": "product-ui",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "homepage": "https://brochu-product-ui.vercel.app",
   "repository": "https://github.com/stephane-brochu/product-ui",
   "items": [
@@ -813,6 +813,30 @@
       "npmDependencies": {
         "pdfjs-dist": "6.4.299"
       }
+    },
+    {
+      "name": "creatable-select",
+      "title": "Create within a selection control",
+      "type": "registry:ui",
+      "dependencies": [
+        "popover",
+        "selection",
+        "fields"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/creatable-select.tsx",
+          "target": "src/components/ui/creatable-select.tsx",
+          "registryTarget": "@ui/creatable-select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "source": "src/styles/ui-creatable.css",
+          "target": "src/styles/ui-creatable.css",
+          "registryTarget": "~/src/styles/ui-creatable.css",
+          "type": "registry:file"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "repeatable-fields",
+  "type": "registry:component",
+  "title": "Repeatable Fields",
+  "description": "Product UI v0.7.0: Repeatable Fields. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.7.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.7.0/workflow-styles.json",
+    "https://brochu-product-ui.vercel.app/r/v0.7.0/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/repeatable-fields.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/repeatable-fields.tsx",
+      "content": "\"use client\";\nimport { useId, useLayoutEffect, useRef, type ReactNode } from \"react\";\nimport { Button } from \"../ui/button\";\nexport type RepeatableFieldItem = {\n  id: string;\n  content: ReactNode;\n  label: string;\n};\n/** Stable IDs and values/serialization belong to the caller. */\nexport function RepeatableFields({\n  label,\n  items,\n  onAdd,\n  onRemove,\n  addLabel = \"Add row\",\n  removeLabel = \"Remove\",\n  maxItems,\n  minItems = 0,\n  disabled = false,\n  emptyMessage = \"No rows added.\",\n}: {\n  label: string;\n  items: readonly RepeatableFieldItem[];\n  onAdd: () => void;\n  onRemove: (id: string) => void;\n  addLabel?: string;\n  removeLabel?: string;\n  minItems?: number;\n  maxItems?: number;\n  disabled?: boolean;\n  emptyMessage?: ReactNode;\n}) {\n  const root = useRef<HTMLFieldSetElement>(null),\n    add = useRef<HTMLButtonElement>(null);\n  const pendingFocus = useRef<{ kind: \"add\" | \"remove\"; index: number } | null>(\n    null,\n  );\n  const id = useId();\n  if (\n    new Set(items.map((item) => item.id)).size !== items.length ||\n    items.some((item) => !item.id)\n  )\n    throw new Error(\"Repeatable fields require unique nonempty IDs\");\n  if (\n    !Number.isInteger(minItems) ||\n    minItems < 0 ||\n    (maxItems !== undefined &&\n      (!Number.isInteger(maxItems) || maxItems < minItems))\n  )\n    throw new Error(\"Invalid repeatable field limits\");\n  useLayoutEffect(() => {\n    const pending = pendingFocus.current;\n    if (!pending) return;\n    pendingFocus.current = null;\n    const rows = root.current?.querySelectorAll<HTMLElement>(\n      \"[data-repeatable-row]\",\n    );\n    const row = rows?.[Math.min(pending.index, (rows?.length ?? 0) - 1)];\n    const focusable = row?.querySelector<HTMLElement>(\n      pending.kind === \"remove\"\n        ? \"button[data-remove]:not(:disabled)\"\n        : \"input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled)\",\n    );\n    (focusable ?? add.current)?.focus();\n  }, [items]);\n  return (\n    <fieldset ref={root} disabled={disabled} className=\"ds-repeatable-fields\">\n      <legend>{label}</legend>\n      {!items.length && <p>{emptyMessage}</p>}\n      {items.map((item, index) => (\n        <fieldset\n          key={item.id}\n          data-repeatable-row\n          className=\"ds-repeatable-row\"\n        >\n          <legend>{item.label}</legend>\n          <div className=\"ds-repeatable-content\">{item.content}</div>\n          <Button\n            data-remove\n            variant=\"tertiary\"\n            aria-label={`${removeLabel} ${item.label}`}\n            disabled={disabled || items.length <= minItems}\n            onClick={() => {\n              pendingFocus.current = { kind: \"remove\", index };\n              onRemove(item.id);\n            }}\n          >\n            {removeLabel}\n          </Button>\n        </fieldset>\n      ))}\n      <Button\n        ref={add}\n        variant=\"secondary\"\n        aria-describedby={maxItems !== undefined ? `${id}-limit` : undefined}\n        disabled={\n          disabled || (maxItems !== undefined && items.length >= maxItems)\n        }\n        onClick={() => {\n          pendingFocus.current = { kind: \"add\", index: items.length };\n          onAdd();\n        }}\n      >\n        {addLabel}\n      </Button>\n      {maxItems !== undefined && (\n        <p id={`${id}-limit`} className=\"ds-workflow-caption\">\n          {items.length} of {maxItems} rows\n        </p>\n      )}\n    </fieldset>\n  );\n}\n"
+    }
+  ]
+}

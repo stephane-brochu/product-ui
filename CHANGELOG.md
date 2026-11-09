@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0
+
+- Optional CreatableSelect with callback-owned inline creation, exact native form values, validation, pending/failure/retry and nested-dialog examples.
+- TextInput accepts native React19 refs. No new dependency; old snapshots retained.
+
 ## v0.6.0
 
 - Extract optional chart primitives, time-series/grouped/signed stacked plots, comparison bars, supplied waterfall/relationship plots and sparklines with exact text alternatives.

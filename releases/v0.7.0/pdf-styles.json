@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pdf-styles",
+  "type": "registry:style",
+  "title": "Pdf Styles",
+  "description": "Product UI v0.7.0: Pdf Styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.7.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.7.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-pdf.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-pdf.css",
+      "content": ".ds-pdf-viewer {\n  min-width: 0;\n  min-height: 200px;\n  padding: 12px;\n  border: 1px solid var(--ui-border);\n  color: var(--ui-foreground);\n  font-family: var(--ui-font-interface);\n}\n.ds-pdf-viewer canvas {\n  display: block;\n  max-width: 100%;\n  height: auto;\n  margin-block: 12px;\n  background: white;\n}\n.ds-pdf-viewer canvas[hidden] {\n  display: none;\n}\n.ds-pdf-toolbar {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  font-size: 12px;\n}\n.ds-pdf-error {\n  color: var(--ui-destructive);\n  margin-block: 12px;\n  overflow-wrap: anywhere;\n}\n.ds-pdf-viewer details {\n  margin-block: 12px;\n  font-size: 13px;\n}\n.ds-preview-frame {\n  min-width: 0;\n  border: 1px solid var(--ui-border);\n  padding: 16px;\n  border-radius: var(--ui-radius);\n  color: var(--ui-foreground);\n}\n.ds-preview-frame > header {\n  display: flex;\n  align-items: start;\n  justify-content: space-between;\n  gap: 16px;\n  flex-wrap: wrap;\n  margin-block-end: 16px;\n}\n.ds-preview-frame h3 {\n  font: 400 24px var(--ui-font-editorial);\n  margin: 0;\n  overflow-wrap: anywhere;\n}\n.ds-preview-frame iframe {\n  border: 0;\n  width: 100%;\n  min-height: 400px;\n}\n@media print {\n  .ds-pdf-toolbar {\n    display: none;\n  }\n  .ds-pdf-viewer canvas {\n    break-inside: avoid;\n  }\n}\n"
+    }
+  ]
+}

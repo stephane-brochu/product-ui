@@ -1,9 +1,9 @@
 # Product UI
 
-A small owned-source React 19 component library, extracted from a working product and designed for reuse across products. MIT licensed. v0.6.0 ships buttons, native fields, filter/form patterns, semantic themes, a versioned shadcn registry, a Vite starter, page layout, feedback states, Checkbox/Textarea optional Dialog/Drawer, selection controls, disclosures, settings/metadata and optional Popover/action menus.
+A small owned-source React 19 component library, extracted from a working product and designed for reuse across products. MIT licensed. v0.7.0 ships buttons, native fields, filter/form patterns, semantic themes, a versioned shadcn registry, a Vite starter, page layout, feedback states, Checkbox/Textarea optional Dialog/Drawer, selection controls, disclosures, settings/metadata and optional Popover/action menus.
 
 - Documentation: https://brochu-product-ui.vercel.app
-- Registry: https://brochu-product-ui.vercel.app/r/v0.6.0/core.json
+- Registry: https://brochu-product-ui.vercel.app/r/v0.7.0/core.json
 - Source: https://github.com/stephane-brochu/product-ui
 
 ## Use in an existing React product
@@ -11,7 +11,7 @@ A small owned-source React 19 component library, extracted from a working produc
 In a shadcn-configured React 19 project:
 
 ```sh
-npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.6.0/core.json
+npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.7.0/core.json
 ```
 
 Individual items include theme, controls, patterns, button, fields, filter-bar, form-section, page-layout, feedback, checkbox, selection, disclosure, controlled-disclosure and settings. Dialog, popover and action-menu are optional. Dependencies are pinned to the same version. Components respect shadcn aliases; CSS files install under src/styles. Import ui-theme.css, ui-controls.css, ui-patterns.css, ui-layout.css, ui-feedback.css and ui-composition.css, ui-data.css and ui-metrics.css once from your app entry point. The CSS uses ds-* classes; Tailwind is not required to render the components.
@@ -21,15 +21,15 @@ A registry copies source. It is not an npm runtime dependency and will not autom
 For deterministic tracked copies in a src-based application, use the included consumer tool:
 
 ```sh
-node scripts/consume.mjs install --project /path/to/product --version 0.6.0 --registry https://brochu-product-ui.vercel.app/r/v0.6.0
+node scripts/consume.mjs install --project /path/to/product --version 0.7.0 --registry https://brochu-product-ui.vercel.app/r/v0.7.0
 node scripts/consume.mjs check --project /path/to/product
 ```
 
-This writes ui-library.lock.json with the release and file hashes, detects local drift, validates downloaded contents, and refuses unmanaged overwrites. A local `--release releases/v0.6.0` can replace `--registry` for offline installs. The finance consumer uses this pinned-copy workflow.
+This writes ui-library.lock.json with the release and file hashes, detects local drift, validates downloaded contents, and refuses unmanaged overwrites. A local `--release releases/v0.7.0` can replace `--registry` for offline installs. The finance consumer uses this pinned-copy workflow.
 
 ## Start a product
 
-Copy templates/react to a new project directory, run npm install, then npm run dev. The starter already contains the v0.6.0 source snapshot, CSS imports and its provenance lock. Change the project name, navigation and theme. Do not copy finance routes, account models or authentication into the library.
+Copy templates/react to a new project directory, run npm install, then npm run dev. The starter already contains the v0.7.0 source snapshot, CSS imports and its provenance lock. Change the project name, navigation and theme. Do not copy finance routes, account models or authentication into the library.
 
 ## Work on the library
 
@@ -60,7 +60,7 @@ See [component contracts](docs/component-contracts.md) and [migration notes](doc
 
 ```sh
 npm install --save-exact @radix-ui/react-dialog@1.3.1
-node scripts/consume.mjs install --project /path/to/product --version 0.6.0 --registry https://brochu-product-ui.vercel.app/r/v0.6.0 --items core,dialog
+node scripts/consume.mjs install --project /path/to/product --version 0.7.0 --registry https://brochu-product-ui.vercel.app/r/v0.7.0 --items core,dialog
 ```
 
 The deterministic installer requires the exact declared dependency before writing files, resolves transitive registry dependencies, retains previously selected items, and tracks the selected file hashes. It never invokes npm or executes downloaded code. Use the current consumer script when upgrading from v0.1.0. Import ui-layout.css, ui-feedback.css and ui-composition.css alongside the existing core CSS, and ui-dialog.css when opting into overlays. Wrap the product in ThemeBoundary for theme-aware portals.
@@ -72,3 +72,8 @@ Milestone 2 standardizes [data presentation](docs/migrations/v0.6.0.md). Native 
 Milestones 3 and 4 add [application navigation and form/review workflows](docs/migrations/v0.6.0.md): AppShell/header/sidebar/breadcrumbs/section navigation, optional mobile navigation and confirmation, repeatable fields/file selection, callback-only upload queues and source-first review/history. The catalogue uses both Harbour workspace and Atlas support navigation. Products own branding, routes, auth, server mutations, transport, validation, retries and provenance. Import ui-navigation.css and ui-workflows.css.
 
 Milestone 5 adds [optional chart/PDF renderer contracts](docs/migrations/v0.6.0.md). Charts require no new dependency; core remains 29 files without charts or PDF.js. The optional PDF.js adapter pins 6.4.299 and requires a product-supplied matching worker URL. Finance supplies all calculations, formatting, CSV schemas, source authorization and provenance. New products can opt into either renderer independently.
+
+
+## Create within a selection control
+
+[CreatableSelect contracts](docs/migrations/v0.7.0.md) describe optional callback-owned creation, native form validation and nested dialogs. Import ui-creatable.css alongside the Popover/selection styles. Changes belong in this canonical component; products adopt a new pinned snapshot deliberately. Updates do not silently overwrite owned source in other projects.

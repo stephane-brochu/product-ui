@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "review-layout",
+  "type": "registry:component",
+  "title": "Review Layout",
+  "description": "Product UI v0.7.0: Review Layout. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.7.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.7.0/workflow-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/review-layout.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/review-layout.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\nexport function ReviewLayout({\n  evidence,\n  children,\n  evidenceLabel = \"Source evidence\",\n  reviewLabel = \"Review\",\n  className = \"\",\n  ...props\n}: ComponentPropsWithRef<\"div\"> & {\n  evidence: ReactNode;\n  evidenceLabel?: string;\n  reviewLabel?: string;\n}) {\n  return (\n    <div {...props} className={`ds-review-layout ${className}`}>\n      <section aria-label={evidenceLabel} className=\"ds-review-evidence\">\n        {evidence}\n      </section>\n      <section aria-label={reviewLabel} className=\"ds-review-content\">\n        {children}\n      </section>\n    </div>\n  );\n}\nexport type HistoryEvent = {\n  id: string;\n  title: ReactNode;\n  dateLabel: ReactNode;\n  dateTime?: string;\n  detail?: ReactNode;\n  source?: ReactNode;\n};\nexport function HistoryTimeline({\n  events,\n  label = \"History\",\n  emptyMessage = \"No history yet.\",\n}: {\n  events: readonly HistoryEvent[];\n  label?: string;\n  emptyMessage?: ReactNode;\n}) {\n  return (\n    <section className=\"ds-history-timeline\" aria-label={label}>\n      {events.length ? (\n        <ol>\n          {events.map((event) => (\n            <li key={event.id}>\n              <time dateTime={event.dateTime}>{event.dateLabel}</time>\n              <div>\n                <strong>{event.title}</strong>\n                {event.detail != null && <div>{event.detail}</div>}\n                {event.source}\n              </div>\n            </li>\n          ))}\n        </ol>\n      ) : (\n        <p>{emptyMessage}</p>\n      )}\n    </section>\n  );\n}\n"
+    }
+  ]
+}

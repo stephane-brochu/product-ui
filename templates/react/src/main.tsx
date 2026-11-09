@@ -11,7 +11,7 @@ function App() {
     <div className="starter" data-ui-theme="studio">
     <AppShell mainId="product-main" header={<Header brand={<a href="#welcome">Harbour</a>} navigation={<PrimaryNavigation items={[{label:"Workspace",href:"#welcome"}]} />} />} sidebar={<Sidebar label="Workspace" items={[{label:"Get started",href:"#welcome"}]} />}>
       <h1>Your next product</h1>
-      <p>A small starting point built on Product UI v0.6.0.</p>
+      <p>A small starting point built on Product UI v0.7.0.</p>
       <FormSection
         id="welcome"
         title="Get started"

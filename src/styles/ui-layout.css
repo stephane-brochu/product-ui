@@ -18,7 +18,7 @@
   align-items: end;
   justify-content: space-between;
   gap: 32px;
-  padding-block: 64px 48px;
+  padding-block: var(--ui-page-header-padding, 64px 48px);
   font-family: var(--ui-font-interface);
   color: var(--ui-foreground);
 }
@@ -28,10 +28,10 @@
 }
 .ds-page-header :is(h1, h2, h3, h4) {
   font-family: var(--ui-font-editorial);
-  font-size: clamp(48px, 5.5vw, 64px);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
-  font-weight: 300;
+  font-size: var(--ui-page-title-size, clamp(48px, 5.5vw, 64px));
+  line-height: var(--ui-page-title-leading, 1.04);
+  letter-spacing: var(--ui-page-title-tracking, -0.035em);
+  font-weight: var(--ui-page-title-weight, 300);
   margin: 0 0 16px;
   overflow-wrap: anywhere;
 }
@@ -55,8 +55,8 @@
   align-items: start;
   justify-content: space-between;
   gap: 32px;
-  border-top: 1px solid var(--ui-foreground);
-  padding-block: 24px 32px;
+  border-top: var(--ui-section-border, 1px solid var(--ui-foreground));
+  padding-block: var(--ui-section-header-padding, 24px 32px);
   font-family: var(--ui-font-interface);
   color: var(--ui-foreground);
 }
@@ -71,8 +71,8 @@
 }
 .ds-section-header :is(h1, h2, h3, h4) {
   font-family: var(--ui-font-editorial);
-  font-size: 32px;
-  font-weight: 400;
+  font-size: var(--ui-section-title-size, 32px);
+  font-weight: var(--ui-section-title-weight, 400);
   line-height: 1.15;
   margin: 0 0 8px;
   overflow-wrap: anywhere;
@@ -91,7 +91,7 @@
 }
 @media (max-width: 800px) {
   .ds-page-header {
-    padding-block: 40px 32px;
+    padding-block: var(--ui-page-header-padding-mobile, 40px 32px);
   }
 }
 @media (max-width: 540px) {
@@ -108,6 +108,6 @@
     gap: 12px;
   }
   .ds-section-header :is(h1, h2, h3, h4) {
-    font-size: 30px;
+    font-size: var(--ui-section-title-size, 30px);
   }
 }

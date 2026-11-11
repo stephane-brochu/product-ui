@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-select",
+  "type": "registry:ui",
+  "title": "Checkbox multi-select",
+  "description": "Product UI v0.9.0: Checkbox multi-select. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/popover.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/checkbox.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/foundations.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/multi-select.tsx",
+      "type": "registry:ui",
+      "target": "@ui/multi-select.tsx",
+      "content": "\"use client\";\nimport { useId, type ReactNode } from \"react\";\nimport { Popover } from \"./popover\";\nimport { Button } from \"./button\";\nimport { Checkbox } from \"./checkbox\";\nexport type MultiSelectOption = { value: string; label: string; disabled?: boolean };\nexport function MultiSelect({ label, options, values, onValueChange, allLabel = \"All options\", emptyLabel = \"No options selected\", emptyMessage = \"No options available.\", itemLabel = \"option\", itemLabelPlural = \"options\", disabled = false, name, error }: {\n  label: string; options: readonly MultiSelectOption[]; values: readonly string[]; onValueChange: (values: string[]) => void;\n  allLabel?: string; emptyLabel?: string; emptyMessage?: string; itemLabel?: string; itemLabelPlural?: string; disabled?: boolean; name?: string; error?: ReactNode;\n}) {\n  const id = useId(), unique = [...new Map(options.map(option => [option.value, option])).values()];\n  const selected = unique.filter(option => values.includes(option.value)), enabled = unique.filter(option => !option.disabled);\n  const all = enabled.length > 0 && enabled.every(option => values.includes(option.value));\n  const some = enabled.some(option => values.includes(option.value));\n  const summary = selected.length === 0 ? emptyLabel : selected.length === unique.length ? allLabel : selected.length === 1 ? selected[0].label : `${selected.length} ${itemLabelPlural}`;\n  function toggle(value: string, checked: boolean) {\n    const next = new Set(selected.map(option => option.value));\n    if (checked) next.add(value); else next.delete(value);\n    onValueChange(unique.filter(option => next.has(option.value)).map(option => option.value));\n  }\n  return <div className=\"ds-multi-select\">\n    <span id={`${id}-label`} className=\"ds-control-label\">{label}</span>\n    <Popover title={label} trigger={<Button variant=\"secondary\" disabled={disabled} aria-labelledby={`${id}-label ${id}-summary`} aria-invalid={Boolean(error) || undefined} aria-describedby={error ? `${id}-error` : undefined}>\n      <span id={`${id}-summary`}>{summary}</span><span aria-hidden=\"true\"> ▾</span>\n    </Button>}>\n      <fieldset className=\"ds-multi-select-options\" disabled={disabled}><legend className=\"ds-sr-only\">{label}</legend>\n        {unique.length > 0 ? <Checkbox label={allLabel} checked={all} indeterminate={some && !all} disabled={enabled.length === 0}\n          onChange={event => {\n            const next = new Set(selected.map(option => option.value));\n            for (const option of enabled) { if (event.target.checked) next.add(option.value); else next.delete(option.value); }\n            onValueChange(unique.filter(option => next.has(option.value)).map(option => option.value));\n          }} /> : <p>{emptyMessage}</p>}\n        {unique.map(option => <Checkbox key={option.value} label={option.label} checked={values.includes(option.value)} disabled={option.disabled} onChange={event => toggle(option.value, event.target.checked)} />)}\n      </fieldset>\n    </Popover>\n    {name && selected.map(option => <input key={option.value} type=\"hidden\" name={name} value={option.value} disabled={disabled} />)}\n    {error && <p id={`${id}-error`} role=\"alert\" className=\"ds-validation\">{error}</p>}\n    <span className=\"ds-sr-only\" aria-live=\"polite\">{selected.length} {selected.length === 1 ? itemLabel : itemLabelPlural} selected</span>\n  </div>;\n}\n"
+    }
+  ]
+}

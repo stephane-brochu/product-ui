@@ -8,6 +8,8 @@ export type DialogProps = {
   description: ReactNode;
   trigger?: ReactNode;
   children: ReactNode;
+  footer?: ReactNode;
+  eyebrow?: ReactNode;
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -27,6 +29,8 @@ export function Dialog({
   description,
   trigger,
   children,
+  footer,
+  eyebrow,
   open,
   defaultOpen,
   onOpenChange,
@@ -58,6 +62,7 @@ export function Dialog({
             {...contentProps}
             className={`ds-dialog ${drawer ? "ds-drawer" : ""} ${className} ${contentProps.className ?? ""}`}
             data-size={size}
+            data-fixed-footer={footer != null || undefined}
             onCloseAutoFocus={onCloseAutoFocus ?? contentProps.onCloseAutoFocus}
             onEscapeKeyDown={(event) => {
               contentProps.onEscapeKeyDown?.(event);
@@ -69,7 +74,7 @@ export function Dialog({
             }}
           >
             <div className="ds-dialog-header">
-              <Primitive.Title>{title}</Primitive.Title>
+              <div>{eyebrow && <p className="ds-dialog-eyebrow">{eyebrow}</p>}<Primitive.Title>{title}</Primitive.Title></div>
               <Primitive.Close asChild>
                 <IconButton
                   variant="tertiary"
@@ -83,7 +88,7 @@ export function Dialog({
             <Primitive.Description className="ds-dialog-description">
               {description}
             </Primitive.Description>
-            {children}
+            {footer != null ? <><div className="ds-dialog-body">{children}</div><footer className="ds-dialog-footer">{footer}</footer></> : children}
           </Primitive.Content>
         </Primitive.Portal>
       )}

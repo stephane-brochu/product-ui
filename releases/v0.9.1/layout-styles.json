@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layout-styles",
+  "type": "registry:style",
+  "title": "Layout styles",
+  "description": "Product UI v0.9.1: Layout styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-layout.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-layout.css",
+      "content": ".ds-page {\n  box-sizing: border-box;\n  width: min(\n    100%,\n    calc(var(--ui-content-width, 1200px) + var(--ui-gutter, 50px) * 2)\n  );\n  margin-inline: auto;\n  padding: 0 var(--ui-gutter, clamp(20px, 4vw, 50px)) 80px;\n}\n.ds-page--wide {\n  width: min(\n    100%,\n    calc(var(--ui-content-wide, 1440px) + var(--ui-gutter, 50px) * 2)\n  );\n}\n.ds-page-header {\n  display: flex;\n  align-items: end;\n  justify-content: space-between;\n  gap: 32px;\n  padding-block: var(--ui-page-header-padding, 64px 48px);\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n}\n.ds-page-header > div,\n.ds-page-action {\n  min-width: 0;\n}\n.ds-page-header :is(h1, h2, h3, h4) {\n  font-family: var(--ui-font-editorial);\n  font-size: var(--ui-page-title-size, clamp(48px, 5.5vw, 64px));\n  line-height: var(--ui-page-title-leading, 1.04);\n  letter-spacing: var(--ui-page-title-tracking, -0.035em);\n  font-weight: var(--ui-page-title-weight, 300);\n  margin: 0 0 16px;\n  overflow-wrap: anywhere;\n}\n.ds-page-header .ds-eyebrow {\n  margin: 0 0 16px;\n  text-transform: uppercase;\n  letter-spacing: 0.12em;\n  font-size: 11px;\n  font-weight: 500;\n  color: var(--ui-muted-foreground);\n}\n.ds-intro {\n  max-width: 640px;\n  margin: 0;\n  font-size: 14px;\n  line-height: 1.8;\n  color: var(--ui-muted-foreground);\n}\n.ds-section-header {\n  display: flex;\n  align-items: start;\n  justify-content: space-between;\n  gap: 32px;\n  border-top: var(--ui-section-border, 1px solid var(--ui-foreground));\n  padding-block: var(--ui-section-header-padding, 24px 32px);\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n}\n.ds-section-title {\n  display: flex;\n  align-items: baseline;\n  gap: 20px;\n  min-width: 0;\n}\n.ds-section-title > div {\n  min-width: 0;\n}\n.ds-section-header :is(h1, h2, h3, h4) {\n  font-family: var(--ui-font-editorial);\n  font-size: var(--ui-section-title-size, 32px);\n  font-weight: var(--ui-section-title-weight, 400);\n  line-height: 1.15;\n  margin: 0 0 8px;\n  overflow-wrap: anywhere;\n}\n.ds-section-header p {\n  color: var(--ui-muted-foreground);\n  font-size: 13px;\n  line-height: 1.7;\n  margin: 0;\n  max-width: 560px;\n}\n.ds-section-number {\n  font-family: var(--ui-font-interface);\n  font-size: 11px;\n  color: var(--ui-muted-foreground);\n}\n@media (max-width: 800px) {\n  .ds-page-header {\n    padding-block: var(--ui-page-header-padding-mobile, 40px 32px);\n  }\n}\n@media (max-width: 540px) {\n  .ds-page-header {\n    align-items: start;\n    flex-direction: column;\n    gap: 20px;\n  }\n  .ds-section-header {\n    flex-wrap: wrap;\n    gap: 16px;\n  }\n  .ds-section-title {\n    gap: 12px;\n  }\n  .ds-section-header :is(h1, h2, h3, h4) {\n    font-size: var(--ui-section-title-size, 30px);\n  }\n}\n"
+    }
+  ]
+}

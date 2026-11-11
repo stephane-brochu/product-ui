@@ -1,0 +1,49 @@
+.ds-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.ds-surface-card { box-sizing: border-box; min-width: 0; padding: var(--ui-card-padding, 24px); border: 1px solid var(--ui-border); border-radius: var(--ui-radius-card, var(--ui-radius)); background: var(--ui-surface, var(--ui-popover)); color: var(--ui-foreground); font: 400 14px/1.43 var(--ui-font-interface); }
+.ds-stack { display: grid; gap: var(--ui-stack-md, 24px); min-width: 0; }
+.ds-stack[data-gap="sm"] { gap: var(--ui-stack-sm, 12px); }
+.ds-stack[data-gap="lg"] { gap: var(--ui-stack-lg, 40px); }
+.ds-inline { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; min-width: 0; }
+.ds-status-indicator { display: inline-flex; align-items: center; gap: 8px; }
+.ds-status-dot { display: inline-block; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--ui-muted-foreground); box-shadow: 0 0 0 1px var(--ui-border); }
+.ds-status-indicator[data-tone="success"] .ds-status-dot { background: var(--ui-status-success, var(--ui-success-foreground)); }
+.ds-status-indicator[data-tone="warning"] .ds-status-dot { background: var(--ui-status-warning, var(--ui-warning-foreground)); }
+.ds-status-indicator[data-tone="danger"] .ds-status-dot { background: var(--ui-destructive); }
+.ds-status-indicator[data-tone="info"] .ds-status-dot { background: var(--ui-info-foreground); }
+.ds-status-badge[data-appearance="solid"] { color: var(--ui-primary-foreground); background: var(--ui-primary); border-color: var(--ui-primary); }
+.ds-status-badge[data-appearance="outline"] { background: transparent; border: 1px solid var(--ui-border-strong); }
+.ds-action-row.ds-button { display: flex; align-items: center; justify-content: space-between; text-align: start; width: 100%; white-space: normal; height: auto; min-height: var(--ui-control-height); padding: 12px 16px; border-radius: 0; border-width: 0 0 1px; border-color: var(--ui-border); gap: 16px; }
+.ds-action-row-content { display: flex; flex: 1; min-width: 0; align-items: center; flex-wrap: wrap; gap: 8px 24px; overflow-wrap: anywhere; }
+.ds-control-label { display: block; margin: 0 0 8px; font: 500 12px/1.5 var(--ui-font-interface); color: var(--ui-foreground); }
+.ds-native-control { box-sizing: border-box; width: 100%; min-width: 0; min-height: var(--ui-control-height); border: 1px solid var(--ui-input); border-radius: var(--ui-radius); padding: 6px 12px; background: var(--ui-background); color: var(--ui-foreground); font: 400 14px/1.43 var(--ui-font-interface); }
+.ds-native-control[data-mono] { font-family: var(--ui-font-mono, monospace); }
+.ds-native-control[data-segment="left"] { border-start-end-radius: 0; border-end-end-radius: 0; }
+.ds-native-control[data-segment="right"] { border-start-start-radius: 0; border-end-start-radius: 0; }
+.ds-native-control:focus-visible { outline: 2px solid var(--ui-ring); outline-offset: 2px; }
+.ds-native-control[aria-invalid="true"] { border-color: var(--ui-destructive); }
+.ds-native-control:disabled { opacity: .55; }
+.ds-native-control:is(textarea) { resize: vertical; }
+.ds-segmented[data-appearance="pill"] .ds-choice-options { border-radius: 9999px; }
+.ds-segmented[data-appearance="pill"] .ds-choice { border-radius: 9999px; }
+.ds-tabs { min-width: 0; }
+.ds-tab-list { display: flex; overflow-x: auto; border-bottom: 1px solid var(--ui-border); gap: 24px; }
+.ds-tab-list > button { border: 0; border-bottom: 2px solid transparent; padding: 12px 0; min-height: var(--ui-control-height); background: transparent; color: var(--ui-muted-foreground); font: 500 14px/1.43 var(--ui-font-interface); white-space: nowrap; cursor: pointer; }
+.ds-tab-list > button[aria-selected="true"] { color: var(--ui-foreground); border-bottom-color: var(--ui-primary); }
+.ds-tab-list > button:disabled { opacity: .5; cursor: default; }
+.ds-tab-list > button:focus-visible, .ds-tab-panel:focus-visible { outline: 2px solid var(--ui-ring); outline-offset: -2px; }
+.ds-tab-panel { min-width: 0; padding-top: 20px; }
+.ds-multi-select { min-width: 0; font-family: var(--ui-font-interface); }
+.ds-multi-select > button { width: 100%; justify-content: space-between; white-space: normal; }
+.ds-multi-select-options { margin: 0; padding: 0; border: 0; display: grid; gap: 12px; max-height: min(400px, 60dvh); overflow: auto; }
+.ds-multi-select-options > :first-of-type { padding-bottom: 8px; border-bottom: 1px solid var(--ui-border); }
+.ds-reorderable { min-width: 0; font: 400 14px/1.43 var(--ui-font-interface); color: var(--ui-foreground); }
+.ds-reorderable ol { display: grid; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.ds-reorderable li { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding: 12px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius); }
+.ds-reorderable li > span { flex: 1; min-width: 120px; overflow-wrap: anywhere; }
+.ds-reorder-actions { display: flex; gap: 8px; }
+.ds-reorder-actions [aria-disabled="true"] { opacity: .5; cursor: default; }
+@media (max-width: 560px) {
+  .ds-inline { align-items: stretch; flex-direction: column; gap: 12px; }
+  .ds-inline > * { min-width: 0; max-width: 100%; }
+  .ds-native-control { font-size: 16px; }
+}

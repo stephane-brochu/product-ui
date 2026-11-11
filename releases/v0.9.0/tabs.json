@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "title": "Controlled accessible tabs",
+  "description": "Product UI v0.9.0: Controlled accessible tabs. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/foundations.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/tabs.tsx",
+      "type": "registry:ui",
+      "target": "@ui/tabs.tsx",
+      "content": "\"use client\";\nimport { useId, useRef, type ReactNode, type KeyboardEvent } from \"react\";\nexport type TabOption<T extends string> = { value: T; label: ReactNode; disabled?: boolean };\n/** Controlled view switching. The caller supplies the active panel's content. */\nexport function Tabs<T extends string>({ label, value, onValueChange, options, children, activation = \"automatic\" }: {\n  label: string; value: T; onValueChange: (value: T) => void; options: readonly TabOption<T>[]; children: ReactNode; activation?: \"manual\" | \"automatic\";\n}) {\n  const id = useId(), refs = useRef<Array<HTMLButtonElement | null>>([]);\n  const active = options.findIndex(option => option.value === value && !option.disabled);\n  const focusIndex = active >= 0 ? active : options.findIndex(option => !option.disabled);\n  function move(event: KeyboardEvent<HTMLButtonElement>, index: number) {\n    const enabled = options.map((option, i) => option.disabled ? -1 : i).filter(i => i >= 0);\n    const current = enabled.indexOf(index);\n    let next: number | undefined;\n    if (event.key === \"ArrowRight\") next = enabled[(current + 1) % enabled.length];\n    if (event.key === \"ArrowLeft\") next = enabled[(current - 1 + enabled.length) % enabled.length];\n    if (event.key === \"Home\") next = enabled[0];\n    if (event.key === \"End\") next = enabled.at(-1);\n    if (next === undefined) return;\n    event.preventDefault(); refs.current[next]?.focus();\n    if (activation === \"automatic\") onValueChange(options[next].value);\n  }\n  return <div className=\"ds-tabs\">\n    <div className=\"ds-tab-list\" role=\"tablist\" aria-label={label}>\n      {options.map((option, index) => <button key={option.value} ref={node => { refs.current[index] = node; }} type=\"button\" role=\"tab\"\n        id={`${id}-tab-${index}`} aria-controls={`${id}-panel`} aria-selected={index === active} tabIndex={index === focusIndex ? 0 : -1}\n        disabled={option.disabled} onKeyDown={event => move(event, index)} onClick={() => onValueChange(option.value)}>{option.label}</button>)}\n    </div>\n    {active >= 0 && <div className=\"ds-tab-panel\" id={`${id}-panel`} role=\"tabpanel\" aria-labelledby={`${id}-tab-${active}`} tabIndex={0}>{children}</div>}\n  </div>;\n}\n"
+    }
+  ]
+}

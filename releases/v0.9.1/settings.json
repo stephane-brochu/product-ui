@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "settings",
+  "type": "registry:component",
+  "title": "Settings and metadata",
+  "description": "Product UI v0.9.1: Settings and metadata. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/composition-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/settings.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/settings.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\nexport type SettingsGroupProps = Omit<\n  ComponentPropsWithRef<\"section\">,\n  \"title\"\n> & { title: ReactNode; description?: ReactNode; headingLevel?: 2 | 3 | 4 };\nexport function SettingsGroup({\n  title,\n  description,\n  children,\n  headingLevel = 3,\n  id,\n  className = \"\",\n  ...props\n}: SettingsGroupProps) {\n  const Heading = `h${headingLevel}` as \"h2\" | \"h3\" | \"h4\";\n  return (\n    <section\n      {...props}\n      id={id}\n      className={`ds-settings-group ${className}`}\n      aria-labelledby={\n        props[\"aria-labelledby\"] ?? (id ? `${id}-title` : undefined)\n      }\n    >\n      <Heading id={id ? `${id}-title` : undefined}>{title}</Heading>\n      {description && <p className=\"ds-settings-description\">{description}</p>}\n      {children}\n    </section>\n  );\n}\nexport type SettingsRowProps = ComponentPropsWithRef<\"div\"> & {\n  label: ReactNode;\n  description?: ReactNode;\n};\n/** The slotted control still needs its own accessible label. */\nexport function SettingsRow({\n  label,\n  description,\n  children,\n  className = \"\",\n  ...props\n}: SettingsRowProps) {\n  return (\n    <div {...props} className={`ds-settings-row ${className}`}>\n      <div>\n        <strong>{label}</strong>\n        {description && (\n          <p className=\"ds-settings-description\">{description}</p>\n        )}\n      </div>\n      <div className=\"ds-settings-control\">{children}</div>\n    </div>\n  );\n}\nexport type MetadataItem = {\n  id: string;\n  term: ReactNode;\n  value: ReactNode;\n  action?: ReactNode;\n};\nexport type MetadataListProps = Omit<\n  ComponentPropsWithRef<\"dl\">,\n  \"children\"\n> & {\n  items: readonly MetadataItem[];\n  emptyValue?: ReactNode;\n};\nexport function MetadataList({\n  items,\n  emptyValue = \"Not provided\",\n  className = \"\",\n  ...props\n}: MetadataListProps) {\n  return (\n    <dl {...props} className={`ds-metadata ${className}`}>\n      {items.map((item) => (\n        <div className=\"ds-metadata-row\" key={item.id}>\n          <dt>{item.term}</dt>\n          <dd>\n            <div>{item.value ?? emptyValue}</div>\n            {item.action && (\n              <div className=\"ds-metadata-action\">{item.action}</div>\n            )}\n          </dd>\n        </div>\n      ))}\n    </dl>\n  );\n}\n"
+    }
+  ]
+}

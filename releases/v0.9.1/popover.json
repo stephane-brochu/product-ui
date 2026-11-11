@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:component",
+  "title": "Popover",
+  "description": "Product UI v0.9.1: Popover. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [
+    "@radix-ui/react-popover@1.3.1"
+  ],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/button.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/theme-boundary.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/floating-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/popover.tsx",
+      "type": "registry:ui",
+      "target": "@ui/popover.tsx",
+      "content": "\"use client\";\nimport * as Primitive from \"@radix-ui/react-popover\";\nimport type { ComponentPropsWithRef, ReactNode, ReactElement } from \"react\";\nimport { Button } from \"./button\";\nimport { usePortalContainer } from \"./theme-boundary\";\nexport type PopoverProps = {\n  title: string;\n  trigger: ReactElement;\n  children: ReactNode;\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  modal?: boolean;\n  contentProps?: Omit<\n    ComponentPropsWithRef<typeof Primitive.Content>,\n    \"children\" | \"asChild\"\n  >;\n};\nexport function Popover({\n  title,\n  trigger,\n  children,\n  open,\n  defaultOpen,\n  onOpenChange,\n  modal = false,\n  contentProps = {},\n}: PopoverProps) {\n  const container = usePortalContainer();\n  return (\n    <Primitive.Root\n      open={open}\n      defaultOpen={defaultOpen}\n      onOpenChange={onOpenChange}\n      modal={modal}\n    >\n      <Primitive.Trigger asChild>{trigger}</Primitive.Trigger>\n      {container !== null && (\n        <Primitive.Portal container={container}>\n          <Primitive.Content\n            sideOffset={8}\n            collisionPadding={16}\n            {...contentProps}\n            className={`ds-popover ${contentProps.className ?? \"\"}`}\n            aria-label={title}\n          >\n            {children}\n          </Primitive.Content>\n        </Primitive.Portal>\n      )}\n    </Primitive.Root>\n  );\n}\nexport function PopoverClose({\n  children,\n  ...props\n}: ComponentPropsWithRef<typeof Button>) {\n  return (\n    <Primitive.Close asChild>\n      <Button {...props}>{children}</Button>\n    </Primitive.Close>\n  );\n}\n"
+    }
+  ]
+}

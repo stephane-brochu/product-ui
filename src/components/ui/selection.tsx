@@ -20,6 +20,8 @@ export type RadioGroupProps = Omit<
   description?: ReactNode;
   error?: ReactNode;
   emptyMessage?: ReactNode;
+  labelHidden?: boolean;
+  appearance?: "solid" | "pill";
 };
 function Choices({
   label,
@@ -32,6 +34,8 @@ function Choices({
   description,
   error,
   emptyMessage = "No options available.",
+  labelHidden = false,
+  appearance = "solid",
   id: providedId,
   className = "",
   segmented = false,
@@ -55,8 +59,9 @@ function Choices({
       className={`ds-choice-group ${segmented ? "ds-segmented" : ""} ${className}`}
       aria-describedby={described}
       aria-invalid={error ? true : props["aria-invalid"]}
+      data-appearance={appearance}
     >
-      <legend>{label}</legend>
+      <legend className={labelHidden ? "ds-sr-only" : undefined}>{label}</legend>
       {description && (
         <p id={`${id}-description`} className="ds-field-description">
           {description}

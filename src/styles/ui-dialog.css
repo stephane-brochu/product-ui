@@ -58,10 +58,17 @@
   top: 0;
   bottom: 0;
   transform: none;
-  width: min(480px, 100vw);
+  width: var(--ui-drawer-width, min(480px, 100vw));
   max-height: 100dvh;
   border-radius: 0;
 }
+.ds-dialog-eyebrow { margin: 0 0 4px; color: var(--ui-muted-foreground); font-size: 12px; }
+.ds-dialog[data-fixed-footer] { display: flex; flex-direction: column; overflow: hidden; padding: 0; }
+.ds-dialog[data-fixed-footer] > .ds-dialog-header { flex: 0 0 auto; padding: 20px 24px 12px; margin: 0; }
+.ds-dialog[data-fixed-footer] > .ds-dialog-description { flex: 0 0 auto; padding: 0 24px 12px; margin: 0; }
+.ds-dialog-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 16px 24px 24px; }
+.ds-dialog-footer { flex: 0 0 auto; border-top: 1px solid var(--ui-border); padding: 16px 24px max(16px, env(safe-area-inset-bottom)); background: var(--ui-popover); }
+.ds-drawer .ds-dialog-footer > .ds-button { width: 100%; }
 .ds-drawer[data-size="wide"] {
   width: min(760px, 100vw);
 }

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview",
+  "type": "registry:component",
+  "title": "HTML and device previews",
+  "description": "Product UI v0.9.0: HTML and device previews. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/preview-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/preview.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/preview.tsx",
+      "content": "import type { ComponentPropsWithRef, CSSProperties } from \"react\";\n\nexport function HtmlPreview({\n  html,\n  title,\n  height = 720,\n  className = \"\",\n  ...props\n}: Omit<ComponentPropsWithRef<\"iframe\">, \"src\" | \"srcDoc\" | \"sandbox\" | \"title\"> & {\n  html: string;\n  title: string;\n  height?: number;\n}) {\n  if (!Number.isFinite(height) || height < 120) throw new RangeError(\"HtmlPreview height must be at least 120 pixels\");\n  return <iframe {...props} className={`ds-html-preview ${className}`} title={title} srcDoc={html} height={height} sandbox=\"allow-popups allow-popups-to-escape-sandbox\" referrerPolicy=\"no-referrer\" />;\n}\n\nexport function DevicePreviewFrame({\n  src,\n  title,\n  width,\n  height,\n  scale = 1,\n  className = \"\",\n}: {\n  src: string;\n  title: string;\n  width: number;\n  height: number;\n  scale?: number;\n  className?: string;\n}) {\n  if (![width, height, scale].every((value) => Number.isFinite(value) && value > 0))\n    throw new RangeError(\"DevicePreviewFrame dimensions and scale must be positive\");\n  return (\n    <div className={`ds-device-preview ${className}`} style={{ \"--device-width\": `${width}px`, \"--device-height\": `${height}px`, \"--device-scale\": scale } as CSSProperties}>\n      <div className=\"ds-device-preview-frame\">\n        <iframe src={src} title={title} width={width} height={height} loading=\"eager\" referrerPolicy=\"no-referrer\" />\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feedback-styles",
+  "type": "registry:style",
+  "title": "Feedback styles",
+  "description": "Product UI v0.9.0: Feedback styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-feedback.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-feedback.css",
+      "content": ".ds-status-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font: 400 12px/1.5 var(--ui-font-interface);\n  color: var(--ui-foreground);\n  max-width: 100%;\n  overflow-wrap: anywhere;\n}\n.ds-status--strong {\n  font-weight: 600;\n}\n.ds-status-badge[data-tone=\"info\"] {\n  color: var(--ui-info-foreground, #2448a5);\n}\n.ds-status-badge[data-tone=\"success\"] {\n  color: var(--ui-success-foreground, #205b39);\n}\n.ds-status-badge[data-tone=\"warning\"] {\n  color: var(--ui-warning-foreground, #76500d);\n}\n.ds-status-badge[data-tone=\"danger\"] {\n  color: var(--ui-destructive);\n}\n.ds-alert {\n  font-family: var(--ui-font-interface);\n  color: var(--ui-foreground);\n  border: 1px solid var(--ui-border);\n  padding: 16px 20px;\n  font-size: 13px;\n  line-height: 1.7;\n  min-width: 0;\n  overflow-wrap: anywhere;\n}\n.ds-alert > strong {\n  display: block;\n  margin-bottom: 6px;\n  font-weight: 600;\n}\n.ds-alert p:last-child {\n  margin-bottom: 0;\n}\n.ds-alert[data-tone=\"danger\"] {\n  border-color: var(--ui-destructive);\n}\n.ds-alert[data-tone=\"danger\"] > strong {\n  color: var(--ui-destructive);\n}\n.ds-alert[data-tone=\"success\"] > strong {\n  color: var(--ui-success-foreground, #205b39);\n}\n.ds-alert[data-tone=\"warning\"] > strong {\n  color: var(--ui-warning-foreground, #76500d);\n}\n.ds-alert[data-tone=\"info\"] > strong {\n  color: var(--ui-info-foreground, #2448a5);\n}\n.ds-empty {\n  font-family: var(--ui-font-interface);\n  padding: 32px 24px;\n  text-align: center;\n  border: 1px solid var(--ui-border);\n  color: var(--ui-foreground);\n  min-width: 0;\n}\n.ds-empty :is(h2, h3, h4) {\n  font-size: 18px;\n  font-family: var(--ui-font-interface);\n  font-weight: 500;\n  margin: 0 0 12px;\n  line-height: 1.4;\n  overflow-wrap: anywhere;\n}\n.ds-empty-mark {\n  font-size: 28px;\n  display: block;\n  margin-bottom: 12px;\n}\n.ds-empty-description {\n  font-size: 13px;\n  color: var(--ui-muted-foreground);\n  line-height: 1.7;\n  overflow-wrap: anywhere;\n}\n.ds-feedback-actions {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-top: 16px;\n}\n.ds-empty .ds-feedback-actions {\n  justify-content: center;\n}\n.ds-loading {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font: 400 13px/1.6 var(--ui-font-interface);\n  color: var(--ui-muted-foreground);\n}\n.ds-progress {\n  display: grid;\n  gap: 8px;\n  font: 400 12px/1.5 var(--ui-font-interface);\n  color: var(--ui-foreground);\n}\n.ds-progress progress {\n  width: 100%;\n  accent-color: var(--ui-primary);\n}\n.ds-toast {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  border: 1px solid var(--ui-border);\n  padding: 14px 18px;\n  font: 400 13px/1.6 var(--ui-font-interface);\n  color: var(--ui-foreground);\n  background: var(--ui-popover);\n}\n"
+    }
+  ]
+}

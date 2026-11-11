@@ -11,7 +11,7 @@ beforeEach(async () => {
 afterEach(async () => {
   await fs.rm(directory, { recursive: true, force: true });
 });
-const release = path.resolve(".registry-preview/v0.6.0");
+const release = path.resolve("releases/v0.6.0");
 it("keeps core at 29 files without optional chart/PDF source or dependencies", async () => {
   const lock = await install({ project: directory, version: "0.6.0", release });
   expect(lock.files).toHaveLength(29);

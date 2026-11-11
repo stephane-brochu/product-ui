@@ -1,7 +1,6 @@
 "use client";
 import {
   useId,
-  type InputHTMLAttributes,
   type SelectHTMLAttributes,
   type ComponentPropsWithRef,
   type ReactNode,
@@ -41,7 +40,7 @@ export function FormField({
   );
 }
 export type TextInputProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
+  ComponentPropsWithRef<"input">,
   "prefix"
 > & {
   label: string;

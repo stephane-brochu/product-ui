@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:component",
+  "title": "Server-compatible tables",
+  "description": "Product UI v0.9.1: Server-compatible tables. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/data-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/table.tsx",
+      "type": "registry:ui",
+      "target": "@ui/table.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\nexport type TableProps = ComponentPropsWithRef<\"table\"> & {\n  caption?: ReactNode;\n  captionHidden?: boolean;\n  density?: \"comfortable\" | \"compact\";\n  stickyHeader?: boolean;\n  mobileLayout?: \"scroll\" | \"stack\";\n};\nexport function Table({\n  caption,\n  captionHidden = false,\n  density = \"comfortable\",\n  stickyHeader = false,\n  mobileLayout = \"scroll\",\n  className = \"\",\n  children,\n  ...props\n}: TableProps) {\n  return (\n    <table\n      {...props}\n      data-density={density}\n      data-mobile-layout={mobileLayout}\n      className={`ds-data-table ${stickyHeader ? \"ds-table--sticky\" : \"\"} ${className}`}\n    >\n      {caption !== undefined && (\n        <caption className={captionHidden ? \"ds-data-sr-only\" : undefined}>\n          {caption}\n        </caption>\n      )}\n      {children}\n    </table>\n  );\n}\nexport function TableHead(props: ComponentPropsWithRef<\"thead\">) {\n  return <thead {...props} />;\n}\nexport function TableBody(props: ComponentPropsWithRef<\"tbody\">) {\n  return <tbody {...props} />;\n}\nexport function TableRow(props: ComponentPropsWithRef<\"tr\">) {\n  return <tr {...props} />;\n}\nexport function TableHeaderCell({\n  scope = \"col\",\n  ...props\n}: ComponentPropsWithRef<\"th\">) {\n  return <th {...props} scope={scope} />;\n}\nexport function TableCell(props: ComponentPropsWithRef<\"td\">) {\n  return <td {...props} />;\n}\nexport function NumericCell({\n  className = \"\",\n  ...props\n}: ComponentPropsWithRef<\"td\">) {\n  return <td {...props} className={`ds-numeric ${className}`} />;\n}\nexport function EmptyRow({\n  colSpan,\n  children = \"No records available.\",\n}: {\n  colSpan: number;\n  children?: ReactNode;\n}) {\n  if (!Number.isInteger(colSpan) || colSpan < 1)\n    throw new RangeError(\"EmptyRow colSpan must be a positive integer\");\n  return (\n    <tr>\n      <td colSpan={colSpan} className=\"ds-empty-cell\">\n        {children}\n      </td>\n    </tr>\n  );\n}\nexport type TableScrollRegionProps = ComponentPropsWithRef<\"div\"> & {\n  label: string;\n  bounded?: boolean;\n};\nexport function TableScrollRegion({\n  label,\n  bounded = false,\n  className = \"\",\n  ...props\n}: TableScrollRegionProps) {\n  return (\n    <div\n      {...props}\n      className={`ds-table-scroll ${bounded ? \"ds-table-scroll--bounded\" : \"\"} ${className}`}\n      role=\"region\"\n      aria-label={label}\n      tabIndex={props.tabIndex ?? 0}\n    />\n  );\n}\n"
+    }
+  ]
+}

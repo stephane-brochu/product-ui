@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Product UI v0.8.0: Checkbox. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.8.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.8.0/controls.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/checkbox.tsx",
+      "type": "registry:ui",
+      "target": "@ui/checkbox.tsx",
+      "content": "\"use client\";\nimport {\n  useId,\n  useEffect,\n  useRef,\n  useImperativeHandle,\n  type ComponentPropsWithRef,\n  type ReactNode,\n} from \"react\";\nexport type CheckboxProps = Omit<\n  ComponentPropsWithRef<\"input\">,\n  \"type\" | \"children\"\n> & {\n  label: ReactNode;\n  description?: ReactNode;\n  error?: ReactNode;\n  indeterminate?: boolean;\n  fieldClassName?: string;\n};\nexport function Checkbox({\n  label,\n  description,\n  error,\n  indeterminate = false,\n  id: providedId,\n  ref,\n  fieldClassName = \"\",\n  ...props\n}: CheckboxProps) {\n  const generated = useId();\n  const id = providedId ?? generated;\n  const input = useRef<HTMLInputElement>(null);\n  useImperativeHandle(ref, () => input.current!, []);\n  useEffect(() => {\n    if (input.current) input.current.indeterminate = indeterminate;\n  }, [indeterminate]);\n  const described =\n    [\n      description && `${id}-description`,\n      error && `${id}-error`,\n      props[\"aria-describedby\"],\n    ]\n      .filter(Boolean)\n      .join(\" \") || undefined;\n  return (\n    <div className={`ds-check-field ${fieldClassName}`}>\n      <label htmlFor={id} className=\"ds-check\">\n        <input\n          {...props}\n          ref={input}\n          id={id}\n          type=\"checkbox\"\n          aria-checked={indeterminate ? \"mixed\" : props.checked}\n          aria-invalid={error ? true : props[\"aria-invalid\"]}\n          aria-describedby={described}\n        />\n        <span>{label}</span>\n      </label>\n      {description && (\n        <p id={`${id}-description`} className=\"ds-field-description\">\n          {description}\n        </p>\n      )}\n      {error && (\n        <p id={`${id}-error`} className=\"ds-validation\" role=\"alert\">\n          {error}\n        </p>\n      )}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

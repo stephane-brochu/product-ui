@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "categorical-share-chart",
+  "type": "registry:component",
+  "title": "Categorical share chart",
+  "description": "Product UI v0.9.0: Categorical share chart. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/preview-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/categorical-share-chart.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/categorical-share-chart.tsx",
+      "content": "import type { CSSProperties, ReactNode } from \"react\";\n\nexport type CategoricalShare = {\n  id: string;\n  label: ReactNode;\n  value: number;\n  valueLabel: ReactNode;\n  color?: string;\n};\n\nconst fallbackColors = [\n  \"var(--ui-primary)\",\n  \"var(--ui-foreground)\",\n  \"var(--ui-muted-foreground)\",\n  \"var(--ui-border-strong)\",\n];\n\nexport function CategoricalShareChart({\n  items,\n  label,\n  totalLabel,\n  emptyMessage = \"No values to display.\",\n  className = \"\",\n}: {\n  items: readonly CategoricalShare[];\n  label: string;\n  totalLabel: ReactNode;\n  emptyMessage?: ReactNode;\n  className?: string;\n}) {\n  const visible = items.filter((item) => item.value > 0);\n  if (items.some((item) => !Number.isFinite(item.value) || item.value < 0))\n    throw new RangeError(\"CategoricalShareChart values must be finite and non-negative\");\n  if (new Set(items.map((item) => item.id)).size !== items.length)\n    throw new Error(\"CategoricalShareChart item IDs must be unique\");\n  const total = visible.reduce((sum, item) => sum + item.value, 0);\n  let cursor = 0;\n  const stops = visible.map((item, index) => {\n    const start = cursor;\n    cursor += (item.value / total) * 100;\n    return `${item.color ?? fallbackColors[index % fallbackColors.length]} ${start}% ${cursor}%`;\n  });\n\n  return (\n    <figure className={`ds-share-chart ${className}`}>\n      <div\n        className=\"ds-share-chart-plot\"\n        role=\"img\"\n        aria-label={label}\n        style={{\n          \"--share-background\": total\n            ? `conic-gradient(${stops.join(\", \")})`\n            : \"var(--ui-muted)\",\n        } as CSSProperties}\n      />\n      <figcaption>\n        <strong className=\"ds-share-chart-total\">{totalLabel}</strong>\n        {visible.length ? (\n          <ul className=\"ds-share-chart-legend\">\n            {visible.map((item, index) => (\n              <li key={item.id}>\n                <span\n                  className=\"ds-share-chart-swatch\"\n                  aria-hidden=\"true\"\n                  style={{ backgroundColor: item.color ?? fallbackColors[index % fallbackColors.length] }}\n                />\n                <span>{item.label}</span>\n                <strong>{item.valueLabel}</strong>\n              </li>\n            ))}\n          </ul>\n        ) : <p>{emptyMessage}</p>}\n      </figcaption>\n    </figure>\n  );\n}\n"
+    }
+  ]
+}

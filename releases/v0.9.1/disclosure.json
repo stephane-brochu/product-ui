@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "disclosure",
+  "type": "registry:component",
+  "title": "Native disclosure",
+  "description": "Product UI v0.9.1: Native disclosure. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/composition-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/disclosure.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/disclosure.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\nexport type DisclosureProps = Omit<\n  ComponentPropsWithRef<\"details\">,\n  \"title\" | \"children\" | \"open\"\n> & {\n  title: ReactNode;\n  children: ReactNode;\n  count?: ReactNode;\n  defaultOpen?: boolean;\n};\n/** Native expansion, including before hydration. Put actions in the body, never inside summary. */\nexport function Disclosure({\n  title,\n  children,\n  count,\n  defaultOpen = false,\n  className = \"\",\n  ...props\n}: DisclosureProps) {\n  return (\n    <details\n      {...props}\n      open={defaultOpen}\n      className={`ds-disclosure ${className}`}\n    >\n      <summary>\n        {title}\n        {count !== undefined && (\n          <span className=\"ds-disclosure-count\">{count}</span>\n        )}\n      </summary>\n      <div className=\"ds-disclosure-content\">{children}</div>\n    </details>\n  );\n}\n"
+    }
+  ]
+}

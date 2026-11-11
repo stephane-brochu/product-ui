@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "core",
+  "type": "registry:block",
+  "title": "Product UI core",
+  "description": "Product UI v0.9.1: Product UI core. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/button.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/fields.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/filter-bar.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/form-section.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/page-layout.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/feedback.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/checkbox.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/selection.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/controlled-disclosure.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/settings.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/table.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/metrics.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/data-navigation.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/source-reference.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/navigation.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/form-feedback.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/upload-queue.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/review-layout.json"
+  ],
+  "files": []
+}

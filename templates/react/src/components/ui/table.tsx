@@ -4,12 +4,14 @@ export type TableProps = ComponentPropsWithRef<"table"> & {
   captionHidden?: boolean;
   density?: "comfortable" | "compact";
   stickyHeader?: boolean;
+  mobileLayout?: "scroll" | "stack";
 };
 export function Table({
   caption,
   captionHidden = false,
   density = "comfortable",
   stickyHeader = false,
+  mobileLayout = "scroll",
   className = "",
   children,
   ...props
@@ -18,6 +20,7 @@ export function Table({
     <table
       {...props}
       data-density={density}
+      data-mobile-layout={mobileLayout}
       className={`ds-data-table ${stickyHeader ? "ds-table--sticky" : ""} ${className}`}
     >
       {caption !== undefined && (

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upload-queue",
+  "type": "registry:component",
+  "title": "Upload Queue",
+  "description": "Product UI v0.9.1: Upload Queue. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/workflow-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/upload-queue.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/upload-queue.tsx",
+      "content": "import type { ReactNode } from \"react\";\nexport type UploadQueueItem = {\n  id: string;\n  name: string;\n  status: ReactNode;\n  message?: ReactNode;\n  progress?: number;\n  actions?: ReactNode;\n};\n/** Supplied snapshots/actions only. This component never uploads or retries a network request. */\nexport function UploadQueue({\n  items,\n  label = \"Upload queue\",\n  emptyMessage = \"No files queued.\",\n  busy = false,\n}: {\n  items: readonly UploadQueueItem[];\n  label?: string;\n  emptyMessage?: ReactNode;\n  busy?: boolean;\n}) {\n  return (\n    <section\n      className=\"ds-upload-queue\"\n      aria-label={label}\n      aria-busy={busy || undefined}\n    >\n      {!items.length ? (\n        <p>{emptyMessage}</p>\n      ) : (\n        <ul>\n          {items.map((item) => (\n            <li key={item.id}>\n              <div>\n                <strong>{item.name}</strong>\n                <div role=\"status\">\n                  {item.status}\n                  {item.message != null && <p>{item.message}</p>}\n                </div>\n                {item.progress !== undefined && (\n                  <progress\n                    max={100}\n                    value={Math.max(\n                      0,\n                      Math.min(\n                        100,\n                        Number.isFinite(item.progress) ? item.progress : 0,\n                      ),\n                    )}\n                    aria-label={`${item.name} progress`}\n                  />\n                )}\n              </div>\n              {item.actions}\n            </li>\n          ))}\n        </ul>\n      )}\n    </section>\n  );\n}\n"
+    }
+  ]
+}

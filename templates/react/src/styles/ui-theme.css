@@ -48,6 +48,61 @@
   --ui-font-interface: "Inter", "Segoe UI", sans-serif;
   --ui-font-editorial: "Inter", "Segoe UI", sans-serif;
 }
+
+[data-ui-theme="wedding-admin"] {
+  --ui-background: #fff;
+  --ui-surface: #fff;
+  --ui-canvas-subtle: #f6f7f8;
+  --ui-foreground: #0a0a0a;
+  --ui-primary: #000;
+  --ui-primary-foreground: #fff;
+  --ui-primary-hover: #222;
+  --ui-muted: #f2f2f2;
+  --ui-muted-foreground: #666;
+  --ui-popover: #fff;
+  --ui-border: #e5e5e5;
+  --ui-border-strong: #8a8a8a;
+  --ui-input: #737373;
+  --ui-destructive: #c22b10;
+  --ui-ring: #0a0a0a;
+  --ui-success-foreground: #176b2c;
+  --ui-warning-foreground: #765800;
+  --ui-info-foreground: #2448a5;
+  --ui-status-success: #10c22b;
+  --ui-status-warning: #d9a900;
+  --ui-radius: 10px;
+  --ui-radius-card: 14px;
+  --ui-radius-dialog: 14px;
+  --ui-control-height: 32px;
+  --ui-font-interface: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-editorial: var(--ui-font-interface);
+  --ui-font-mono: "Geist Mono", "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --ui-page-title-size: 48px;
+  --ui-page-title-weight: 600;
+  --ui-page-title-leading: 1;
+  --ui-page-title-tracking: -2.4px;
+  --ui-page-header-padding: 0 0 32px;
+  --ui-page-header-padding-mobile: 0 0 24px;
+  --ui-section-title-size: 18px;
+  --ui-section-title-weight: 600;
+  --ui-section-border: 0;
+  --ui-section-header-padding: 0 0 16px;
+  --ui-sidebar-width: 260px;
+  --ui-sidebar-collapsed-width: 84px;
+  --ui-drawer-width: min(520px, 92vw);
+  --ui-card-padding: 16px;
+  --ui-stack-sm: 8px;
+  --ui-stack-md: 16px;
+  --ui-stack-lg: 32px;
+}
+@media (max-width: 560px) {
+  [data-ui-theme="wedding-admin"] {
+    --ui-page-title-size: clamp(30px, 8vw, 40px);
+    --ui-page-title-tracking: -0.45px;
+    --ui-control-height: 44px;
+  }
+}
+
 @media (pointer: coarse), (max-width: 540px) {
   :root,
   [data-ui-theme] {

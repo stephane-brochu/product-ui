@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-navigation",
+  "type": "registry:component",
+  "title": "Toolbar pagination and export actions",
+  "description": "Product UI v0.9.1: Toolbar pagination and export actions. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/button.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/data-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/data-navigation.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/data-navigation.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\nimport { Button, buttonClassName } from \"../ui/button\";\nexport function TableToolbar({\n  label = \"Table controls\",\n  className = \"\",\n  ...props\n}: ComponentPropsWithRef<\"div\"> & { label?: string }) {\n  return (\n    <div\n      {...props}\n      role=\"group\"\n      aria-label={label}\n      className={`ds-table-toolbar ${className}`}\n    />\n  );\n}\nexport function ResultCount({\n  count,\n  total,\n  selected = 0,\n  noun = \"records\",\n}: {\n  count: number;\n  total?: number;\n  selected?: number;\n  noun?: string;\n}) {\n  return (\n    <p className=\"ds-result-count\" role=\"status\">\n      {count}\n      {total !== undefined && total !== count ? ` of ${total}` : \"\"} {noun}\n      {selected > 0 ? ` · ${selected} selected` : \"\"}\n    </p>\n  );\n}\ntype Base = {\n  page: number;\n  pageCount: number;\n  label?: string;\n  pending?: boolean;\n  className?: string;\n};\nexport type PaginationProps = Base &\n  (\n    | {\n        onPageChange: (page: number) => void;\n        previousHref?: never;\n        nextHref?: never;\n      }\n    | { onPageChange?: never; previousHref?: string; nextHref?: string }\n  );\nexport function Pagination({\n  page,\n  pageCount,\n  label = \"Pagination\",\n  pending = false,\n  className = \"\",\n  onPageChange,\n  previousHref,\n  nextHref,\n}: PaginationProps) {\n  if (\n    !Number.isInteger(page) ||\n    page < 0 ||\n    !Number.isInteger(pageCount) ||\n    pageCount < 1\n  )\n    throw new RangeError(\n      \"Pagination requires a non-negative page and positive pageCount\",\n    );\n  const current = Math.min(page, pageCount - 1);\n  function action(\n    text: string,\n    target: number,\n    enabled: boolean,\n    href?: string,\n  ) {\n    return enabled && !pending && href ? (\n      <a\n        href={href}\n        className={buttonClassName({ variant: \"tertiary\", size: \"compact\" })}\n      >\n        {text}\n      </a>\n    ) : (\n      <Button\n        variant=\"tertiary\"\n        size=\"compact\"\n        disabled={pending || !enabled || !onPageChange}\n        onClick={onPageChange ? () => onPageChange(target) : undefined}\n      >\n        {text}\n      </Button>\n    );\n  }\n  return (\n    <nav\n      className={`ds-pagination ${className}`}\n      aria-label={label}\n      aria-busy={pending || undefined}\n    >\n      {action(\"Previous\", current - 1, current > 0, previousHref)}\n      <span aria-live=\"polite\" aria-atomic=\"true\">\n        Page {current + 1} of {pageCount}\n      </span>\n      {action(\"Next\", current + 1, current < pageCount - 1, nextHref)}\n    </nav>\n  );\n}\nexport type ExportActionsProps = ComponentPropsWithRef<\"div\"> & {\n  onExport?: () => void;\n  onPrint?: () => void;\n  exportLabel?: string;\n  printLabel?: string;\n  busy?: boolean;\n  disabled?: boolean;\n  error?: ReactNode;\n};\nexport function ExportActions({\n  onExport,\n  onPrint,\n  exportLabel = \"Export CSV\",\n  printLabel = \"Print / save PDF\",\n  busy = false,\n  disabled = false,\n  error,\n  className = \"\",\n  ...props\n}: ExportActionsProps) {\n  return (\n    <div {...props} className={`ds-export-actions ${className}`}>\n      {onPrint && (\n        <Button\n          variant=\"secondary\"\n          disabled={disabled || busy}\n          onClick={onPrint}\n        >\n          {printLabel}\n        </Button>\n      )}\n      {onExport && (\n        <Button\n          variant=\"secondary\"\n          disabled={disabled}\n          loading={busy}\n          onClick={onExport}\n        >\n          {exportLabel}\n        </Button>\n      )}\n      {error && (\n        <div role=\"alert\" className=\"ds-export-error\">\n          {error}\n        </div>\n      )}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

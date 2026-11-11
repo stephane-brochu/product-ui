@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button and actions",
+  "description": "Product UI v0.9.1: Button and actions. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/controls.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/button.tsx",
+      "type": "registry:ui",
+      "target": "@ui/button.tsx",
+      "content": "import type { ComponentPropsWithRef, ReactNode } from \"react\";\n\nexport type ButtonProps = ComponentPropsWithRef<\"button\"> & {\n  variant?: \"primary\" | \"secondary\" | \"tertiary\" | \"destructive\";\n  size?: \"compact\" | \"default\" | \"large\";\n  loading?: boolean;\n};\nexport function buttonClassName({\n  variant = \"primary\",\n  size = \"default\",\n  className = \"\",\n}: Pick<ButtonProps, \"variant\" | \"size\" | \"className\"> = {}) {\n  return `ds-button ds-button--${variant} ds-button--${size} ${className}`;\n}\n\nexport function Button({\n  variant = \"primary\",\n  size = \"default\",\n  loading = false,\n  disabled,\n  children,\n  className = \"\",\n  type = \"button\",\n  ...props\n}: ButtonProps) {\n  return (\n    <button\n      {...props}\n      type={type}\n      data-slot=\"button\"\n      data-variant={variant}\n      data-size={size}\n      className={buttonClassName({ variant, size, className })}\n      disabled={disabled || loading}\n      aria-busy={loading || undefined}\n    >\n      {loading && <span className=\"ds-spinner\" aria-hidden=\"true\" />}\n      {children}\n    </button>\n  );\n}\nexport function IconButton({\n  label,\n  children,\n  ...props\n}: Omit<ButtonProps, \"children\"> & { label: string; children: ReactNode }) {\n  return (\n    <Button\n      {...props}\n      className={`ds-icon-button ${props.className ?? \"\"}`}\n      aria-label={label}\n      title={label}\n    >\n      {children}\n    </Button>\n  );\n}\nexport function ButtonGroup({\n  label,\n  children,\n}: {\n  label: string;\n  children: ReactNode;\n}) {\n  return (\n    <div className=\"ds-button-group\" role=\"group\" aria-label={label}>\n      {children}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

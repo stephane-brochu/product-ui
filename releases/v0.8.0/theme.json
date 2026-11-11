@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "type": "registry:style",
+  "title": "Product themes",
+  "description": "Product UI v0.8.0: Product themes. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.8.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/styles/ui-theme.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-theme.css",
+      "content": ":root,\n[data-ui-theme=\"ledger\"] {\n  --ui-background: #f4f1ec;\n  --ui-content-width: 1200px;\n  --ui-content-wide: 1440px;\n  --ui-gutter: clamp(20px, 4vw, 50px);\n  --ui-radius-dialog: 8px;\n  --ui-overlay: rgb(30 30 30 / 28%);\n  --ui-layer-overlay: 100;\n  --ui-layer-dialog: 101;\n  --ui-layer-floating: 110;\n  --ui-success-foreground: #205b39;\n  --ui-warning-foreground: #76500d;\n  --ui-info-foreground: #2448a5;\n  --ui-foreground: #1e1e1e;\n  --ui-primary: #1e1e1e;\n  --ui-primary-foreground: #f4f1ec;\n  --ui-primary-hover: #000;\n  --ui-muted: #ebe7e0;\n  --ui-muted-foreground: #62605b;\n  --ui-popover: #faf8f4;\n  --ui-border: #d6d1c9;\n  --ui-border-strong: #aaa6a0;\n  --ui-input: #85817b;\n  --ui-destructive: #8b302e;\n  --ui-ring: #1e1e1e;\n  --ui-radius: 6px;\n  --ui-control-height: 34px;\n  --ui-font-interface: \"Inter\", \"Segoe UI\", sans-serif;\n  --ui-font-editorial: \"Cormorant Garamond\", Georgia, serif;\n}\n[data-ui-theme=\"studio\"] {\n  --ui-radius-dialog: 12px;\n  --ui-background: #f7f9fc;\n  --ui-foreground: #172235;\n  --ui-primary: #2448a5;\n  --ui-primary-foreground: #fff;\n  --ui-primary-hover: #19367f;\n  --ui-muted: #e9eef7;\n  --ui-muted-foreground: #4b596d;\n  --ui-popover: #fff;\n  --ui-border: #cbd3df;\n  --ui-border-strong: #8b97a8;\n  --ui-input: #748197;\n  --ui-destructive: #a12b35;\n  --ui-ring: #2448a5;\n  --ui-radius: 10px;\n  --ui-font-interface: \"Inter\", \"Segoe UI\", sans-serif;\n  --ui-font-editorial: \"Inter\", \"Segoe UI\", sans-serif;\n}\n\n[data-ui-theme=\"wedding-admin\"] {\n  --ui-background: #fff;\n  --ui-surface: #fff;\n  --ui-canvas-subtle: #f6f7f8;\n  --ui-foreground: #0a0a0a;\n  --ui-primary: #000;\n  --ui-primary-foreground: #fff;\n  --ui-primary-hover: #222;\n  --ui-muted: #f2f2f2;\n  --ui-muted-foreground: #666;\n  --ui-popover: #fff;\n  --ui-border: #e5e5e5;\n  --ui-border-strong: #8a8a8a;\n  --ui-input: #737373;\n  --ui-destructive: #c22b10;\n  --ui-ring: #0a0a0a;\n  --ui-success-foreground: #176b2c;\n  --ui-warning-foreground: #765800;\n  --ui-info-foreground: #2448a5;\n  --ui-status-success: #10c22b;\n  --ui-status-warning: #d9a900;\n  --ui-radius: 10px;\n  --ui-radius-card: 14px;\n  --ui-radius-dialog: 14px;\n  --ui-control-height: 32px;\n  --ui-font-interface: \"Geist\", \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;\n  --ui-font-editorial: var(--ui-font-interface);\n  --ui-font-mono: \"Geist Mono\", \"IBM Plex Mono\", \"SFMono-Regular\", Menlo, monospace;\n  --ui-page-title-size: 48px;\n  --ui-page-title-weight: 600;\n  --ui-page-title-leading: 1;\n  --ui-page-title-tracking: -2.4px;\n  --ui-page-header-padding: 0 0 32px;\n  --ui-page-header-padding-mobile: 0 0 24px;\n  --ui-section-title-size: 18px;\n  --ui-section-title-weight: 600;\n  --ui-section-border: 0;\n  --ui-section-header-padding: 0 0 16px;\n  --ui-sidebar-width: 260px;\n  --ui-sidebar-collapsed-width: 84px;\n  --ui-drawer-width: min(520px, 92vw);\n  --ui-card-padding: 16px;\n  --ui-stack-sm: 8px;\n  --ui-stack-md: 16px;\n  --ui-stack-lg: 32px;\n}\n@media (max-width: 560px) {\n  [data-ui-theme=\"wedding-admin\"] {\n    --ui-page-title-size: clamp(30px, 8vw, 40px);\n    --ui-page-title-tracking: -0.45px;\n    --ui-control-height: 44px;\n  }\n}\n\n@media (pointer: coarse), (max-width: 540px) {\n  :root,\n  [data-ui-theme] {\n    --ui-control-height: 44px;\n  }\n}\n"
+    }
+  ]
+}

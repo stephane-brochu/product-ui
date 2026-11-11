@@ -7,7 +7,7 @@ import { install } from "../scripts/consume.mjs";
 let directory:string;
 beforeEach(async()=>{directory=await fs.mkdtemp(path.join(os.tmpdir(),"product-ui-v7-"));});
 afterEach(async()=>{await fs.rm(directory,{recursive:true,force:true});});
-const release=path.resolve(".registry-preview/v0.7.0");
+const release=path.resolve("releases/v0.7.0");
 it("keeps core at29 files and creation optional",async()=>{
  const lock=await install({project:directory,version:"0.7.0",release});expect(lock.files).toHaveLength(29);expect(lock.dependencies).toEqual({});expect(lock.files.some((file:{target:string})=>file.target.includes("creatable"))).toBe(false);
 });

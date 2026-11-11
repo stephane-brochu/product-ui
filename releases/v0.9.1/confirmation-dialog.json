@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirmation-dialog",
+  "type": "registry:component",
+  "title": "Confirmation Dialog",
+  "description": "Product UI v0.9.1: Confirmation Dialog. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/dialog.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/form-feedback.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/confirmation-dialog.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/confirmation-dialog.tsx",
+      "content": "\"use client\";\nimport { useRef, useState, type ReactNode } from \"react\";\nimport { Dialog } from \"../ui/dialog\";\nimport { Button } from \"../ui/button\";\nimport { FormFeedback } from \"./form-feedback\";\n\nexport function ConfirmationDialog({\n  title,\n  description,\n  trigger,\n  confirmLabel = \"Confirm\",\n  cancelLabel = \"Cancel\",\n  pendingLabel = \"Working…\",\n  errorMessage = \"The action could not be completed. Please try again.\",\n  onConfirm,\n}: {\n  title: ReactNode;\n  description: ReactNode;\n  trigger: ReactNode;\n  confirmLabel?: string;\n  cancelLabel?: string;\n  pendingLabel?: string;\n  errorMessage?: string;\n  onConfirm: () => void | Promise<void>;\n}) {\n  const [open, setOpen] = useState(false),\n    [busy, setBusy] = useState(false),\n    [error, setError] = useState(\"\");\n  const inFlight = useRef(false),\n    cancel = useRef<HTMLButtonElement>(null);\n  async function confirm() {\n    if (inFlight.current) return;\n    inFlight.current = true;\n    setBusy(true);\n    setError(\"\");\n    try {\n      await onConfirm();\n      setOpen(false);\n    } catch {\n      setError(errorMessage);\n    } finally {\n      inFlight.current = false;\n      setBusy(false);\n    }\n  }\n  return (\n    <Dialog\n      title={title}\n      description={description}\n      trigger={trigger}\n      open={open}\n      dismissible={!busy}\n      onOpenChange={(next) => {\n        if (!inFlight.current) {\n          setOpen(next);\n          setError(\"\");\n        }\n      }}\n      contentProps={{\n        onOpenAutoFocus: (event) => {\n          event.preventDefault();\n          cancel.current?.focus();\n        },\n      }}\n    >\n      <FormFeedback\n        pending={busy}\n        error={error}\n        pendingMessage={pendingLabel}\n      />\n      <div className=\"ds-dialog-actions\">\n        <Button\n          ref={cancel}\n          variant=\"secondary\"\n          disabled={busy}\n          onClick={() => setOpen(false)}\n        >\n          {cancelLabel}\n        </Button>\n        <Button variant=\"destructive\" loading={busy} onClick={confirm}>\n          {confirmLabel}\n        </Button>\n      </div>\n    </Dialog>\n  );\n}\n"
+    }
+  ]
+}

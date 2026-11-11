@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-styles",
+  "type": "registry:style",
+  "title": "Chart share and preview styles",
+  "description": "Product UI v0.9.0: Chart share and preview styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-preview.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-preview.css",
+      "content": ".ds-share-chart {\n  display: grid;\n  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);\n  align-items: center;\n  gap: 24px;\n  margin: 0;\n  color: var(--ui-foreground);\n}\n.ds-share-chart-plot {\n  width: 100%;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  background: var(--share-background);\n  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ui-foreground) 18%, transparent);\n}\n.ds-share-chart-total { display: block; font-size: 1.35rem; margin-block-end: 14px; }\n.ds-share-chart-legend { display: grid; gap: 9px; list-style: none; margin: 0; padding: 0; }\n.ds-share-chart-legend li { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; align-items: center; gap: 9px; }\n.ds-share-chart-swatch { width: 12px; height: 12px; border-radius: 3px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ui-foreground) 18%, transparent); }\n.ds-html-preview { display: block; width: 100%; max-width: 100%; border: 1px solid var(--ui-border); border-radius: var(--ui-radius); background: white; }\n.ds-device-preview { width: calc(var(--device-width) * var(--device-scale)); height: calc(var(--device-height) * var(--device-scale)); max-width: 100%; margin-inline: auto; }\n.ds-device-preview-frame { width: var(--device-width); height: var(--device-height); transform: scale(var(--device-scale)); transform-origin: top left; border: 1px solid var(--ui-border-strong); border-radius: calc(var(--ui-radius) * 2); overflow: hidden; background: white; box-shadow: var(--ui-shadow); }\n.ds-device-preview-frame iframe { display: block; border: 0; background: white; }\n@media (max-width: 600px) { .ds-share-chart { grid-template-columns: 1fr; } .ds-share-chart-plot { width: min(190px, 62vw); justify-self: center; } }\n"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metrics",
+  "type": "registry:component",
+  "title": "Metrics and change values",
+  "description": "Product UI v0.9.1: Metrics and change values. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/metrics-styles.json",
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/data-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/metrics.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/metrics.tsx",
+      "content": "import type { ReactNode, ComponentPropsWithRef } from \"react\";\nexport type DeltaDirection =\n  | \"positive\"\n  | \"negative\"\n  | \"neutral\"\n  | \"unavailable\";\nexport type DeltaValueProps = ComponentPropsWithRef<\"span\"> & {\n  value?: ReactNode;\n  percentage?: ReactNode;\n  direction?: DeltaDirection;\n  tone?: \"neutral\" | \"success\" | \"danger\";\n  description?: ReactNode;\n  missingValue?: ReactNode;\n};\nconst directions = {\n  positive: \"Increase\",\n  negative: \"Decrease\",\n  neutral: \"No change\",\n  unavailable: \"Change unavailable\",\n};\nexport function DeltaValue({\n  value,\n  percentage,\n  direction = \"unavailable\",\n  tone = \"neutral\",\n  description,\n  missingValue = \"—\",\n  className = \"\",\n  ...props\n}: DeltaValueProps) {\n  return (\n    <span\n      {...props}\n      className={`ds-delta ${className}`}\n      data-direction={direction}\n      data-tone={tone}\n    >\n      <span className=\"ds-data-sr-only\">{directions[direction]}: </span>\n      <span className=\"ds-delta-value\">\n        {value ?? percentage ?? missingValue}\n      </span>\n      {value != null && percentage != null && (\n        <span className=\"ds-delta-percentage\"> ({percentage})</span>\n      )}\n      {description != null && description !== false && (\n        <span className=\"ds-delta-description\">{description}</span>\n      )}\n    </span>\n  );\n}\nexport type MetricProps = Omit<ComponentPropsWithRef<\"article\">, \"title\"> & {\n  label: ReactNode;\n  value: ReactNode;\n  unit?: ReactNode;\n  comparison?: ReactNode;\n  status?: ReactNode;\n  description?: ReactNode;\n  prominent?: boolean;\n  headingLevel?: 2 | 3 | 4;\n  missingValue?: ReactNode;\n};\nexport function Metric({\n  label,\n  value,\n  unit,\n  comparison,\n  status,\n  description,\n  prominent = false,\n  headingLevel = 3,\n  missingValue = \"—\",\n  className = \"\",\n  ...props\n}: MetricProps) {\n  const Heading = `h${headingLevel}` as \"h2\" | \"h3\" | \"h4\";\n  return (\n    <article\n      {...props}\n      className={`ds-metric ${prominent ? \"ds-metric--prominent\" : \"\"} ${className}`}\n    >\n      <Heading>{label}</Heading>\n      <div className=\"ds-metric-value\">\n        {value ?? missingValue}\n        {unit != null && unit !== false && (\n          <span className=\"ds-metric-unit\">{unit}</span>\n        )}\n      </div>\n      {comparison != null && comparison !== false && (\n        <div className=\"ds-metric-comparison\">{comparison}</div>\n      )}\n      {status != null && status !== false && (\n        <div className=\"ds-metric-status\">{status}</div>\n      )}\n      {description != null && description !== false && (\n        <div className=\"ds-metric-description\">{description}</div>\n      )}\n    </article>\n  );\n}\nexport function MetricGroup({\n  density = \"comfortable\",\n  className = \"\",\n  ...props\n}: ComponentPropsWithRef<\"div\"> & { density?: \"comfortable\" | \"compact\" }) {\n  return (\n    <div\n      {...props}\n      data-density={density}\n      className={`ds-metric-group ${className}`}\n    />\n  );\n}\n"
+    }
+  ]
+}

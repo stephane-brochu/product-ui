@@ -34,13 +34,13 @@
   ],
   "dependencies": {},
   "name": "product-ui",
-  "version": "0.7.0",
+  "version": "0.9.1",
   "repository": "https://github.com/stephane-brochu/product-ui",
-  "registry": "https://brochu-product-ui.vercel.app/r/v0.7.0",
+  "registry": "https://brochu-product-ui.vercel.app/r/v0.9.1",
   "files": [
     {
       "target": "src/styles/ui-theme.css",
-      "sha256": "7d1451d3758fdceab33b2c261e86cc026eae2638761653bcf8d785aa5f2f4fea"
+      "sha256": "c1c6308dd41a260ce2971dbe744d9053de9aabf9af5f5ae3bae82470efbf8143"
     },
     {
       "target": "src/styles/ui-controls.css",
@@ -68,7 +68,7 @@
     },
     {
       "target": "src/styles/ui-layout.css",
-      "sha256": "1e1d544fea145d6264deb3eb0b6f3a23ca91453c3970d1a3b32f6378f90fd033"
+      "sha256": "00929d0003fd3cae2736a587e856a1b65846bc679dc20fc14367324da4790d6f"
     },
     {
       "target": "src/components/patterns/page-layout.tsx",
@@ -80,7 +80,7 @@
     },
     {
       "target": "src/components/ui/feedback.tsx",
-      "sha256": "187b567bd173e84be893dcbca22e625707a3938e778cb916371956aed083f878"
+      "sha256": "29e76c14e0d068bb01bb40f587f0a1b47fe42e73e7201d5db8453653aa7b72b0"
     },
     {
       "target": "src/components/ui/checkbox.tsx",
@@ -88,7 +88,7 @@
     },
     {
       "target": "src/components/ui/selection.tsx",
-      "sha256": "704dcd8281a1fdab91d5455d3388f842b8e712bef41c79e362b4851fad708c4e"
+      "sha256": "4bf207f1ac8197e7865ca421d3314e8942d0a9cfe91699286902ce2350255e7d"
     },
     {
       "target": "src/styles/ui-composition.css",
@@ -108,11 +108,11 @@
     },
     {
       "target": "src/styles/ui-data.css",
-      "sha256": "4dbf42d564c9b10c8db50d8f3539b2c88549382f0ca4c49fde2b1eb955ee42be"
+      "sha256": "bad00efde4d908a3e05a2fd9d76b30ea06cb1706ea7c30a5b0129cab90512e42"
     },
     {
       "target": "src/components/ui/table.tsx",
-      "sha256": "5d3a25e3a75d04ac5dff360c108a87b3eccd6965f1d20e407d323cc769a4de26"
+      "sha256": "d9fd807705d2583774b83052d649c66e9c95ff601d972c37ca9c57e36833aa40"
     },
     {
       "target": "src/styles/ui-metrics.css",

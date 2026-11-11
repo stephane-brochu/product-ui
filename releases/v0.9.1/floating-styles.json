@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-styles",
+  "type": "registry:style",
+  "title": "Floating control styles",
+  "description": "Product UI v0.9.1: Floating control styles. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/styles/ui-floating.css",
+      "type": "registry:file",
+      "target": "~/src/styles/ui-floating.css",
+      "content": ".ds-popover,\n.ds-menu {\n  box-sizing: border-box;\n  z-index: var(--ui-layer-floating, 110);\n  background: var(--ui-popover);\n  color: var(--ui-foreground);\n  border: 1px solid var(--ui-border-strong);\n  border-radius: var(--ui-radius);\n  padding: 16px;\n  width: min(320px, calc(100vw - 32px));\n  max-height: min(\n    480px,\n    var(\n      --radix-popover-content-available-height,\n      var(--radix-dropdown-menu-content-available-height, 80dvh)\n    )\n  );\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  font: 400 13px/1.6 var(--ui-font-interface);\n  overflow-wrap: anywhere;\n}\n.ds-popover:focus-visible,\n.ds-menu:focus-visible {\n  outline: 2px solid var(--ui-ring);\n  outline-offset: 3px;\n}\n.ds-menu {\n  width: max-content;\n  max-width: calc(100vw - 32px);\n  min-width: min(180px, calc(100vw - 32px));\n  padding: 6px;\n}\n.ds-menu-item {\n  padding: 9px 12px;\n  min-height: var(--ui-control-height);\n  box-sizing: border-box;\n  border-radius: 3px;\n  cursor: pointer;\n  outline: none;\n  display: flex;\n  align-items: center;\n  user-select: none;\n}\n.ds-menu-item[data-highlighted] {\n  background: var(--ui-muted);\n  outline: 2px solid var(--ui-ring);\n  outline-offset: -2px;\n}\n.ds-menu-item[data-destructive] {\n  color: var(--ui-destructive);\n}\n.ds-menu-item[data-disabled] {\n  color: var(--ui-muted-foreground);\n  cursor: not-allowed;\n}\n.ds-popover > .ds-field + .ds-field {\n  margin-top: 16px;\n}\n@media (prefers-reduced-motion: reduce) {\n  .ds-popover,\n  .ds-menu {\n    animation: none;\n    transition: none;\n  }\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-boundary",
+  "type": "registry:ui",
+  "title": "Theme boundary",
+  "description": "Product UI v0.9.1: Theme boundary. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/theme.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/theme-boundary.tsx",
+      "type": "registry:ui",
+      "target": "@ui/theme-boundary.tsx",
+      "content": "\"use client\";\nimport {\n  createContext,\n  useContext,\n  useState,\n  type ComponentPropsWithoutRef,\n} from \"react\";\nconst PortalContainerContext = createContext<HTMLElement | null | undefined>(\n  undefined,\n);\n/** Portals inherit the same theme as this root, including nested product themes. */\nexport function ThemeBoundary({\n  theme = \"ledger\",\n  children,\n  ...props\n}: ComponentPropsWithoutRef<\"div\"> & { theme?: string }) {\n  const [container, setContainer] = useState<HTMLDivElement | null>(null);\n  return (\n    <PortalContainerContext.Provider value={container}>\n      <div {...props} data-ui-theme={theme}>\n        {children}\n        <div ref={setContainer} data-ui-portal-host=\"\" />\n      </div>\n    </PortalContainerContext.Provider>\n  );\n}\nexport function usePortalContainer() {\n  return useContext(PortalContainerContext);\n}\n"
+    }
+  ]
+}

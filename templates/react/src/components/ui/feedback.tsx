@@ -12,15 +12,18 @@ export function StatusBadge({
   children,
   tone = "neutral",
   className = "",
+  appearance = "default",
+  showMark = true,
   ...props
-}: ComponentPropsWithoutRef<"span"> & { tone?: StatusTone }) {
+}: ComponentPropsWithoutRef<"span"> & { tone?: StatusTone; appearance?: "default" | "solid" | "outline"; showMark?: boolean }) {
   return (
     <span
       {...props}
       data-tone={tone}
+      data-appearance={appearance}
       className={`ds-status ds-status-badge ${className}`}
     >
-      <span aria-hidden="true">{marks[tone]}</span>
+      {showMark && <span aria-hidden="true">{marks[tone]}</span>}
       {children}
     </span>
   );

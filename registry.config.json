@@ -1,6 +1,6 @@
 {
   "name": "product-ui",
-  "version": "0.7.0",
+  "version": "0.9.1",
   "homepage": "https://brochu-product-ui.vercel.app",
   "repository": "https://github.com/stephane-brochu/product-ui",
   "items": [
@@ -727,6 +727,54 @@
       ]
     },
     {
+      "name": "preview-styles",
+      "title": "Chart share and preview styles",
+      "type": "registry:style",
+      "dependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-preview.css",
+          "target": "src/styles/ui-preview.css",
+          "registryTarget": "~/src/styles/ui-preview.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "categorical-share-chart",
+      "title": "Categorical share chart",
+      "type": "registry:component",
+      "dependencies": [
+        "preview-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/categorical-share-chart.tsx",
+          "target": "src/components/patterns/categorical-share-chart.tsx",
+          "registryTarget": "@components/patterns/categorical-share-chart.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "preview",
+      "title": "HTML and device previews",
+      "type": "registry:component",
+      "dependencies": [
+        "preview-styles"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/preview.tsx",
+          "target": "src/components/patterns/preview.tsx",
+          "registryTarget": "@components/patterns/preview.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "time-series-plot",
       "title": "Time Series Plot",
       "type": "registry:component",
@@ -834,6 +882,120 @@
           "source": "src/styles/ui-creatable.css",
           "target": "src/styles/ui-creatable.css",
           "registryTarget": "~/src/styles/ui-creatable.css",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "foundations",
+      "title": "Surface and layout foundations",
+      "type": "registry:ui",
+      "dependencies": [
+        "button",
+        "feedback"
+      ],
+      "files": [
+        {
+          "source": "src/styles/ui-foundations.css",
+          "target": "src/styles/ui-foundations.css",
+          "registryTarget": "~/src/styles/ui-foundations.css",
+          "type": "registry:file"
+        },
+        {
+          "source": "src/components/patterns/surface.tsx",
+          "target": "src/components/patterns/surface.tsx",
+          "registryTarget": "@patterns/surface.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "field-control",
+      "title": "Composable native field controls",
+      "type": "registry:ui",
+      "dependencies": [
+        "fields",
+        "foundations"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/field-control.tsx",
+          "target": "src/components/ui/field-control.tsx",
+          "registryTarget": "@ui/field-control.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "title": "Controlled accessible tabs",
+      "type": "registry:ui",
+      "dependencies": [
+        "foundations"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/tabs.tsx",
+          "target": "src/components/ui/tabs.tsx",
+          "registryTarget": "@ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "title": "Checkbox multi-select",
+      "type": "registry:ui",
+      "dependencies": [
+        "popover",
+        "checkbox",
+        "foundations"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/multi-select.tsx",
+          "target": "src/components/ui/multi-select.tsx",
+          "registryTarget": "@ui/multi-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "reorderable-list",
+      "title": "Ordered fields",
+      "type": "registry:ui",
+      "dependencies": [
+        "foundations"
+      ],
+      "files": [
+        {
+          "source": "src/components/ui/reorderable-list.tsx",
+          "target": "src/components/ui/reorderable-list.tsx",
+          "registryTarget": "@ui/reorderable-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "workspace-shell",
+      "title": "Grouped workspace navigation",
+      "type": "registry:ui",
+      "dependencies": [
+        "navigation",
+        "dialog",
+        "foundations"
+      ],
+      "files": [
+        {
+          "source": "src/components/patterns/workspace-shell.tsx",
+          "target": "src/components/patterns/workspace-shell.tsx",
+          "registryTarget": "@patterns/workspace-shell.tsx",
+          "type": "registry:component"
+        },
+        {
+          "source": "src/styles/ui-workspace.css",
+          "target": "src/styles/ui-workspace.css",
+          "registryTarget": "~/src/styles/ui-workspace.css",
           "type": "registry:file"
         }
       ]

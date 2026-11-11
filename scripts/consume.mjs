@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 const hash = (text) =>
   createHash("sha256").update(text.replace(/\r\n/g, "\n")).digest("hex");
 const allowed =
-  /^src\/(?:components\/(?:ui|patterns)\/[a-z0-9-]+\.tsx|styles\/ui-[a-z0-9-]+\.css)$/;
+  /^src\/(?:components\/(?:[a-z][a-z0-9-]*\/)?(?:ui|patterns)\/[a-z0-9-]+\.tsx|styles\/ui-[a-z0-9-]+\.css)$/;
 async function readOptional(file) {
   try {
     return await fs.readFile(file, "utf8");
@@ -62,7 +62,7 @@ export async function check(project) {
   }
   return lock;
 }
-export async function install({ project, release, registry, version, items }) {
+export async function install({ project, release, registry, version, items, namespace }) {
   if (!version || !/^\d+\.\d+\.\d+$/.test(version))
     throw new Error("An exact release version is required");
   if (Boolean(release) === Boolean(registry))
@@ -97,6 +97,13 @@ export async function install({ project, release, registry, version, items }) {
   const priorText = await readOptional(lockPath);
   if (priorText) await check(root);
   const priorLock = priorText ? JSON.parse(priorText) : null;
+  namespace ??= priorLock?.namespace;
+  if (namespace !== undefined && !/^[a-z][a-z0-9-]*$/.test(namespace))
+    throw new Error("Namespace must be a single lowercase directory name");
+  if (priorLock && (priorLock.namespace ?? "") !== (namespace ?? ""))
+    throw new Error("Cannot change namespace of an existing installation");
+  const destination = target => namespace && target.startsWith("src/components/")
+    ? target.replace("src/components/", `src/components/${namespace}/`) : target;
   const selected = new Set();
   function visit(name) {
     if (selected.has(name)) return;
@@ -158,7 +165,7 @@ export async function install({ project, release, registry, version, items }) {
         throw new Error(`Registry integrity failure: ${file.path}`);
       if (contents.has(match.target))
         throw new Error("Duplicate registry content");
-      contents.set(match.target, file.content);
+      contents.set(destination(match.target), file.content);
     }
   }
   if (contents.size !== expected.size)
@@ -189,10 +196,11 @@ export async function install({ project, release, registry, version, items }) {
     dependencies,
     name: "product-ui",
     version,
+    ...(namespace ? { namespace } : {}),
     repository: manifest.repository,
     registry: manifest.registry,
     files: [...expected.values()].map(({ target, sha256 }) => ({
-      target,
+      target: destination(target),
       sha256,
     })),
   };

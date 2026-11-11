@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-feedback",
+  "type": "registry:component",
+  "title": "Form Feedback",
+  "description": "Product UI v0.9.1: Form Feedback. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/workflow-styles.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/form-feedback.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/form-feedback.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\n/** Presentation only: callers retain async state, focus policy, saving and retry logic. */\nexport function FormFeedback({\n  pending,\n  error,\n  success,\n  pendingMessage = \"Saving…\",\n  onRetry,\n  retryLabel = \"Try again\",\n}: {\n  pending?: boolean;\n  error?: ReactNode;\n  success?: ReactNode;\n  pendingMessage?: ReactNode;\n  onRetry?: () => void;\n  retryLabel?: string;\n}) {\n  return (\n    <div className=\"ds-form-feedback\" aria-busy={pending || undefined}>\n      {pending ? (\n        <p role=\"status\">{pendingMessage}</p>\n      ) : error ? (\n        <div role=\"alert\" className=\"ds-workflow-error\">\n          {error}\n          {onRetry && (\n            <button\n              type=\"button\"\n              className=\"ds-workflow-retry\"\n              onClick={onRetry}\n            >\n              {retryLabel}\n            </button>\n          )}\n        </div>\n      ) : success ? (\n        <p role=\"status\">{success}</p>\n      ) : null}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

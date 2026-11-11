@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reorderable-list",
+  "type": "registry:ui",
+  "title": "Ordered fields",
+  "description": "Product UI v0.9.1: Ordered fields. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.1",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.1/foundations.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/reorderable-list.tsx",
+      "type": "registry:ui",
+      "target": "@ui/reorderable-list.tsx",
+      "content": "\"use client\";\nimport { useId, useRef, useState } from \"react\";\nimport { Button } from \"./button\";\nexport type OrderedItem = { value: string; label: string };\nexport function ReorderableList({ label, items, onChange, name, disabled = false, emptyMessage = \"No items to order.\" }: {\n  label: string; items: readonly OrderedItem[]; onChange: (items: OrderedItem[]) => void; name?: string; disabled?: boolean; emptyMessage?: string;\n}) {\n  const id = useId(), refs = useRef(new Map<string, HTMLButtonElement>()), [announcement, setAnnouncement] = useState(\"\");\n  if (new Set(items.map(item => item.value)).size !== items.length) throw new Error(\"Ordered item values must be unique.\");\n  function move(index: number, delta: number) {\n    if (disabled || index + delta < 0 || index + delta >= items.length) return;\n    const next = [...items], item = next[index];\n    [next[index], next[index + delta]] = [next[index + delta], next[index]];\n    onChange(next); setAnnouncement(`${item.label} moved to position ${index + delta + 1} of ${items.length}.`);\n    // aria-disabled retains the initiating button's focus when it reaches a boundary.\n    refs.current.get(`${item.value}:${delta}`)?.focus();\n  }\n  return <div className=\"ds-reorderable\"><p id={id} className=\"ds-control-label\">{label}</p>\n    {items.length ? <ol aria-labelledby={id}>{items.map((item, index) => <li key={item.value}>\n      <span>{item.label}</span><div className=\"ds-reorder-actions\">\n        {([-1, 1] as const).map(delta => <Button key={delta} variant=\"secondary\" size=\"compact\" disabled={disabled}\n          ref={node => { if (node) refs.current.set(`${item.value}:${delta}`, node); else refs.current.delete(`${item.value}:${delta}`); }}\n          aria-label={`Move ${item.label} ${delta < 0 ? \"up\" : \"down\"}`} aria-disabled={disabled || index + delta < 0 || index + delta >= items.length}\n          onClick={() => move(index, delta)}>{delta < 0 ? \"↑ Up\" : \"↓ Down\"}</Button>)}\n      </div>{name && <input type=\"hidden\" name={name} value={item.value} disabled={disabled} />}\n    </li>)}</ol> : <p>{emptyMessage}</p>}\n    <span className=\"ds-sr-only\" role=\"status\">{announcement}</span>\n  </div>;\n}\n"
+    }
+  ]
+}

@@ -1,3 +1,6 @@
+import { WeddingAdminExample } from "./wedding-admin";
+import "../src/styles/ui-foundations.css";
+import "../src/styles/ui-workspace.css";
 import { CreatableSelection } from "./creatable-selection";
 import { AdvancedRenderers } from "./advanced-renderers";
 import "../src/styles/ui-charts.css";
@@ -8,6 +11,7 @@ import "../src/styles/ui-workflows.css";
 import { DataPresentation } from "./data-presentation";
 import "../src/styles/ui-data.css";
 import "../src/styles/ui-metrics.css";
+import "../src/styles/ui-preview.css";
 import { MilestoneOne } from "./milestone-one";
 import "../src/styles/ui-composition.css";
 import "../src/styles/ui-floating.css";
@@ -39,7 +43,7 @@ import "../src/styles/ui-theme.css";
 import "../src/styles/ui-controls.css";
 import "../src/styles/ui-patterns.css";
 import "./site.css";
-const base = "https://brochu-product-ui.vercel.app/r/v0.7.0";
+const base = "https://brochu-product-ui.vercel.app/r/v0.8.0";
 const install = `npx shadcn@4.23.0 add ${base}/core.json`;
 function Code({ children }: { children: string }) {
   return (
@@ -91,7 +95,7 @@ function App() {
         </a>
         <header className="masthead">
           <a className="wordmark" href="#">
-            Product UI<span> / 0.7.0</span>
+            Product UI<span> / 0.8.0</span>
           </a>
           <div className="header-actions">
             <a href="https://github.com/stephane-brochu/product-ui">Source</a>
@@ -102,6 +106,7 @@ function App() {
               options={[
                 { value: "ledger", label: "Ledger" },
                 { value: "studio", label: "Studio" },
+                { value: "wedding-admin", label: "Wedding admin" },
               ]}
             />
           </div>
@@ -111,6 +116,7 @@ function App() {
             <p className="eyebrow">Library guide</p>
             <nav aria-label="Documentation">
               <a href="#start">Get started</a>
+              <a href="#wedding-admin">Wedding admin</a>
               <a href="#foundations">Foundations</a>
               <a href="#buttons">Buttons</a>
               <a href="#fields">Fields</a>
@@ -164,10 +170,10 @@ function App() {
               </div>
               <p className="note">
                 Use an existing shadcn-configured React 19 app, or the{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.7.0/templates/react">
+                <a href="https://github.com/stephane-brochu/product-ui/tree/v0.8.0/templates/react">
                   included Vite starter
                 </a>
-                . Registry files and their dependencies are pinned to v0.7.0.
+                . Registry files and their dependencies are pinned to v0.8.0.
               </p>
             </section>
             <section id="foundations">
@@ -410,7 +416,8 @@ import "./styles/ui-patterns.css";
             <DataPresentation />
             <NavigationWorkflows />
             <AdvancedRenderers />
-            <CreatableSelection />
+            <WeddingAdminExample />
+          <CreatableSelection />
             <section id="extend">
               <p className="eyebrow">04 / Working together</p>
               <h2>Extend with evidence.</h2>
@@ -447,7 +454,7 @@ import "./styles/ui-patterns.css";
               </p>
             </section>
             <section id="releases">
-              <h2>v0.7.0</h2>
+              <h2>v0.8.0</h2>
               <p>
                 New: optional CreatableSelect adds creation inside a selection
                 popup, with native form validation and failure/retry. No new npm
@@ -547,7 +554,7 @@ import "./styles/ui-patterns.css";
                   Release manifest & file hashes
                 </a>{" "}
                 ·{" "}
-                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.7.0">
+                <a href="https://github.com/stephane-brochu/product-ui/releases/tag/v0.8.0">
                   Release notes
                 </a>
               </p>
@@ -559,7 +566,7 @@ import "./styles/ui-patterns.css";
               </p>
             </section>
             <footer>
-              Product UI / v0.7.0 <span>React · owned source · MIT</span>
+              Product UI / v0.8.0 <span>React · owned source · MIT</span>
             </footer>
           </main>
         </div>

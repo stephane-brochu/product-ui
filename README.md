@@ -1,9 +1,9 @@
 # Product UI
 
-A small owned-source React 19 component library, extracted from a working product and designed for reuse across products. MIT licensed. v0.7.0 ships buttons, native fields, filter/form patterns, semantic themes, a versioned shadcn registry, a Vite starter, page layout, feedback states, Checkbox/Textarea optional Dialog/Drawer, selection controls, disclosures, settings/metadata and optional Popover/action menus.
+A small owned-source React 19 component library, extracted from working products and designed for reuse across products. MIT licensed. v0.9.1 adds Wedding admin foundations, stacked data tables, categorical share charts, and isolated HTML/device previews to the existing controls, navigation, workflows, charts and PDF surfaces.
 
 - Documentation: https://brochu-product-ui.vercel.app
-- Registry: https://brochu-product-ui.vercel.app/r/v0.7.0/core.json
+- Registry: https://brochu-product-ui.vercel.app/r/v0.9.1/core.json
 - Source: https://github.com/stephane-brochu/product-ui
 
 ## Use in an existing React product
@@ -11,7 +11,7 @@ A small owned-source React 19 component library, extracted from a working produc
 In a shadcn-configured React 19 project:
 
 ```sh
-npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.7.0/core.json
+npx shadcn@4.23.0 add https://brochu-product-ui.vercel.app/r/v0.9.1/core.json
 ```
 
 Individual items include theme, controls, patterns, button, fields, filter-bar, form-section, page-layout, feedback, checkbox, selection, disclosure, controlled-disclosure and settings. Dialog, popover and action-menu are optional. Dependencies are pinned to the same version. Components respect shadcn aliases; CSS files install under src/styles. Import ui-theme.css, ui-controls.css, ui-patterns.css, ui-layout.css, ui-feedback.css and ui-composition.css, ui-data.css and ui-metrics.css once from your app entry point. The CSS uses ds-* classes; Tailwind is not required to render the components.
@@ -21,15 +21,15 @@ A registry copies source. It is not an npm runtime dependency and will not autom
 For deterministic tracked copies in a src-based application, use the included consumer tool:
 
 ```sh
-node scripts/consume.mjs install --project /path/to/product --version 0.7.0 --registry https://brochu-product-ui.vercel.app/r/v0.7.0
+node scripts/consume.mjs install --project /path/to/product --version 0.9.1 --registry https://brochu-product-ui.vercel.app/r/v0.9.1
 node scripts/consume.mjs check --project /path/to/product
 ```
 
-This writes ui-library.lock.json with the release and file hashes, detects local drift, validates downloaded contents, and refuses unmanaged overwrites. A local `--release releases/v0.7.0` can replace `--registry` for offline installs. The finance consumer uses this pinned-copy workflow.
+This writes ui-library.lock.json with the release and file hashes, detects local drift, validates downloaded contents, and refuses unmanaged overwrites. A local `--release releases/v0.9.1` can replace `--registry` for offline installs. The finance consumer uses this pinned-copy workflow.
 
 ## Start a product
 
-Copy templates/react to a new project directory, run npm install, then npm run dev. The starter already contains the v0.7.0 source snapshot, CSS imports and its provenance lock. Change the project name, navigation and theme. Do not copy finance routes, account models or authentication into the library.
+Copy templates/react to a new project directory, run npm install, then npm run dev. The starter already contains the current core source snapshot, CSS imports and its provenance lock. Change the project name, navigation and theme. Do not copy finance routes, account models or authentication into the library.
 
 ## Work on the library
 
@@ -60,7 +60,7 @@ See [component contracts](docs/component-contracts.md) and [migration notes](doc
 
 ```sh
 npm install --save-exact @radix-ui/react-dialog@1.3.1
-node scripts/consume.mjs install --project /path/to/product --version 0.7.0 --registry https://brochu-product-ui.vercel.app/r/v0.7.0 --items core,dialog
+node scripts/consume.mjs install --project /path/to/product --version 0.9.1 --registry https://brochu-product-ui.vercel.app/r/v0.9.1 --items core,dialog
 ```
 
 The deterministic installer requires the exact declared dependency before writing files, resolves transitive registry dependencies, retains previously selected items, and tracks the selected file hashes. It never invokes npm or executes downloaded code. Use the current consumer script when upgrading from v0.1.0. Import ui-layout.css, ui-feedback.css and ui-composition.css alongside the existing core CSS, and ui-dialog.css when opting into overlays. Wrap the product in ThemeBoundary for theme-aware portals.

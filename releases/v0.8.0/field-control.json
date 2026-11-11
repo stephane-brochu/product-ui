@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-control",
+  "type": "registry:ui",
+  "title": "Composable native field controls",
+  "description": "Product UI v0.8.0: Composable native field controls. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.8.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.8.0/fields.json",
+    "https://brochu-product-ui.vercel.app/r/v0.8.0/foundations.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/field-control.tsx",
+      "type": "registry:ui",
+      "target": "@ui/field-control.tsx",
+      "content": "\"use client\";\nimport { createContext, useContext, useId, type ComponentPropsWithRef, type ReactNode } from \"react\";\ntype FieldContext = { id: string; description?: string; invalid?: boolean };\nconst Context = createContext<FieldContext | undefined>(undefined);\n/** One labelled native control per field. Composite controls provide their own group label. */\nexport function ControlField({ label, description, error, children, id: suppliedId, className = \"\" }: {\n  label: ReactNode; description?: ReactNode; error?: ReactNode; children: ReactNode; id?: string; className?: string;\n}) {\n  const generated = useId(), id = suppliedId ?? generated;\n  const described = [description && `${id}-description`, error && `${id}-error`].filter(Boolean).join(\" \") || undefined;\n  return <Context.Provider value={{ id, description: described, invalid: Boolean(error) }}><div className={`ds-field ${className}`}>\n    <label htmlFor={id}>{label}</label>{children}\n    {description && <p className=\"ds-field-description\" id={`${id}-description`}>{description}</p>}\n    {error && <p className=\"ds-validation\" id={`${id}-error`} role=\"alert\">{error}</p>}\n  </div></Context.Provider>;\n}\nfunction useControl(props: { id?: string; \"aria-describedby\"?: string; \"aria-invalid\"?: ComponentPropsWithRef<\"input\">[\"aria-invalid\"] }) {\n  const field = useContext(Context);\n  return { id: props.id ?? field?.id, \"aria-describedby\": [field?.description, props[\"aria-describedby\"]].filter(Boolean).join(\" \") || undefined,\n    \"aria-invalid\": field?.invalid || props[\"aria-invalid\"] || undefined };\n}\nexport function InputControl({ mono, segment = \"plain\", className = \"\", ...props }: ComponentPropsWithRef<\"input\"> & { mono?: boolean; segment?: \"plain\" | \"left\" | \"right\" }) {\n  const attributes = useControl(props);\n  return <input {...props} {...attributes} className={`ds-input ds-native-control ${className}`} data-mono={mono || undefined} data-segment={segment} />;\n}\nexport function TextareaControl({ className = \"\", ...props }: ComponentPropsWithRef<\"textarea\">) {\n  const attributes = useControl(props);\n  return <textarea {...props} {...attributes} className={`ds-input ds-native-control ${className}`} />;\n}\nexport function SelectControl({ className = \"\", ...props }: ComponentPropsWithRef<\"select\">) {\n  const attributes = useControl(props);\n  return <select {...props} {...attributes} className={`ds-select ds-native-control ${className}`} />;\n}\n"
+    }
+  ]
+}

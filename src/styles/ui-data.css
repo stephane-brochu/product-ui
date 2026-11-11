@@ -181,6 +181,51 @@
   font-size: 12px;
 }
 @media (max-width: 540px) {
+  .ds-data-table[data-mobile-layout="stack"] thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .ds-data-table[data-mobile-layout="stack"],
+  .ds-data-table[data-mobile-layout="stack"] tbody,
+  .ds-data-table[data-mobile-layout="stack"] tr,
+  .ds-data-table[data-mobile-layout="stack"] :is(th, td) {
+    display: block;
+    width: 100%;
+  }
+  .ds-data-table[data-mobile-layout="stack"] tr {
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius);
+    margin-block-end: 12px;
+    overflow: hidden;
+  }
+  .ds-data-table[data-mobile-layout="stack"] :is(th, td) {
+    display: grid;
+    grid-template-columns: minmax(7rem, 38%) 1fr;
+    gap: 12px;
+    text-align: end;
+    white-space: normal;
+  }
+  .ds-data-table[data-mobile-layout="stack"] :is(th, td)::before {
+    content: attr(data-label);
+    color: var(--ui-muted-foreground);
+    font-size: 11px;
+    font-weight: 500;
+    text-align: start;
+  }
+  .ds-data-table[data-mobile-layout="stack"] :is(th, td):not([data-label])::before {
+    content: none;
+  }
+  .ds-data-table[data-mobile-layout="stack"] :is(.ds-table-primary, tr > :first-child) {
+    display: block;
+    text-align: start;
+    background: var(--ui-muted);
+  }
+  .ds-data-table[data-mobile-layout="stack"] :is(.ds-table-primary, tr > :first-child)::before {
+    content: none;
+  }
   .ds-data-table .ds-mobile-hidden {
     display: none;
   }
@@ -203,6 +248,23 @@
   }
   .ds-data-table {
     font-size: 10px;
+  }
+  .ds-data-table[data-mobile-layout="stack"],
+  .ds-data-table[data-mobile-layout="stack"] tbody,
+  .ds-data-table[data-mobile-layout="stack"] tr,
+  .ds-data-table[data-mobile-layout="stack"] :is(th, td) {
+    display: revert;
+    width: auto;
+  }
+  .ds-data-table[data-mobile-layout="stack"] thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+  .ds-data-table[data-mobile-layout="stack"] :is(th, td)::before {
+    content: none;
   }
   .ds-data-table thead {
     display: table-header-group;

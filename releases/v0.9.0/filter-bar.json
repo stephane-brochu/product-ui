@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-bar",
+  "type": "registry:component",
+  "title": "Filter bar",
+  "description": "Product UI v0.9.0: Filter bar. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.9.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.9.0/patterns.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/filter-bar.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/filter-bar.tsx",
+      "content": "import type { HTMLAttributes, ReactNode } from \"react\";\n\n/** A labelled group, not an ARIA toolbar: native controls keep normal Tab behaviour. */\nexport function FilterBar({\n  label,\n  children,\n  className = \"\",\n  ...props\n}: HTMLAttributes<HTMLDivElement> & { label: string }) {\n  return (\n    <div\n      {...props}\n      role=\"group\"\n      aria-label={label}\n      data-slot=\"filter-bar\"\n      className={`ds-filter-bar ${className}`}\n    >\n      {children}\n    </div>\n  );\n}\nexport function FilterActions({ children }: { children: ReactNode }) {\n  return (\n    <div className=\"ds-filter-actions\" data-slot=\"filter-actions\">\n      {children}\n    </div>\n  );\n}\nexport function FilterDisclosure({\n  children,\n  active = false,\n  label = \"More filters\",\n}: {\n  children: ReactNode;\n  active?: boolean;\n  label?: string;\n}) {\n  return (\n    <details className=\"ds-filter-disclosure\" open={active || undefined}>\n      <summary>{label}</summary>\n      {children}\n    </details>\n  );\n}\n"
+    }
+  ]
+}

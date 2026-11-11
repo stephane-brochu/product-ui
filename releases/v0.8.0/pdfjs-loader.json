@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pdfjs-loader",
+  "type": "registry:component",
+  "title": "Pdfjs Loader",
+  "description": "Product UI v0.8.0: Pdfjs Loader. Import the documented CSS files once.",
+  "meta": {
+    "version": "0.8.0",
+    "repository": "https://github.com/stephane-brochu/product-ui"
+  },
+  "dependencies": [
+    "pdfjs-dist@6.4.299"
+  ],
+  "registryDependencies": [
+    "https://brochu-product-ui.vercel.app/r/v0.8.0/pdf-viewer.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/patterns/pdfjs-loader.tsx",
+      "type": "registry:component",
+      "target": "@components/patterns/pdfjs-loader.tsx",
+      "content": "\"use client\";\nimport { getDocument, GlobalWorkerOptions } from \"pdfjs-dist\";\nimport type { PdfLoader, PdfDocumentHandle } from \"./pdf-viewer\";\n/** Worker URL must point to the exact pinned pdfjs-dist worker served by the product. */\nexport function createPdfJsLoader({\n  url,\n  workerSrc,\n  withCredentials = false,\n  httpHeaders,\n  assets,\n}: {\n  url: string;\n  workerSrc: string;\n  withCredentials?: boolean;\n  httpHeaders?: Record<string, string>;\n  assets?: {\n    cMapUrl?: string;\n    standardFontDataUrl?: string;\n    wasmUrl?: string;\n    iccUrl?: string;\n  };\n}): PdfLoader {\n  if (!url || !workerSrc)\n    throw new Error(\"A PDF source and matching worker URL are required\");\n  return () => {\n    GlobalWorkerOptions.workerSrc = workerSrc;\n    const task = getDocument({\n      url,\n      withCredentials,\n      httpHeaders,\n      ...assets,\n      stopAtErrors: true,\n      verbosity: 0,\n    });\n    const promise: Promise<PdfDocumentHandle> = task.promise.then(\n      (document) => ({\n        numPages: document.numPages,\n        getPage: async (number) => {\n          const page = await document.getPage(number);\n          return {\n            size: () => {\n              const viewport = page.getViewport({ scale: 1 });\n              return { width: viewport.width, height: viewport.height };\n            },\n            render: (canvas, scale) => {\n              const context = canvas.getContext(\"2d\");\n              if (!context) throw new Error(\"Canvas unavailable\");\n              const render = page.render({\n                canvas,\n                canvasContext: context,\n                viewport: page.getViewport({ scale }),\n              });\n              return { promise: render.promise, cancel: () => render.cancel() };\n            },\n            text: async () => {\n              const text = await page.getTextContent();\n              return text.items\n                .map((item) => (\"str\" in item ? item.str : \"\"))\n                .join(\" \");\n            },\n            cleanup: () => page.cleanup(),\n          };\n        },\n      }),\n    );\n    return { promise, destroy: () => task.destroy() };\n  };\n}\n"
+    }
+  ]
+}

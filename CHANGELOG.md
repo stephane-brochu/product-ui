@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.1
+
+- Make the first cell the default primary label in stacked tables and expose the no-referrer `PreviewIframe` adapter used by product-owned device labs.
+
+## 0.9.0
+
+- Add opt-in categorical share charts with exact caller-supplied labels and reusable HTML/device preview frames.
+- Add stacked mobile table presentation while preserving semantic table markup and print output.
+- Migrate the remaining Wedding admin data, RSVP, email and preview surfaces without moving product calculations or workflows into the library.
+
+## 0.8.0
+
+- Add the Wedding admin theme, shared surfaces, grouped navigation, drawer footers, tabs, multi-select and reorderable fields.
+- Support namespaced source installs to avoid collisions with product controls.
+
 ## 0.7.0
 
 - Optional CreatableSelect with callback-owned inline creation, exact native form values, validation, pending/failure/retry and nested-dialog examples.
